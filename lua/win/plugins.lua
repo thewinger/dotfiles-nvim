@@ -52,6 +52,7 @@ return require("packer").startup(function(use)
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	-- use("arnamak/stay-centered.nvim")
 	use("ggandor/lightspeed.nvim")
+	use("arnamak/stay-centered.nvim")
 
 	-- Styling
 	use({

@@ -234,6 +234,11 @@ _G.packer_plugins = {
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["stay-centered.nvim"] = {
+    loaded = true,
+    path = "/Users/win/.local/share/nvim/site/pack/packer/start/stay-centered.nvim",
+    url = "https://github.com/arnamak/stay-centered.nvim"
+  },
   ["tabout.nvim"] = {
     load_after = {},
     loaded = true,
