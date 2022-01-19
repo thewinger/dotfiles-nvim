@@ -50,9 +50,9 @@ return require("packer").startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 	use("goolord/alpha-nvim")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
-	-- use("arnamak/stay-centered.nvim")
 	use("ggandor/lightspeed.nvim")
 	use("arnamak/stay-centered.nvim")
+	use("rktjmp/lush.nvim")
 
 	-- Styling
 	use({
