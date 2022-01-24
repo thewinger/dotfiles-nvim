@@ -40,8 +40,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<TAB>", ":bnext<CR>", opts)
-keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
+keymap("n", "<C-N>", ":bnext<CR>", opts)
+keymap("n", "<C-P>", ":bprevious<CR>", opts)
 
 -- Keeping the cursor center lined when searching
 keymap("n", "n", "nzzzv", opts)
@@ -136,11 +136,11 @@ keymap(
 	opts
 )
 keymap("n", "<Leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>', opts)
-keymap("n", "<C-p>", '<cmd>lua require("telescope.builtin").git_files()<CR>', opts)
+keymap("n", "<Leader>tf", '<cmd>lua require("telescope.builtin").git_files()<CR>', opts)
 keymap("n", "<leader>tb", '<cmd>lua require("telescope.builtin").buffers()<CR>', opts)
 keymap("n", "<leader>th", '<cmd>lua require("telescope.builtin").help_tags()<CR>', opts)
 keymap("n", "<leader>td", '<cmd>lua require("telescope.builtin").diagnostics({bufnr=0})<CR>', opts)
-keymap("n", "<Leader>tf", '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>', opts)
+-- keymap("n", "<Leader>tf", '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>', opts)
 keymap("n", "<leader>tms", "<cmd>Telescope tmux sessions theme=ivy<CR>", opts)
 keymap("n", "<leader>tmw", "<cmd>Telescope tmux windows theme=ivy<CR>", opts)
 

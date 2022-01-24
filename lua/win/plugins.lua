@@ -52,7 +52,6 @@ return require("packer").startup(function(use)
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("ggandor/lightspeed.nvim")
 	use("arnamak/stay-centered.nvim")
-	use("rktjmp/lush.nvim")
 
 	-- Styling
 	use({
@@ -94,12 +93,7 @@ return require("packer").startup(function(use)
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("windwp/nvim-ts-autotag") -- Automatically add paring tag
-
-	use({
-		"abecodes/tabout.nvim",
-		wants = { "nvim-treesitter" },
-		after = { "nvim-cmp" },
-	})
+	use("nvim-treesitter/playground")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")

@@ -224,6 +224,11 @@ _G.packer_plugins = {
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  playground = {
+    loaded = true,
+    path = "/Users/win/.local/share/nvim/site/pack/packer/start/playground",
+    url = "https://github.com/nvim-treesitter/playground"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/plenary.nvim",
@@ -238,14 +243,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/stay-centered.nvim",
     url = "https://github.com/arnamak/stay-centered.nvim"
-  },
-  ["tabout.nvim"] = {
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/Users/win/.local/share/nvim/site/pack/packer/opt/tabout.nvim",
-    url = "https://github.com/abecodes/tabout.nvim",
-    wants = { "nvim-treesitter" }
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
@@ -280,11 +277,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Load plugins in order defined by `after`
-time([[Sequenced loading]], true)
-vim.cmd [[ packadd nvim-cmp ]]
-vim.cmd [[ packadd tabout.nvim ]]
-time([[Sequenced loading]], false)
 if should_profile then save_profiles() end
 
 end)
