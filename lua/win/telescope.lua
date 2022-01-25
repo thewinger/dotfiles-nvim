@@ -130,6 +130,12 @@ telescope.setup({
 				},
 			},
 		},
+		harpoon = {
+			theme = "ivy",
+			layout_config = {
+				height = 0.75,
+			},
+		},
 		media_files = {
 			-- filetypes whitelist
 			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
@@ -155,3 +161,4 @@ telescope.load_extension("media_files")
 telescope.load_extension("fzy_native")
 telescope.load_extension("file_browser")
 telescope.load_extension("tmux")
+telescope.load_extension("harpoon")

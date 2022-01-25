@@ -52,12 +52,14 @@ return require("packer").startup(function(use)
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("ggandor/lightspeed.nvim")
 	use("arnamak/stay-centered.nvim")
+	use("ThePrimeagen/harpoon")
 
 	-- Styling
 	use({
 		"thewinger/eclipse.nvim",
 		requires = { "rktjmp/lush.nvim" },
 	})
+	use("ntk148v/vim-horizon")
 	use("norcalli/nvim-colorizer.lua")
 
 	-- CMP plugins

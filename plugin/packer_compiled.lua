@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  harpoon = {
+    loaded = true,
+    path = "/Users/win/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -273,6 +278,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["vim-horizon"] = {
+    loaded = true,
+    path = "/Users/win/.local/share/nvim/site/pack/packer/start/vim-horizon",
+    url = "https://github.com/ntk148v/vim-horizon"
   }
 }
 

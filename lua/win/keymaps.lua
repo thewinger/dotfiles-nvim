@@ -138,7 +138,7 @@ keymap(
 keymap("n", "<Leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>', opts)
 keymap("n", "<Leader>tf", '<cmd>lua require("telescope.builtin").git_files()<CR>', opts)
 keymap("n", "<leader>tb", '<cmd>lua require("telescope.builtin").buffers()<CR>', opts)
-keymap("n", "<leader>th", '<cmd>lua require("telescope.builtin").help_tags()<CR>', opts)
+keymap("n", "<leader>tht", '<cmd>lua require("telescope.builtin").help_tags()<CR>', opts)
 keymap("n", "<leader>td", '<cmd>lua require("telescope.builtin").diagnostics({bufnr=0})<CR>', opts)
 -- keymap("n", "<Leader>tf", '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>', opts)
 keymap("n", "<leader>tms", "<cmd>Telescope tmux sessions theme=ivy<CR>", opts)
@@ -149,3 +149,10 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Format Null-ls
 keymap("n", "<leader>f", ":Format<cr>", opts)
+
+-- Harpoon
+keymap("n", "<leader>hh", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
+keymap("n", "<leader>ha", ':lua require("harpoon.mark").add_file()<CR>', opts)
+keymap("n", "<leader>hn", ':lua require("harpoon.ui").nav_next()<CR>', opts)
+keymap("n", "<leader>hp", ':lua require("harpoon.ui").nav_prev()<CR>', opts)
+keymap("n", "<leader>th", ':lua require("telescope").extensions.harpoon.marks{}<CR>', opts)
