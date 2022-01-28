@@ -69,20 +69,19 @@ local function lsp_keymaps(bufnr)
 	map(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	map(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	map(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	-- map(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	map(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	map(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	-- map(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	-- map(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	map(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	map(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	map(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-	-- map(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	map(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 	map(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
 	-- LSPSaga
-	map(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
+	--[[ map(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
 	map(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
 	map(bufnr, "n", "<leader>gl", "<cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics()<cr>", opts)
-	map(bufnr, "x", "<leader>ca", "<cmd>Lspsaga range_code_action<cr>", opts)
+	map(bufnr, "x", "<leader>ca", "<cmd>Lspsaga range_code_action<cr>", opts) ]]
 
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
@@ -91,6 +90,9 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 		client.resolved_capabilities.document_range_formatting = false
+	end
+	if client.name == "tailwindcss" then
+		require("tailwindcss-colors").buf_attach(bufnr)
 	end
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)

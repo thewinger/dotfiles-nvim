@@ -59,8 +59,17 @@ return require("packer").startup(function(use)
 		"thewinger/eclipse.nvim",
 		requires = { "rktjmp/lush.nvim" },
 	})
-	use("ntk148v/vim-horizon")
 	use("norcalli/nvim-colorizer.lua")
+	use({
+		"themaxmarchuk/tailwindcss-colors.nvim",
+		-- load only on require("tailwindcss-colors")
+		module = "tailwindcss-colors",
+		-- run the setup function after plugin is loaded
+		config = function()
+			-- pass config options here (or nothing to use defaults)
+			require("tailwindcss-colors").setup()
+		end,
+	})
 
 	-- CMP plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -79,7 +88,7 @@ return require("packer").startup(function(use)
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-	use("tami5/lspsaga.nvim")
+	-- use("tami5/lspsaga.nvim")
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-media-files.nvim")

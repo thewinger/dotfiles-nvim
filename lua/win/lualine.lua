@@ -65,7 +65,7 @@ end
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "eclipse",
+		theme = "enfocado",
 		component_separators = "",
 		section_separators = "",
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
