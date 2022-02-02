@@ -151,7 +151,6 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>f", ":Format<cr>", opts)
 
 -- ToggleTerm
-keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", opts)
 
 -- Harpoon
 keymap("n", "<leader>hh", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
