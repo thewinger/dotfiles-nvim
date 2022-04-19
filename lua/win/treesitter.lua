@@ -10,7 +10,6 @@ configs.setup({
 		"html",
 		"javascript",
 		"json",
-		"JSON with comments",
 		"lua",
 		"php",
 		"tsx",
