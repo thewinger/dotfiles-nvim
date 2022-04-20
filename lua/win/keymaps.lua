@@ -155,6 +155,7 @@ keymap("n", "<leader>f", ":Format<cr>", opts)
 -- Harpoon
 keymap("n", "<leader>hh", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
 keymap("n", "<leader>ha", ':lua require("harpoon.mark").add_file()<CR>', opts)
+keymap("n", "<leader>ht", ':lua require("harpoon.mark").toggle_file()<CR>', opts)
 keymap("n", "<leader>hn", ':lua require("harpoon.ui").nav_next()<CR>', opts)
 keymap("n", "<leader>hp", ':lua require("harpoon.ui").nav_prev()<CR>', opts)
 keymap("n", "<leader>th", ':lua require("telescope").extensions.harpoon.marks{}<CR>', opts)
