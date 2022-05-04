@@ -1,6 +1,5 @@
 return {
 	settings = {
-
 		Lua = {
 			diagnostics = {
 				globals = { "vim" },
@@ -10,7 +9,10 @@ return {
 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 					[vim.fn.stdpath("config") .. "/lua"] = true,
 				},
-        preloadFileSize = 300,
+				preloadFileSize = 300,
+			},
+			telemetry = {
+				enable = false,
 			},
 		},
 	},

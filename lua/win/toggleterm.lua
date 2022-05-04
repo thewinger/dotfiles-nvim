@@ -2,7 +2,7 @@ local status_ok, toggleterm = pcall(require, "toggleterm")
 if not status_ok then
 	return
 end
-local highlights = require("rose-pine.plugins.toggleterm")
+-- local highlights = require("rose-pine.plugins.toggleterm")
 
 toggleterm.setup({
 	size = 20,
@@ -17,7 +17,7 @@ toggleterm.setup({
 	direction = "horizontal",
 	close_on_exit = true,
 	shell = vim.o.shell,
-	highlights = highlights,
+	-- highlights = highlights,
 	float_opts = {
 		border = "curved",
 		winblend = 0,

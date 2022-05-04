@@ -41,15 +41,18 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
-	disable_netrw = true,
-	hijack_netrw = true,
-	open_on_setup = false,
+	hijack_directories = {
+		enable = false,
+	},
+	-- disable_netrw = true,
+	-- hijack_netrw = true,
+	-- open_on_setup = false,
 	ignore_ft_on_setup = {
 		"startify",
 		"dashboard",
 		"alpha",
 	},
-	open_on_tab = false,
+	-- open_on_tab = false,
 	hijack_cursor = false,
 	update_cwd = true,
 	diagnostics = {
@@ -66,14 +69,14 @@ nvim_tree.setup({
 		update_cwd = true,
 		ignore_list = {},
 	},
-	system_open = {
-		cmd = nil,
-		args = {},
-	},
-	filters = {
-		dotfiles = false,
-		custom = {},
-	},
+	-- system_open = {
+	-- cmd = nil,
+	-- args = {},
+	-- },
+	-- filters = {
+	-- 	dotfiles = false,
+	-- 	custom = {},
+	-- },
 	git = {
 		enable = true,
 		ignore = true,
@@ -95,12 +98,8 @@ nvim_tree.setup({
 		number = false,
 		relativenumber = false,
 	},
-	trash = {
-		cmd = "trash",
-		require_confirm = true,
-	},
+	-- trash = {
+	-- cmd = "trash",
+	-- require_confirm = true,
+	-- },
 })
-
-vim.cmd([[
-  autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-]])
