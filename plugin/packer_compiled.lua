@@ -234,6 +234,11 @@ _G.packer_plugins = {
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["rose-pine"] = {
+    loaded = true,
+    path = "/Users/win/.local/share/nvim/site/pack/packer/start/rose-pine",
+    url = "https://github.com/rose-pine/neovim"
+  },
   ["stay-centered.nvim"] = {
     loaded = true,
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/stay-centered.nvim",

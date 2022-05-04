@@ -58,6 +58,11 @@ return require("packer").startup(function(use)
 		"thewinger/eclipse.nvim",
 		requires = { "rktjmp/lush.nvim" },
 	})
+	use({
+		"rose-pine/neovim",
+		as = "rose-pine",
+		tag = "v1.*",
+	})
 	use("norcalli/nvim-colorizer.lua")
 	use({
 		"themaxmarchuk/tailwindcss-colors.nvim",
