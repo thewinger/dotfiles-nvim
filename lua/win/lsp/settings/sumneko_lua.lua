@@ -11,6 +11,9 @@ return {
 				},
 				preloadFileSize = 300,
 			},
+			formate = {
+				enable = false,
+			},
 			telemetry = {
 				enable = false,
 			},

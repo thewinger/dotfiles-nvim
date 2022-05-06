@@ -122,7 +122,7 @@ _G.packer_plugins = {
   ["eclipse.nvim"] = {
     loaded = true,
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/eclipse.nvim",
-    url = "https://github.com/thewinger/eclipse.nvim"
+    url = "/Users/win/Projects/eclipse.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,

@@ -47,7 +47,8 @@ return require("packer").startup(function(use)
 
 	-- Styling
 	use({
-		"thewinger/eclipse.nvim",
+		-- "thewinger/eclipse.nvim",
+		"~/Projects/eclipse.nvim",
 		requires = { "rktjmp/lush.nvim" },
 	})
 	use({
@@ -84,8 +85,10 @@ return require("packer").startup(function(use)
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- LSP
-	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+	use({
+		"williamboman/nvim-lsp-installer", -- simple to use language server installer
+		{ "neovim/nvim-lspconfig" },
+	})
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("b0o/SchemaStore.nvim")
 	use("RRethy/vim-illuminate")
