@@ -59,6 +59,8 @@ return require("packer").startup(function(use)
 		-- 	vim.cmd("colorscheme rose-pine")
 		-- end,
 	})
+	use("cocopon/iceberg.vim")
+	use("EdenEast/nightfox.nvim")
 	use("norcalli/nvim-colorizer.lua")
 	use({
 		"themaxmarchuk/tailwindcss-colors.nvim",

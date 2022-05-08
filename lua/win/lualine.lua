@@ -65,7 +65,7 @@ end
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "rose-pine",
+		theme = "nightfox",
 		component_separators = "",
 		section_separators = "",
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
