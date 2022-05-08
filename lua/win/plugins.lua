@@ -13,14 +13,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	})
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -55,8 +47,17 @@ return require("packer").startup(function(use)
 
 	-- Styling
 	use({
-		"thewinger/eclipse.nvim",
+		-- "thewinger/eclipse.nvim",
+		"~/Projects/eclipse.nvim",
 		requires = { "rktjmp/lush.nvim" },
+	})
+	use({
+		"rose-pine/neovim",
+		as = "rose-pine",
+		tag = "v1.*",
+		-- config = function()
+		-- 	vim.cmd("colorscheme rose-pine")
+		-- end,
 	})
 	use("norcalli/nvim-colorizer.lua")
 	use({
@@ -84,9 +85,13 @@ return require("packer").startup(function(use)
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- LSP
-	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+	use({
+		"williamboman/nvim-lsp-installer", -- simple to use language server installer
+		{ "neovim/nvim-lspconfig" },
+	})
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	use("b0o/SchemaStore.nvim")
+	use("RRethy/vim-illuminate")
 	-- use("tami5/lspsaga.nvim")
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
