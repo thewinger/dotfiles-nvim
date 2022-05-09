@@ -32,7 +32,7 @@ require("nightfox").setup({
 	specs = {
 		all = {
 			syntax = {
-				string = "#fab795",
+				string = "yellow.bright",
 			},
 		},
 	},
@@ -41,6 +41,7 @@ require("nightfox").setup({
 		gitsigns = true,
 		illuminate = true,
 		lightspeed = true,
+		native_lsp = true,
 		nvimtree = true,
 		telescope = true,
 		treesitter = true,
