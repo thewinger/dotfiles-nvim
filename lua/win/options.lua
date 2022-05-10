@@ -13,6 +13,7 @@ opt.fillchars = { eob = " " } -- To stop showing ~ at the end of buffer
 opt.hlsearch = false -- Don't highlight all matches on previous search pattern (In previous config it was false)
 opt.incsearch = true -- show highlight while writing search
 opt.ignorecase = true -- ignore case in search patterns
+opt.laststatus = 3 -- Only one status line for all splits
 opt.mouse = "a" -- allow the mouse to be used in neovim
 opt.pumheight = 10 -- pop up menu height
 opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
