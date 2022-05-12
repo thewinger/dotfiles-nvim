@@ -3,11 +3,11 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local cmd = vim.cmd
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+keymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -20,81 +20,81 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Allow to use ; instead of : to start command
-keymap("n", ";", ":", opts)
+keymap("n", ";", ":")
 
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<C-h>", "<C-w>h")
+keymap("n", "<C-j>", "<C-w>j")
+keymap("n", "<C-k>", "<C-w>k")
+keymap("n", "<C-l>", "<C-w>l")
 
 -- Shortcuts for opening explorer in new splits
-keymap("n", "<Leader>v", ":Vex!<CR>", opts)
-keymap("n", "<Leader>s", ":Sex<CR>", opts)
--- keymap('n', '<Leader>e', ':Lex 30<CR>', opts)
+keymap("n", "<Leader>v", ":Vex!<CR>")
+keymap("n", "<Leader>s", ":Sex<CR>")
+-- keymap('n', '<Leader>e', ':Lex 30<CR>')
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", ":resize +2<CR>")
+keymap("n", "<C-Down>", ":resize -2<CR>")
+keymap("n", "<C-Left>", ":vertical resize -2<CR>")
+keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Navigate buffers
-keymap("n", "<C-N>", ":bnext<CR>", opts)
-keymap("n", "<C-P>", ":bprevious<CR>", opts)
+keymap("n", "<C-N>", ":bnext<CR>")
+keymap("n", "<C-P>", ":bprevious<CR>")
 
 -- Keeping the cursor center lined when searching
-keymap("n", "n", "nzzzv", opts)
-keymap("n", "N", "Nzzzv", opts)
+keymap("n", "n", "nzzzv")
+keymap("n", "N", "Nzzzv")
 
 -- Jump to bottom of file and center last line
-keymap("n", "G", "Gzz", opts)
+keymap("n", "G", "Gzz")
 
 -- Paste on next/prev line instead of same line
-keymap("n", "<Leader>p", "oq<BS><Esc>p", opts)
-keymap("n", "<Leader>P", "Oq<BS><Esc>p", opts)
+keymap("n", "<Leader>p", "oq<BS><Esc>p")
+keymap("n", "<Leader>P", "Oq<BS><Esc>p")
 
 -- Delete without yanking
-keymap("n", "<Leader>d", '"_d', opts)
-keymap("v", "<Leader>d", '"_d', opts)
+keymap("n", "<Leader>d", '"_d')
+keymap("v", "<Leader>d", '"_d')
 
 -- Move by visual lines, not text lines
-keymap("n", "j", "gj", opts)
-keymap("n", "k", "gk", opts)
-keymap("v", "j", "gj", opts)
-keymap("v", "k", "gk", opts)
+keymap("n", "j", "gj")
+keymap("n", "k", "gk")
+keymap("v", "j", "gj")
+keymap("v", "k", "gk")
 
 -- Insert --
 -- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
-keymap("i", "jj", "<ESC>", opts)
-keymap("i", "kj", "<ESC>", opts)
+keymap("i", "jk", "<ESC>")
+keymap("i", "jj", "<ESC>")
+keymap("i", "kj", "<ESC>")
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap("v", "<", "<gv")
+keymap("v", ">", ">gv")
 
 -- Moves line shortcuts (∆ = alt+j, ˚ = alt+k)
-keymap("n", "∆", ":m .+1<CR>==", opts)
-keymap("n", "˚", ":m .-2<CR>==", opts)
-keymap("i", "∆", "<ESC>:m .+1<CR>==gi", opts)
-keymap("i", "˚", "<ESC>:m .-2<CR>==gi", opts)
-keymap("v", "∆", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "˚", ":m '<-2<CR>gv=gv", opts)
+keymap("n", "∆", ":m .+1<CR>==")
+keymap("n", "˚", ":m .-2<CR>==")
+keymap("i", "∆", "<ESC>:m .+1<CR>==gi")
+keymap("i", "˚", "<ESC>:m .-2<CR>==gi")
+keymap("v", "∆", ":m '>+1<CR>gv=gv")
+keymap("v", "˚", ":m '<-2<CR>gv=gv")
 
 -- Replace currently selected text with default register without yanking it
-keymap("v", "p", '"_dP', opts)
+keymap("v", "p", '"_dP')
 
 -- vv to highlight just the text, without indents of a line
-keymap("", "vv", "^vg_", opts)
+keymap("", "vv", "^vg_")
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv-gv")
+keymap("x", "K", ":move '<-2<CR>gv-gv")
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv")
+keymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
 
 -- Terminal --
 -- Better terminal navigation
@@ -135,31 +135,31 @@ keymap(
 	'<cmd>lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>',
 	opts
 )
-keymap("n", "<Leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>', opts)
-keymap("n", "<Leader>tf", '<cmd>lua require("telescope.builtin").git_files()<CR>', opts)
-keymap("n", "<leader>tb", '<cmd>lua require("telescope.builtin").buffers()<CR>', opts)
-keymap("n", "<leader>tht", '<cmd>lua require("telescope.builtin").help_tags()<CR>', opts)
-keymap("n", "<leader>td", '<cmd>lua require("telescope.builtin").diagnostics({bufnr=0})<CR>', opts)
-keymap("n", "<leader>cs", '<cmd>lua require("telescope.builtin").colorscheme()<CR>', opts)
--- keymap("n", "<Leader>tf", '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>', opts)
-keymap("n", "<leader>tms", "<cmd>Telescope tmux sessions theme=ivy<CR>", opts)
-keymap("n", "<leader>tmw", "<cmd>Telescope tmux windows theme=ivy<CR>", opts)
+keymap("n", "<Leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>')
+keymap("n", "<Leader>tf", '<cmd>lua require("telescope.builtin").git_files()<CR>')
+keymap("n", "<leader>tb", '<cmd>lua require("telescope.builtin").buffers()<CR>')
+keymap("n", "<leader>tht", '<cmd>lua require("telescope.builtin").help_tags()<CR>')
+keymap("n", "<leader>td", '<cmd>lua require("telescope.builtin").diagnostics({bufnr=0})<CR>')
+keymap("n", "<leader>cs", '<cmd>lua require("telescope.builtin").colorscheme()<CR>')
+-- keymap("n", "<Leader>tf", '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>')
+keymap("n", "<leader>tms", "<cmd>Telescope tmux sessions theme=ivy<CR>")
+keymap("n", "<leader>tmw", "<cmd>Telescope tmux windows theme=ivy<CR>")
 
 -- Nvimtree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<cr>")
 
 -- Format Null-ls
--- keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+-- keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
 -- ToggleTerm
 
 -- Harpoon
-keymap("n", "<leader>hh", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
-keymap("n", "<leader>ha", ':lua require("harpoon.mark").add_file()<CR>', opts)
-keymap("n", "<leader>ht", ':lua require("harpoon.mark").toggle_file()<CR>', opts)
-keymap("n", "<leader>hn", ':lua require("harpoon.ui").nav_next()<CR>', opts)
-keymap("n", "<leader>hp", ':lua require("harpoon.ui").nav_prev()<CR>', opts)
-keymap("n", "<leader>th", ':lua require("telescope").extensions.harpoon.marks{}<CR>', opts)
+keymap("n", "<leader>hh", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
+keymap("n", "<leader>ha", ':lua require("harpoon.mark").add_file()<CR>')
+keymap("n", "<leader>ht", ':lua require("harpoon.mark").toggle_file()<CR>')
+keymap("n", "<leader>hn", ':lua require("harpoon.ui").nav_next()<CR>')
+keymap("n", "<leader>hp", ':lua require("harpoon.ui").nav_prev()<CR>')
+keymap("n", "<leader>th", ':lua require("telescope").extensions.harpoon.marks{}<CR>')
 
 -- Treesitter
-keymap("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>", opts)
+keymap("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>")

@@ -254,11 +254,6 @@ _G.packer_plugins = {
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/rose-pine",
     url = "https://github.com/rose-pine/neovim"
   },
-  ["stay-centered.nvim"] = {
-    loaded = true,
-    path = "/Users/win/.local/share/nvim/site/pack/packer/start/stay-centered.nvim",
-    url = "https://github.com/arnamak/stay-centered.nvim"
-  },
   ["tailwindcss-colors.nvim"] = {
     config = { "\27LJ\2\n@\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\23tailwindcss-colors\frequire\0" },
     loaded = false,
