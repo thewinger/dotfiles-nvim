@@ -32,8 +32,20 @@ require("nightfox").setup({
 	specs = {
 		all = {
 			syntax = {
+				bracket = "white",
+				-- func = "red.dim",
+				keyword = "red",
 				string = "yellow.bright",
 			},
+		},
+	},
+	groups = {
+		all = {
+			Search = { bg = "palette.green.dim" },
+			IncSearch = { bg = "palette.green.dim" },
+			Substitute = { bg = "palette.green.dim" },
+			TSTag = { fg = "palette.red.bright" },
+			TSTagDelimiter = { fg = "palette.white" },
 		},
 	},
 	modules = {
