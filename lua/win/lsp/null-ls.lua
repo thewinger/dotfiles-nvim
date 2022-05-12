@@ -14,6 +14,7 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		formatting.prettierd.with({
+      disable_filetypes = { "html", "css" },
 			extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
 		}),
 		formatting.stylua,
