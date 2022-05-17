@@ -62,6 +62,7 @@ return require("packer").startup(function(use)
 	use("cocopon/iceberg.vim")
 	use("EdenEast/nightfox.nvim")
 	use("norcalli/nvim-colorizer.lua")
+  use "fladson/vim-kitty"
 	use({
 		"themaxmarchuk/tailwindcss-colors.nvim",
 		-- load only on require("tailwindcss-colors")
@@ -94,6 +95,7 @@ return require("packer").startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("b0o/SchemaStore.nvim")
 	use("RRethy/vim-illuminate")
+	use("ray-x/lsp_signature.nvim")
 	-- use("tami5/lspsaga.nvim")
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
