@@ -62,7 +62,7 @@ return require("packer").startup(function(use)
 	use("cocopon/iceberg.vim")
 	use("EdenEast/nightfox.nvim")
 	use("norcalli/nvim-colorizer.lua")
-  use "fladson/vim-kitty"
+	use("fladson/vim-kitty")
 	use({
 		"themaxmarchuk/tailwindcss-colors.nvim",
 		-- load only on require("tailwindcss-colors")

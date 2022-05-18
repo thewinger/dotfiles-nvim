@@ -301,6 +301,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/win/.local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
+  },
+  ["vim-kitty"] = {
+    loaded = true,
+    path = "/Users/win/.local/share/nvim/site/pack/packer/start/vim-kitty",
+    url = "https://github.com/fladson/vim-kitty"
   }
 }
 
