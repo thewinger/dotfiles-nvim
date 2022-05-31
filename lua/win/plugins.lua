@@ -47,8 +47,7 @@ return require("packer").startup(function(use)
 
 	-- Styling
 	use({
-		-- "thewinger/eclipse.nvim",
-		"~/Projects/eclipse.nvim",
+		"thewinger/eclipse.nvim",
 		requires = { "rktjmp/lush.nvim" },
 	})
 	use({
