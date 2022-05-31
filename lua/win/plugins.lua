@@ -33,6 +33,14 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+	use({
+		"goolord/alpha-nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			require("alpha").setup(require("alpha.themes.startify").config)
+		end,
+	})
+
 	use("windwp/nvim-autopairs") -- Automatically add pairing bracket
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("kyazdani42/nvim-web-devicons")
@@ -42,7 +50,12 @@ return require("packer").startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("ggandor/lightspeed.nvim")
-	-- use("arnamak/stay-centered.nvim")
+	use({
+		"ur4ltz/surround.nvim",
+		config = function()
+			require("surround").setup({ mappings_style = "sandwich" })
+		end,
+	}) -- use("arnamak/stay-centered.nvim")
 	use("ThePrimeagen/harpoon")
 
 	-- Styling
