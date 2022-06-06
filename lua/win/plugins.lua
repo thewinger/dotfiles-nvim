@@ -31,6 +31,7 @@ packer.init({
 return require("packer").startup(function(use)
 	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
+	use("lewis6991/impatient.nvim")
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use({
@@ -41,6 +42,12 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use("nathom/filetype.nvim")
+	use({ "stevearc/dressing.nvim", requires = "MunifTanjim/nui.nvim" })
+
+	use({ "ChristianChiarulli/nvim-gps", branch = "text_hl", after = "nvim-treesitter" })
+	use({ "nacro90/numb.nvim", config = "require('win.numb')" })
+
 	use("windwp/nvim-autopairs") -- Automatically add pairing bracket
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("kyazdani42/nvim-web-devicons")
@@ -48,7 +55,7 @@ return require("packer").startup(function(use)
 	use("nvim-lualine/lualine.nvim")
 	use("akinsho/toggleterm.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
-	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
+	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlightplug
 	use("ggandor/lightspeed.nvim")
 	use({
 		"ur4ltz/surround.nvim",
