@@ -64,6 +64,7 @@ end
 
 lualine.setup({
 	options = {
+		globalstatus = true,
 		icons_enabled = true,
 		theme = "duskfox",
 		component_separators = "",
