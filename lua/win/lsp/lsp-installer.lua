@@ -3,13 +3,14 @@ if not status_ok then
   return
 end
 
-local lspconfig = require("lspconfig")
-
 local servers = { "tsserver", "cssls", "graphql", "html", "jsonls", "sumneko_lua" }
 
 lsp_installer.setup({
   ensure_installed = servers,
 })
+
+local lspconfig = require("lspconfig")
+
 
 for _, server in pairs(servers) do
   local opts = {

@@ -9,7 +9,7 @@ opt.cmdheight = 2 -- more space in the neovim command line for displaying messag
 opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 opt.conceallevel = 0 -- so that `` is visible in markdown files
 opt.fileencoding = "utf-8" -- the encoding written to a file
-opt.fillchars = { eob = " " } -- To stop showing ~ at the end of buffer
+opt.fillchars.eob = " " -- To stop showing ~ at the end of buffer
 opt.hlsearch = false -- Don't highlight all matches on previous search pattern (In previous config it was false)
 opt.incsearch = true -- show highlight while writing search
 opt.ignorecase = true -- ignore case in search patterns

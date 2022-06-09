@@ -57,6 +57,7 @@ return require("packer").startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlightplug
 	use("ggandor/lightspeed.nvim")
+  use("fgheng/winbar.nvim")
 	use({
 		"ur4ltz/surround.nvim",
 		config = function()

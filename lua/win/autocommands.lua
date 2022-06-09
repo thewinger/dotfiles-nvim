@@ -25,13 +25,30 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-	callback = function()
-		vim.cmd([[
-    if winnr('$') == 1 && bufname() == 'NvimTreee_' . tabpagenr() | quit | endif
-  ]])
-	end,
-})
+vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+-- 	callback = function()
+-- 		vim.cmd([[
+--     if winnr('$') == 1 && bufname() == 'NvimTreee_' . tabpagenr() | quit | endif
+--   ]])
+-- 	end,
+-- })
+
+local function has_value(tab, val)
+  for _, value in ipairs(tab) do
+    if value == val then
+      return true
+    end
+  end
+
+  return false
+end
+
+-- vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
+--   callback = function()
+  --   require("win.winbar").get_winbar()
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	callback = function()
