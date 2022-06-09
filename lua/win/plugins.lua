@@ -46,7 +46,7 @@ return require("packer").startup(function(use)
 	use({ "stevearc/dressing.nvim", requires = "MunifTanjim/nui.nvim" })
 
 	use({ "ChristianChiarulli/nvim-gps", branch = "text_hl", after = "nvim-treesitter" })
-	use({ "nacro90/numb.nvim", config = "require('win.numb')" })
+	use({ "nacro90/numb.nvim" })
 
 	use("windwp/nvim-autopairs") -- Automatically add pairing bracket
 	use("numToStr/Comment.nvim") -- Easily comment stuff
