@@ -3,13 +3,13 @@ if not status_ok then
 	return
 end
 
-local icons = require("user.icons")
+local icons = require("win.icons")
 
 -- vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = "#111fff" })
 -- local fg = vim.api.nvim_get_hl_by_name('DiffAdd', 0).background
 -- local bg = vim.api.nvim_get_hl_by_name('DiffAdd', 0).foreground
 
-local space = ""
+local space = " "
 
 if vim.fn.has("mac") == 1 then
 	space = " "
@@ -21,12 +21,12 @@ gps.setup({
 	disable_icons = false, -- Setting it to true will disable all icons
 
 	icons = {
-    ["class-name"] = "%#CmpItemKindClass#" .. icons.kind.Class .. "%*" .. "", -- Classes and class-like objects
-    ["function-name"] = "%#CmpItemKindFunction#" .. icons.kind.Function .. "%*" .. "", -- Functions
-    ["method-name"] = "%#CmpItemKindMethod#" .. icons.kind.Method .. "%*" .. "", -- Methods (functions inside class-like objects)
-    ["container-name"] = "%#CmpItemKindProperty#" .. icons.type.Object .. "%*" .. "", -- Containers (example: lua tables)
+    ["class-name"] = "%#CmpItemKindClass#" .. icons.kind.Class .. "%*" .. space, -- Classes and class-like objects
+    ["function-name"] = "%#CmpItemKindFunction#" .. icons.kind.Function .. "%*" .. space, -- Functions
+    ["method-name"] = "%#CmpItemKindMethod#" .. icons.kind.Method .. "%*" .. space, -- Methods (functions inside class-like objects)
+    ["container-name"] = "%#CmpItemKindProperty#" .. icons.type.Object .. "%*" .. space, -- Containers (example: lua tables)
     ["tag-name"] = "%#CmpItemKindKeyword#" .. icons.misc.Tag .. "%*" .. " ", -- Tags (example: html tags)
-    ["mapping-name"] = "%#CmpItemKindProperty#" .. icons.type.Object .. "%*" .. "",
+    ["mapping-name"] = "%#CmpItemKindProperty#" .. icons.type.Object .. "%*" .. space,
     ["sequence-name"] = "%#CmpItemKindProperty#" .. icons.type.Array .. "%*" .. space,
     ["null-name"] = "%#CmpItemKindField#" .. icons.kind.Field .. "%*" .. space,
     ["boolean-name"] = "%#CmpItemKindValue#" .. icons.type.Boolean .. "%*" .. space,
@@ -95,5 +95,5 @@ gps.setup({
 
 	-- indicator used when context is hits depth limit
 	depth_limit_indicator = "..",
-	text_hl = "LineNr",
+	text_hl = "String",
 })

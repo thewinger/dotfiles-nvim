@@ -31,7 +31,7 @@ packer.init({
 return require("packer").startup(function(use)
 	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
-	use("lewis6991/impatient.nvim")
+	use("lewis6991/impatient.nvim") -- faster loading of nvim
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use({
@@ -44,9 +44,13 @@ return require("packer").startup(function(use)
 
 	use("nathom/filetype.nvim")
 	use({ "stevearc/dressing.nvim", requires = "MunifTanjim/nui.nvim" })
+  use({ "nacro90/numb.nvim" })
 
-	use({ "ChristianChiarulli/nvim-gps", branch = "text_hl", after = "nvim-treesitter" })
-	use({ "nacro90/numb.nvim" })
+  use {
+    "SmiteshP/nvim-gps",
+    requires = "nvim-treesitter/nvim-treesitter"
+  }
+
 
 	use("windwp/nvim-autopairs") -- Automatically add pairing bracket
 	use("numToStr/Comment.nvim") -- Easily comment stuff
