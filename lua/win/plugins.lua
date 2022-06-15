@@ -34,12 +34,11 @@ return require("packer").startup(function(use)
 	use("lewis6991/impatient.nvim") -- faster loading of nvim
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-	use({
-		"goolord/alpha-nvim",
+	use({ "goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
-		config = function()
-			require("alpha").setup(require("alpha.themes.startify").config)
-		end,
+		-- config = function()
+		-- 	require("alpha").setup(require("alpha.themes.dashboard").config)
+		-- end,
 	})
 
 	use("nathom/filetype.nvim")

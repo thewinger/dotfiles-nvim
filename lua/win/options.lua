@@ -5,7 +5,7 @@ local opt = vim.opt
 -- :help options
 opt.backup = false -- creates a backup file
 opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
+opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 opt.conceallevel = 0 -- so that `` is visible in markdown files
 opt.fileencoding = "utf-8" -- the encoding written to a file
@@ -47,7 +47,7 @@ opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
 opt.shortmess:append("c")
 
 vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.opt.iskeyword:append("-")
+vim.opt.iskeyword:append("_")
 cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
 cmd([[au Bufenter * set fo-=c fo-=r fo-=o]]) -- This looks like it works
 
