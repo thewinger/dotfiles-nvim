@@ -137,7 +137,7 @@ keymap(
 )
 keymap("n", "<Leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 keymap("n", "<Leader>tgf", '<cmd>lua require("telescope.builtin").git_files()<CR>')
-keymap("n", "<leader>tb", '<cmd>lua require("telescope.builtin").😅buffers()<CR>')
+keymap("n", "<leader>tb", '<cmd>lua require("telescope.builtin").buffers()<CR>')
 keymap("n", "<leader>tht", '<cmd>lua require("telescope.builtin").help_tags()<CR>')
 keymap("n", "<leader>td", '<cmd>lua require("telescope.builtin").diagnostics({bufnr=0})<CR>')
 keymap("n", "<leader>cs", '<cmd>lua require("telescope.builtin").colorscheme()<CR>')
