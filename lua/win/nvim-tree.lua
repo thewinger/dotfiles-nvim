@@ -33,7 +33,7 @@ end
 
 nvim_tree.setup({
 	hijack_directories = {
-		enable = false,
+		enable = true,
 	},
 	-- update_to_buf_dir = {
 	--   enable = false,
@@ -93,10 +93,8 @@ nvim_tree.setup({
 				default = "",
 				symlink = "",
 				folder = {
-					arrow_open = " ",
-					arrow_closed = "",
-					-- arrow_closed = "",
-					-- arrow_open = "",
+					arrow_closed = "",
+					arrow_open = "",
 					default = "",
 					open = "",
 					empty = "",
