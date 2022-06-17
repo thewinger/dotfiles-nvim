@@ -5,6 +5,7 @@ end
 
 configs.setup({
 	ensure_installed = {
+    "comment",
 		"css",
 		"graphql",
 		"html",
