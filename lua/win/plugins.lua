@@ -36,9 +36,6 @@ return require("packer").startup(function(use)
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use({ "goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
-		-- config = function()
-		-- 	require("alpha").setup(require("alpha.themes.dashboard").config)
-		-- end,
 	})
 
 	use("nathom/filetype.nvim")
@@ -60,7 +57,7 @@ return require("packer").startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlightplug
 	use("ggandor/lightspeed.nvim")
-  use("fgheng/winbar.nvim")
+  -- use("fgheng/winbar.nvim")
 	use({
 		"ur4ltz/surround.nvim",
 		config = function()

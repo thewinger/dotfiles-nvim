@@ -1,10 +1,10 @@
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerSync
+--   augroup end
+-- ]])
 
 vim.api.nvim_create_autocmd({ "User" }, {
   pattern = { "AlphaReady" },
@@ -33,15 +33,15 @@ vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTre
 -- 	end,
 -- })
 
-local function has_value(tab, val)
-  for _, value in ipairs(tab) do
-    if value == val then
-      return true
-    end
-  end
-
-  return false
-end
+-- local function has_value(tab, val)
+--   for _, value in ipairs(tab) do
+--     if value == val then
+--       return true
+--     end
+--   end
+--
+--   return false
+-- end
 
 -- vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
 --   callback = function()
