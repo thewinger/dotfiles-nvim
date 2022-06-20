@@ -1,0 +1,3 @@
+# Ignore packer file
+plugin/packer_compiled.lua
+
