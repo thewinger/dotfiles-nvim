@@ -3,9 +3,9 @@ if not status_ok then
 	return
 end
 
-local hide_in_width = function()
+--[[ local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
-end
+end ]]
 
 local diagnostics = {
 	"diagnostics",
@@ -17,12 +17,12 @@ local diagnostics = {
 	always_visible = true,
 }
 
-local diff = {
+--[[ local diff = {
 	"diff",
 	colored = false,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
 	cond = hide_in_width,
-}
+} ]]
 
 local mode = {
 	"mode",
@@ -58,15 +58,16 @@ local progress = function()
 	return chars[index]
 end
 
-local spaces = function()
+--[[ local spaces = function()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
+end ]]
 
 lualine.setup({
 	options = {
 		globalstatus = true,
 		icons_enabled = true,
-		theme = "duskfox",
+		-- theme = "duskfox",
+		theme = "auto",
 		component_separators = "",
 		section_separators = "",
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },

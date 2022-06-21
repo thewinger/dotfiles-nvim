@@ -31,7 +31,6 @@ keymap("n", "<C-l>", "<C-w>l")
 -- Shortcuts for opening explorer in new splits
 keymap("n", "<Leader>v", ":Vex!<CR>")
 keymap("n", "<Leader>s", ":Sex<CR>")
--- keymap('n', '<Leader>e', ':Lex 30<CR>')
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>")
@@ -116,25 +115,15 @@ keymap("c", "w!!", "<esc>:lua require'utils'.sudo_write()<CR>", { silent = true 
 cmd([[au BufWritePre * :%s/\s\+$//e]])
 
 -- So we don't need to require plugins.lua
-cmd([[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]])
-cmd([[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]])
-cmd([[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]])
-cmd([[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]])
-cmd([[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]])
+-- cmd([[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]])
+-- cmd([[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]])
+-- cmd([[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]])
+-- cmd([[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]])
+-- cmd([[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]])
 
 -- Telescope
-keymap(
-	"n",
-	"-",
-	':lua require("telescope.builtin").find_files({ find_command = {"rg", "--files", "--hidden", "-g", "!.git" }})<CR>',
-	opts
-)
-keymap(
-	"n",
-	"<leader>tw",
-	'<cmd>lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>',
-	opts
-)
+keymap( "n", "-", ':lua require("telescope.builtin").find_files({ find_command = {"rg", "--files", "--hidden", "-g", "!.git" }})<CR>', opts)
+keymap( "n", "<leader>tw", '<cmd>lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>', opts)
 keymap("n", "<Leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 keymap("n", "<Leader>tgf", '<cmd>lua require("telescope.builtin").git_files()<CR>')
 keymap("n", "<leader>tb", '<cmd>lua require("telescope.builtin").buffers()<CR>')

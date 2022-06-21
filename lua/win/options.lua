@@ -13,13 +13,12 @@ opt.fillchars.eob = " " -- To stop showing ~ at the end of buffer
 opt.hlsearch = false -- Don't highlight all matches on previous search pattern (In previous config it was false)
 opt.incsearch = true -- show highlight while writing search
 opt.ignorecase = true -- ignore case in search patterns
---opt.laststatus = 3 -- Only one status line for all splits
+-- opt.laststatus = 3 -- Only one status line for all splits
 opt.mouse = "a" -- allow the mouse to be used in neovim
 opt.pumheight = 10 -- pop up menu height
 opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
 opt.smartcase = true -- smart case
 opt.smartindent = true -- make indenting smarter again
--- opt.autoindent = true -- New lines inherit indentation of prev
 opt.splitbelow = true -- force all horizontal splits to go below current window
 opt.splitright = true -- force all vertical splits to go to the right of current window
 opt.swapfile = false -- creates a swapfile
@@ -45,34 +44,10 @@ opt.title = true -- Show title in terminal tab
 opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
 
 opt.shortmess:append("c")
-
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("_")
-cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
-cmd([[au Bufenter * set fo-=c fo-=r fo-=o]]) -- This looks like it works
 
 -- SYNTAX AND COLOR CONFIGURATIONS
 opt.termguicolors = true
 opt.background = "dark"
 
--- Allow transparent background and italized comments
-cmd([[au VimEnter * hi! Normal ctermbg=NONE guibg=NONE]])
-cmd([[au VimEnter * hi! Nontext ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE]])
-cmd([[au VimEnter * highlight Comment cterm=italic gui=italic]])
-cmd([[au VimEnter * highlight htmlArg cterm=italic gui=italic]])
-cmd([[au VimEnter * hi CursorLine cterm=none ctermbg=234 ctermfg=none]])
-
--- Highlight on yank
-vim.api.nvim_exec(
-	[[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-  ]],
-	false
-)
-
-vim.o.updatetime = 250
--- Show line diagnostics automatically in hover window
--- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])

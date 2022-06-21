@@ -3,25 +3,42 @@ if not status_ok then
   return
 end
 
-local servers = { "tsserver", "cssls", "graphql", "html", "jsonls", "sumneko_lua" }
+local servers = {
+  "cssls",
+  "graphql",
+  "html",
+  "jsonls",
+  "sumneko_lua",
+  "tsserver"
+}
 
 lsp_installer.setup({
   ensure_installed = servers,
 })
 
-local lspconfig = require("lspconfig")
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status_ok then
+  return
+end
 
+local opts = {}
 
 for _, server in pairs(servers) do
-  local opts = {
+  opts = {
     on_attach = require("win.lsp.handlers").on_attach,
     capabilities = require("win.lsp.handlers").capabilities,
   }
 
-  local has_custom_opts, server_custom_opts = pcall(require, "win.lsp.settings." .. server)
-  if has_custom_opts then
-    opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
+
+  if server == "sumneko_lua" then
+    local sumneko_opts = require "win.lsp.settings.sumneko_lua"
+    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
-  -- lspconfig[server].setup(opts)
+
+  -- if server == "jsonls" then
+  --   local jsonls_opts = require "win.lsp.settings.jsonls"
+  --   opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+  -- end
+
   lspconfig[server].setup(opts)
 end

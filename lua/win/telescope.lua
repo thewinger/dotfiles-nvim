@@ -12,6 +12,7 @@ telescope.setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
+    file_ignore_patterns = { ".git/", "node_modules" },
 
 		mappings = {
 			i = {
@@ -110,13 +111,6 @@ telescope.setup({
 				},
 			},
 		},
-		-- Default configuration for builtin pickers goes here:
-		-- picker_name = {
-		--   picker_config_key = value,
-		--   ...
-		-- }
-		-- Now the picker_config_key will be applied every time you call this
-		-- builtin picker
 	},
 	extensions = {
 		file_browser = {
@@ -139,8 +133,6 @@ telescope.setup({
 			},
 		},
 		media_files = {
-			-- filetypes whitelist
-			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
 			filetypes = { "png", "webp", "jpg", "jpeg" },
 			find_cmd = "rg", -- find command (defaults to `fd`)
 		},
@@ -151,11 +143,6 @@ telescope.setup({
 		tmux = {
 			theme = "ivy",
 		},
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--   extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
 	},
 })
 
