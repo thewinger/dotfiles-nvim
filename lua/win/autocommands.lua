@@ -1,11 +1,11 @@
 -- Remove statusline and tabline when in Alpha
 vim.api.nvim_create_autocmd({ "User" }, {
-  pattern = { "AlphaReady" },
-  callback = function()
-    vim.cmd [[
+	pattern = { "AlphaReady" },
+	callback = function()
+		vim.cmd([[
       set laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
-    ]]
-  end,
+    ]])
+	end,
 })
 
 -- Use 'q' to quit from common plugins
@@ -23,11 +23,11 @@ vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTre
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	callback = function()
-		vim.cmd "set formatoptions-=cro"
+		vim.cmd("set formatoptions-=cro")
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
+--[[ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	callback = function()
 		vim.cmd([[
       hi link illuminatedWord LspReferenceText
@@ -36,9 +36,9 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
       hi Comment cterm=italic gui=italic
       hi htmlArg cterm=italic gui=italic
       hi CursorLine cterm=none ctermbg=234 ctermfg=none
-    ]])
+    ]---])
 	end,
-})
+}) ]]
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	callback = function()

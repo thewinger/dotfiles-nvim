@@ -3,6 +3,13 @@ if not nightfox_status_ok then
 	return
 end
 
+local hi = vim.api.nvim_set_hl
+hi(0, "Normal", { bg = "none" })
+hi(0, "Nontext", { bg = "none", fg = "none" })
+hi(0, "CursorLine", { bg = "#1c1c1c", fg = "none" })
+hi(0, "Comment", { cterm = italic })
+hi(0, "htmlArg", { cterm = italic })
+
 nightfox.setup({
 	options = {
 		transparent = true,

@@ -1,5 +1,5 @@
 -- Aliases
-local cmd = vim.cmd
+-- local cmd = vim.cmd
 local opt = vim.opt
 
 -- :help options
@@ -50,4 +50,3 @@ vim.opt.iskeyword:append("_")
 -- SYNTAX AND COLOR CONFIGURATIONS
 opt.termguicolors = true
 opt.background = "dark"
-
