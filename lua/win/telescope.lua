@@ -12,7 +12,7 @@ telescope.setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
-    file_ignore_patterns = { ".git/", "node_modules" },
+		file_ignore_patterns = { ".git/", "node_modules" },
 
 		mappings = {
 			i = {
@@ -107,6 +107,9 @@ telescope.setup({
 			},
 			mappings = {
 				i = {
+					["<c-d>"] = "delete_buffer",
+				},
+				n = {
 					["<c-d>"] = "delete_buffer",
 				},
 			},
