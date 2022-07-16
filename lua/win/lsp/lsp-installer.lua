@@ -9,6 +9,7 @@ local servers = {
 	"html",
 	"jsonls",
 	"sumneko_lua",
+	"tailwindcss",
 	"tsserver",
 }
 
