@@ -56,7 +56,7 @@ return require("packer").startup(function(use)
 	use({ "numToStr/Comment.nvim" })
 
 	-- use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlightplug
-	use({ "ggandor/lightspeed.nvim" })
+	use({ "ggandor/leap.nvim" })
 	use({
 		"ur4ltz/surround.nvim",
 		config = function()
@@ -87,6 +87,7 @@ return require("packer").startup(function(use)
 	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-nvim-lua" })
+	use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
 
 	-- Snippets
 	use({ "L3MON4D3/LuaSnip" }) --snippet engine
@@ -113,7 +114,6 @@ return require("packer").startup(function(use)
 
 	-- Git
 	use({ "lewis6991/gitsigns.nvim" })
-
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

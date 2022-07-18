@@ -103,7 +103,7 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Close current buffer without closing window
-keymap('n', "<leader>q", ":bp|bd #<CR>")
+keymap("n", "<leader>q", ":bp|bd #<CR>")
 
 -- Saving even when mistype
 cmd("command! Wq wq")
@@ -125,8 +125,18 @@ cmd([[au BufWritePre * :%s/\s\+$//e]])
 -- cmd([[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]])
 
 -- Telescope
-keymap( "n", "-", ':lua require("telescope.builtin").find_files({ find_command = {"rg", "--files", "--hidden", "-g", "!.git" }})<CR>', opts)
-keymap( "n", "<leader>tw", '<cmd>lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>', opts)
+keymap(
+	"n",
+	"-",
+	':lua require("telescope.builtin").find_files({ find_command = {"rg", "--files", "--hidden", "-g", "!.git" }})<CR>',
+	opts
+)
+keymap(
+	"n",
+	"<leader>tw",
+	'<cmd>lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>',
+	opts
+)
 keymap("n", "<Leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 keymap("n", "<Leader>tgf", '<cmd>lua require("telescope.builtin").git_files()<CR>')
 keymap("n", "<leader>tb", '<cmd>lua require("telescope.builtin").buffers()<CR>')
@@ -141,7 +151,7 @@ keymap("n", "<leader>tmw", "<cmd>Telescope tmux windows theme=ivy<CR>")
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>")
 
 -- Format Null-ls
--- keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
 -- ToggleTerm
 

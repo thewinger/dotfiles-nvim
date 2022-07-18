@@ -11,24 +11,25 @@ local formatting = null_ls.builtins.formatting
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
-	debug = false,
+	debug = true,
 	sources = {
 		formatting.prettierd.with({
-			disable_filetypes = { "html", "css" },
-			extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+			env = {
+				PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json"),
+			},
 		}),
 		formatting.stylua,
 	},
 	on_attach = function(client, bufnr)
-		if client.supports_method("textDocument/formatting") then
+		if client.resolved_capabilities.document_formatting then
 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
-        buffer = bufnr,
+				buffer = bufnr,
 				callback = function()
 					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-          vim.lsp.buf.formatting_sync()
-        end,
+					vim.lsp.buf.formatting_sync()
+				end,
 			})
 		end
 	end,
