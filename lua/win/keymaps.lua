@@ -38,9 +38,9 @@ keymap("n", "<C-Down>", ":resize -2<CR>")
 keymap("n", "<C-Left>", ":vertical resize -2<CR>")
 keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>")
-keymap("n", "<S-h>", ":bprevious<CR>")
+-- Navigate buffers - Removed in favor of harpoon
+-- keymap("n", "<S-l>", ":bnext<CR>")
+-- keymap("n", "<S-h>", ":bprevious<CR>")
 
 -- Keeping the cursor center lined when searching
 keymap("n", "n", "nzzzv")
@@ -159,8 +159,8 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 keymap("n", "<leader>hh", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
 keymap("n", "<leader>ha", ':lua require("harpoon.mark").add_file()<CR>')
 keymap("n", "<leader>ht", ':lua require("harpoon.mark").toggle_file()<CR>')
-keymap("n", "<leader>hn", ':lua require("harpoon.ui").nav_next()<CR>')
-keymap("n", "<leader>hp", ':lua require("harpoon.ui").nav_prev()<CR>')
+keymap("n", "<S-l>", ':lua require("harpoon.ui").nav_next()<CR>')
+keymap("n", "<S-h>", ':lua require("harpoon.ui").nav_prev()<CR>')
 keymap("n", "<leader>th", ':lua require("telescope").extensions.harpoon.marks{}<CR>')
 
 -- Treesitter
