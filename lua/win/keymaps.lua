@@ -165,3 +165,7 @@ keymap("n", "<leader>th", ':lua require("telescope").extensions.harpoon.marks{}<
 
 -- Treesitter
 keymap("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>")
+
+-- Leap
+keymap("n", "f", "<Plug>(leap-forward)")
+keymap("n", "F", "<Plug>(leap-backward)")

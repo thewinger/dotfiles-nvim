@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	end,
 })
 
---[[ vim.api.nvim_create_autocmd({ "VimEnter" }, {
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	callback = function()
 		vim.cmd([[
       hi link illuminatedWord LspReferenceText
@@ -36,9 +36,9 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
       hi Comment cterm=italic gui=italic
       hi htmlArg cterm=italic gui=italic
       hi CursorLine cterm=none ctermbg=234 ctermfg=none
-    ]---])
+    ]])
 	end,
-}) ]]
+})
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	callback = function()
@@ -75,4 +75,4 @@ vim.api.nvim_exec(
 )
 
 -- Show line diagnostics automatically in hover window
--- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
