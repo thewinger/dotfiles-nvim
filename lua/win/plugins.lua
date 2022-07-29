@@ -52,8 +52,11 @@ return require("packer").startup(function(use)
 	use({ "abecodes/tabout.nvim", wants = { "nvim-treesitter" }, after = { "nvim-cmp" } })
 	use({ "stevearc/dressing.nvim", requires = "MunifTanjim/nui.nvim" })
 	use({ "nacro90/numb.nvim" })
-
 	use({ "numToStr/Comment.nvim" })
+	use({
+		"kevinhwang91/nvim-ufo",
+		requires = "kevinhwang91/promise-async",
+	})
 
 	-- use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlightplug
 	use({ "ggandor/leap.nvim" })

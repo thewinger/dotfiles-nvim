@@ -153,6 +153,9 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>")
 -- Format Null-ls
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
+--LSP lines
+keymap("", "<leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
+
 -- ToggleTerm
 
 -- Harpoon
@@ -169,3 +172,7 @@ keymap("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>")
 -- Leap
 keymap("n", "f", "<Plug>(leap-forward)")
 keymap("n", "F", "<Plug>(leap-backward)")
+
+-- Ufo
+vim.keymap.set("n", "zR", ':lua require("ufo").openAllFolds')
+vim.keymap.set("n", "zM", ':lua require("ufo").closeAllFolds')
