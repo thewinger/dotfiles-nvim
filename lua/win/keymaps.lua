@@ -154,7 +154,7 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>")
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
 --LSP lines
-keymap("", "<leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
+-- keymap("", "<leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
 
 -- ToggleTerm
 

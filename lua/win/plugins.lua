@@ -69,8 +69,10 @@ return require("packer").startup(function(use)
 	use({ "ThePrimeagen/harpoon" })
 
 	-- Styling
-	use({ "lukas-reineke/indent-blankline.nvim" })
-	use({ "EdenEast/nightfox.nvim" }) -- adds indentation guides to all lines
+	use({ "lukas-reineke/indent-blankline.nvim" }) -- adds indentation guides to all lines
+
+	-- use({ "~/Projects/tailscheme/tailscheme" })
+	use({ "EdenEast/nightfox.nvim" })
 	use({ "norcalli/nvim-colorizer.lua" }) -- A high-performance color highlighter for Neovim which has no external dependencies!
 	use({
 		"themaxmarchuk/tailwindcss-colors.nvim",
@@ -101,12 +103,12 @@ return require("packer").startup(function(use)
 	use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate" })
-	use({
+	--[[ use({
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		config = function()
 			require("lsp_lines").setup()
 		end,
-	})
+	}) ]]
 
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim" })

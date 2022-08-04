@@ -75,4 +75,13 @@ vim.api.nvim_exec(
 )
 
 -- Show line diagnostics automatically in hover window
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]])
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+	callback = function()
+		vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
+	end,
+})
+vim.api.nvim_create_autocmd({ "CursorHold,CursorHoldI" }, {
+	callback = function()
+		vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+	end,
+})

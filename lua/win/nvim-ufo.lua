@@ -33,19 +33,9 @@ end
 
 ufo.setup({
 	fold_virt_text = handler,
-	open_fold_hl_timeout = 150,
-	preview = {
-		win_config = {
-			border = { "", "─", "", "", "", "─", "", "" },
-			winhighlight = "Normal:Folded",
-			winblend = 0,
-		},
-		mappings = {
-			scrollU = "<C-u>",
-			scrollD = "<C-d>",
-		},
-	},
-	-- provider_selector = function(bufnr, filetype)
-	-- 	return { "lsp", "indent" }
-	-- end,
 })
+
+-- buffer scope handler
+-- will override global handler if it is existed
+local bufnr = vim.api.nvim_get_current_buf()
+require("ufo").setFoldVirtTextHandler(bufnr, handler)
