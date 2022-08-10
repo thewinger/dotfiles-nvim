@@ -82,11 +82,11 @@ M.on_attach = function(client, bufnr)
 	M.capabilities = vim.lsp.protocol.make_client_capabilities()
 	M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-	-- Nvim-ufo config
+	--[[ -- Nvim-ufo config
 	M.capabilities.textDocument.foldingRange = {
 		dynamicRegistration = false,
 		lineFoldingOnly = true,
-	}
+	} ]]
 	M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 	lsp_keymaps(bufnr)

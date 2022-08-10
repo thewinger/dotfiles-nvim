@@ -39,6 +39,11 @@ for _, server in pairs(servers) do
 		local tsserver_opts = require("win.lsp.settings.tsserver")
 		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
 	end
+
+	if server == "cssls" then
+		local cssls_opts = require("win.lsp.settings.cssls")
+		opts = vim.tbl_deep_extend("force", cssls_opts, opts)
+	end
 	-- if server == "jsonls" then
 	--   local jsonls_opts = require "win.lsp.settings.jsonls"
 	--   opts = vim.tbl_deep_extend("force", jsonls_opts, opts)

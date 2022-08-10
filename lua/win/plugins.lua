@@ -53,10 +53,10 @@ return require("packer").startup(function(use)
 	use({ "stevearc/dressing.nvim", requires = "MunifTanjim/nui.nvim" })
 	use({ "nacro90/numb.nvim" })
 	use({ "numToStr/Comment.nvim" })
-	use({
-		"kevinhwang91/nvim-ufo",
-		requires = "kevinhwang91/promise-async",
-	})
+	-- use({
+	-- 	"kevinhwang91/nvim-ufo",
+	-- 	requires = "kevinhwang91/promise-async",
+	-- })
 
 	-- use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlightplug
 	use({ "ggandor/leap.nvim" })
@@ -71,7 +71,7 @@ return require("packer").startup(function(use)
 	-- Styling
 	use({ "lukas-reineke/indent-blankline.nvim" }) -- adds indentation guides to all lines
 
-	-- use({ "~/Projects/tailscheme/tailscheme" })
+	use({ "thewinger/tailscheme.nvim" })
 	use({ "EdenEast/nightfox.nvim" })
 	use({ "norcalli/nvim-colorizer.lua" }) -- A high-performance color highlighter for Neovim which has no external dependencies!
 	use({
@@ -121,9 +121,11 @@ return require("packer").startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	use({ "windwp/nvim-ts-autotag" }) -- Automatically add paring tag
+	use({ "nvim-treesitter/nvim-treesitter-context" })
 	use({ "nvim-treesitter/playground" })
 
 	-- Git
+	use({ "dinhhuy258/git.nvim" })
 	use({ "lewis6991/gitsigns.nvim" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
