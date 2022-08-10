@@ -5,6 +5,7 @@ end
 
 local servers = {
 	"cssls",
+	"cssmodules_ls",
 	"graphql",
 	"html",
 	"jsonls",

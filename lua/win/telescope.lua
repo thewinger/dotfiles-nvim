@@ -86,6 +86,12 @@ telescope.setup({
 				height = 0.75,
 			},
 		},
+		git_files = {
+			theme = "ivy",
+			layout_config = {
+				height = 0.75,
+			},
+		},
 		grep_string = {
 			theme = "ivy",
 			layout_config = {
