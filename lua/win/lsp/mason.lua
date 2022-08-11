@@ -11,7 +11,6 @@ end
 local servers = {
 	"cssls",
 	"cssmodules_ls",
-	"emmet_ls",
 	"graphql",
 	"html",
 	"jsonls",
@@ -67,10 +66,6 @@ for _, server in pairs(servers) do
 		opts = vim.tbl_deep_extend("force", cssls_opts, opts)
 	end
 
-	if server == "emmet_ls" then
-		local emmet_ls_opts = require("win.lsp.settings.emmet_ls")
-		opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
-	end
 	-- if server == "jsonls" then
 	--   local jsonls_opts = require "win.lsp.settings.jsonls"
 	--   opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
