@@ -1,9 +1,17 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local status_ok, mason = pcall(require, "mason")
 if not status_ok then
 	return
 end
 
+local status_ok_1, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not status_ok_1 then
+	return
+end
+
 local servers = {
+	"cssls",
+	"cssmodules_ls",
+	"emmet_ls",
 	"graphql",
 	"html",
 	"jsonls",
@@ -12,8 +20,21 @@ local servers = {
 	"tsserver",
 }
 
-lsp_installer.setup({
+local settings = {
+	ui = {
+		border = "rounded",
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+}
+
+mason.setup(settings)
+mason_lspconfig.setup({
 	ensure_installed = servers,
+	automatic_installation = true,
 })
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
@@ -29,6 +50,8 @@ for _, server in pairs(servers) do
 		capabilities = require("win.lsp.handlers").capabilities,
 	}
 
+	server = vim.split(server, "@")[1]
+
 	if server == "sumneko_lua" then
 		local sumneko_opts = require("win.lsp.settings.sumneko_lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
@@ -42,6 +65,11 @@ for _, server in pairs(servers) do
 	if server == "cssls" then
 		local cssls_opts = require("win.lsp.settings.cssls")
 		opts = vim.tbl_deep_extend("force", cssls_opts, opts)
+	end
+
+	if server == "emmet_ls" then
+		local emmet_ls_opts = require("win.lsp.settings.emmet_ls")
+		opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
 	end
 	-- if server == "jsonls" then
 	--   local jsonls_opts = require "win.lsp.settings.jsonls"

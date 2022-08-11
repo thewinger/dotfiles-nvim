@@ -1,5 +1,14 @@
 local M = {}
 
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+
+local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_cmp_ok then
+	return
+end
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+
 M.setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -13,6 +22,7 @@ M.setup = function()
 	end
 
 	local config = {
+		-- virtual_lines = false,
 		virtual_text = false,
 		signs = {
 			active = signs,
@@ -24,7 +34,7 @@ M.setup = function()
 			focusable = true,
 			style = "minimal",
 			border = "rounded",
-			source = "always",
+			source = "if_many",
 			header = "",
 			prefix = "",
 		},
@@ -36,9 +46,19 @@ M.setup = function()
 		border = "rounded",
 	})
 
-	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	-- 	border = "rounded",
-	-- })
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+		border = "rounded",
+	})
+end
+
+local function lsp_highlight_document(client)
+	-- if client.server_capabilities.document_highlight then
+	local status_ok, illuminate = pcall(require, "illuminate")
+	if not status_ok then
+		return
+	end
+	illuminate.on_attach(client)
+	-- end
 end
 
 local function lsp_keymaps(bufnr)
@@ -62,10 +82,8 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-	if not status_cmp_ok then
-		return
-	end
+	lsp_keymaps(bufnr)
+	lsp_highlight_document(client)
 
 	if client.name == "sumneko_lua" then
 		-- client.server_capabilities.document_formatting = false
@@ -78,23 +96,6 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tailwindcss" then
 		require("tailwindcss-colors").buf_attach(bufnr)
 	end
-
-	M.capabilities = vim.lsp.protocol.make_client_capabilities()
-	M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-	--[[ -- Nvim-ufo config
-	M.capabilities.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true,
-	} ]]
-	M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
-
-	lsp_keymaps(bufnr)
-	local status_ok, illuminate = pcall(require, "illuminate")
-	if not status_ok then
-		return
-	end
-	illuminate.on_attach(client)
 end
 
 -- function M.enable_format_on_save()
