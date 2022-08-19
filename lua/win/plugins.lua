@@ -117,6 +117,7 @@ return require("packer").startup(function(use)
 	use({ "nvim-telescope/telescope-fzy-native.nvim" })
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use({ "camgraff/telescope-tmux.nvim" })
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

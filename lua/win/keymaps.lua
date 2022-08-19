@@ -128,7 +128,7 @@ cmd([[au BufWritePre * :%s/\s\+$//e]])
 keymap(
 	"n",
 	"-",
-	':lua require("telescope.builtin").find_files({ find_command = {"rg", "--files", "--hidden", "-g", "!.git" }})<CR>',
+	':lua require("telescope.builtin").project_files()<CR>',
 	opts
 )
 keymap(
