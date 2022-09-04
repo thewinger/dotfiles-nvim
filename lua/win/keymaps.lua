@@ -22,6 +22,9 @@ vim.g.maplocalleader = " "
 -- Allow to use ; instead of : to start command
 keymap("n", ";", ":")
 
+-- Disable command history keymap
+keymap("n", ":q", "<nop>")
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h")
 keymap("n", "<C-j>", "<C-w>j")
@@ -125,12 +128,7 @@ cmd([[au BufWritePre * :%s/\s\+$//e]])
 -- cmd([[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]])
 
 -- Telescope
-keymap(
-	"n",
-	"-",
-	':lua require("telescope.builtin").project_files()<CR>',
-	opts
-)
+keymap("n", "-", ':lua require("telescope.builtin").project_files()<CR>', opts)
 keymap(
 	"n",
 	"<leader>tw",
