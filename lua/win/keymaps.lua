@@ -128,7 +128,7 @@ cmd([[au BufWritePre * :%s/\s\+$//e]])
 -- cmd([[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]])
 
 -- Telescope
-keymap("n", "-", ':lua require("telescope.builtin").project_files()<CR>', opts)
+keymap("n", "-", ':lua require("win.telescope").project_files()<CR>', opts)
 keymap(
 	"n",
 	"<leader>tw",
