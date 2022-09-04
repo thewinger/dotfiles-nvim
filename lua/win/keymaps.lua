@@ -23,7 +23,7 @@ vim.g.maplocalleader = " "
 keymap("n", ";", ":")
 
 -- Disable command history keymap
-keymap("n", ":q", "<nop>")
+keymap("n", "q:", "<nop>")
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h")
