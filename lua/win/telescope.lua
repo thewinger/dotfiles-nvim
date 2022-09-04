@@ -63,7 +63,6 @@ telescope.setup({
 				["H"] = actions.move_to_top,
 				["M"] = actions.move_to_middle,
 				["L"] = actions.move_to_bottom,
-
 				["<Down>"] = actions.move_selection_next,
 				["<Up>"] = actions.move_selection_previous,
 				["gg"] = actions.move_to_top,
@@ -81,8 +80,8 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-		  cwd = require("lspconfig.util").root_pattern(".git")(vim.fn.expand("%:p")),
-      theme = "ivy",
+			cwd = require("lspconfig.util").root_pattern(".git")(vim.fn.expand("%:p")),
+			theme = "ivy",
 			layout_config = {
 				height = 0.75,
 			},
@@ -146,13 +145,13 @@ telescope.setup({
 			filetypes = { "png", "webp", "jpg", "jpeg" },
 			find_cmd = "rg", -- find command (defaults to `fd`)
 		},
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
-    },
+		fzf = {
+			fuzzy = true, -- false will only do exact matching
+			override_generic_sorter = true, -- override the generic sorter
+			override_file_sorter = true, -- override the file sorter
+			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+			-- the default case_mode is "smart_case"
+		},
 		tmux = {
 			theme = "ivy",
 		},
@@ -162,14 +161,15 @@ telescope.setup({
 local M = {}
 
 M.project_files = function()
-  local opts = {} -- define here if you want to define something
-  local ok = pcall(require"telescope.builtin".git_files, { show_untracked = true})
-  if not ok then require"telescope.builtin".find_files({}) end
+	local opts = { show_untracked = true } -- define here if you want to define something
+	local ok = pcall(require("telescope.builtin").git_files, opts)
+	if not ok then
+		require("telescope.builtin").find_files(opts)
+	end
 end
 
-
 telescope.load_extension("media_files")
-telescope.load_extension('fzf')
+telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
 telescope.load_extension("tmux")
 telescope.load_extension("harpoon")
