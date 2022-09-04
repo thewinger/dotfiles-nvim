@@ -22,6 +22,9 @@ vim.g.maplocalleader = " "
 -- Allow to use ; instead of : to start command
 keymap("n", ";", ":")
 
+-- Disable command history keymap
+keymap("n", ":q", "<nop>")
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h")
 keymap("n", "<C-j>", "<C-w>j")
