@@ -53,8 +53,11 @@ keymap("n", "N", "Nzzzv")
 keymap("n", "G", "Gzz")
 
 -- Paste on next/prev line instead of same line
-keymap("n", "<Leader>p", "oq<BS><Esc>p")
-keymap("n", "<Leader>P", "Oq<BS><Esc>p")
+--[[ keymap("n", "<Leader>p", "oq<BS><Esc>p") ]]
+--[[ keymap("n", "<Leader>P", "Oq<BS><Esc>p") ]]
+
+-- Paste without yanking
+keymap("x", "<leader>p", '"_dP')
 
 -- Delete without yanking
 keymap("n", "<Leader>d", '"_d')
@@ -168,8 +171,8 @@ keymap("n", "<leader>th", ':lua require("telescope").extensions.harpoon.marks{}<
 keymap("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>")
 
 -- Leap
---[[ keymap("n", "f", "<Plug>(leap-forward)") ]]
---[[ keymap("n", "F", "<Plug>(leap-backward)") ]]
+keymap("n", "s", "<Plug>(leap-forward)")
+keymap("n", "S", "<Plug>(leap-backward)")
 
 -- Ufo
 vim.keymap.set("n", "zR", ':lua require("ufo").openAllFolds')
