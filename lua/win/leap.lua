@@ -4,4 +4,8 @@ if not status_ok then
 	return
 end
 
-nleap.setup()
+nleap.setup({
+	safe_labels = {},
+})
+nleap.set_default_keymaps()
+vim.api.nvim_set_hl(0, "LeapBackdrop", { fg = "#707070" })

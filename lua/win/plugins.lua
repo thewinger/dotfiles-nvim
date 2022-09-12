@@ -61,9 +61,12 @@ return require("packer").startup(function(use)
 	-- use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlightplug
 	use({ "ggandor/leap.nvim" })
 	use({
-		"ur4ltz/surround.nvim",
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
 		config = function()
-			require("surround").setup({ mappings_style = "sandwich" })
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
 		end,
 	})
 	use({ "ThePrimeagen/harpoon" })

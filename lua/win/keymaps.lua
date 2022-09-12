@@ -168,8 +168,8 @@ keymap("n", "<leader>th", ':lua require("telescope").extensions.harpoon.marks{}<
 keymap("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>")
 
 -- Leap
-keymap("n", "f", "<Plug>(leap-forward)")
-keymap("n", "F", "<Plug>(leap-backward)")
+--[[ keymap("n", "f", "<Plug>(leap-forward)") ]]
+--[[ keymap("n", "F", "<Plug>(leap-backward)") ]]
 
 -- Ufo
 vim.keymap.set("n", "zR", ':lua require("ufo").openAllFolds')
