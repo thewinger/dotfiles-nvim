@@ -13,11 +13,12 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	debug = true,
 	sources = {
-		formatting.prettierd.with({
+		formatting.prettier,
+		--[[ formatting.prettierd.with({
 			env = {
 				PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json"),
 			},
-		}),
+		}), ]]
 		formatting.stylua,
 	},
 	on_attach = function(client, bufnr)
