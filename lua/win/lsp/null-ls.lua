@@ -8,28 +8,32 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 -- local diagnostics = null_ls.builtins.diagnostics
 
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			return client.name ~= "tsserver"
+		end,
+		bufnr = bufnr,
+	})
+end
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
 	debug = true,
 	sources = {
 		formatting.prettier,
-		--[[ formatting.prettierd.with({
-			env = {
-				PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json"),
-			},
-		}), ]]
 		formatting.stylua,
 	},
+	-- This is for formatting on save
 	on_attach = function(client, bufnr)
-		if client.resolved_capabilities.document_formatting then
+		if client.supports_method("textDocument/formatting") then
 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-					vim.lsp.buf.formatting_sync()
+					lsp_formatting(bufnr)
 				end,
 			})
 		end

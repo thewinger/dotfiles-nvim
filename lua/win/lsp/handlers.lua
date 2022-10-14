@@ -1,6 +1,6 @@
 local M = {}
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
+  M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
@@ -52,7 +52,6 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-	-- if client.server_capabilities.document_highlight then
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
 		return
@@ -83,52 +82,19 @@ local function lsp_keymaps(bufnr)
 	-- map(bufnr, "n", "<leader>f", ":lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
+
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 
 	if client.name == "sumneko_lua" then
-		-- client.server_capabilities.document_formatting = false
-		client.resolved_capabilities.document_formatting = false
-	end
+    client.server_capabilities.documentFormattingProvider = false
+  end
 	if client.name == "tsserver" then
-		-- client.server_capabilities.document_formatting = false
-		client.resolved_capabilities.document_formatting = false
-	end
+    client.server_capabilities.documentFormattingProvider = false
+  end
 	if client.name == "tailwindcss" then
 		require("tailwindcss-colors").buf_attach(bufnr)
 	end
 end
-
--- function M.enable_format_on_save()
--- 	vim.cmd([[
---     augroup format_on_save
---       autocmd!
---       autocmd BufWritePre * lua vim.lsp.buf.formatting()
---     augroup end
---   ]])
--- 	vim.notify("Enabled format on save")
--- end
---
--- function M.disable_format_on_save()
--- 	M.remove_augroup("format_on_save")
--- 	vim.notify("Disabled format on save")
--- end
---
--- function M.toggle_format_on_save()
--- 	if vim.fn.exists("#format_on_save#BufWritePre") == 0 then
--- 		M.enable_format_on_save()
--- 	else
--- 		M.disable_format_on_save()
--- 	end
--- end
---
--- function M.remove_augroup(name)
--- 	if vim.fn.exists("#" .. name) == 1 then
--- 		vim.cmd("au! " .. name)
--- 	end
--- end
---
--- vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("win.lsp.handlers").toggle_format_on_save()' ]])
-
 return M
