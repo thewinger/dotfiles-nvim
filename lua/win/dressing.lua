@@ -28,8 +28,6 @@ require("dressing").setup({
 
 		-- Window transparency (0-100)
 		-- winblend = 0,
-		-- Change default highlight groups (see :help winhl)
-		winhighlight = "",
 
 		override = function(conf)
 			-- This is the config that will be passed to nvim_open_win.
