@@ -158,6 +158,7 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 -- keymap("", "<leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
 
 -- ToggleTerm
+--[[ vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true }) ]]
 
 -- Harpoon
 keymap("n", "<leader>hh", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')

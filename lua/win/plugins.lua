@@ -53,6 +53,8 @@ return require("packer").startup(function(use)
 	use({ "stevearc/dressing.nvim", requires = "MunifTanjim/nui.nvim" })
 	use({ "nacro90/numb.nvim" })
 	use({ "numToStr/Comment.nvim" })
+	use({ "tpope/vim-fugitive" })
+	use({ "rcarriga/nvim-notify" })
 	-- use({
 	-- 	"kevinhwang91/nvim-ufo",
 	-- 	requires = "kevinhwang91/promise-async",
@@ -76,7 +78,7 @@ return require("packer").startup(function(use)
 
 	use({ "thewinger/tailscheme.nvim" })
 	use({ "EdenEast/nightfox.nvim" })
-	use({ "sam4llis/nvim-tundra" })
+	--[[ use({ "sam4llis/nvim-tundra" }) ]]
 	use({ "norcalli/nvim-colorizer.lua" }) -- A high-performance color highlighter for Neovim which has no external dependencies!
 	use({
 		"themaxmarchuk/tailwindcss-colors.nvim",

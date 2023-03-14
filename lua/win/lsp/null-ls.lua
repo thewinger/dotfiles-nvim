@@ -24,6 +24,7 @@ null_ls.setup({
 	sources = {
 		formatting.prettier,
 		formatting.stylua,
+		formatting.black,
 	},
 	-- This is for formatting on save
 	on_attach = function(client, bufnr)

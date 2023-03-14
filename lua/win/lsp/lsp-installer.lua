@@ -7,7 +7,7 @@ local servers = {
 	"graphql",
 	"html",
 	"jsonls",
-	"sumneko_lua",
+	"lua_ls",
 	"tailwindcss",
 	"tsserver",
 }
@@ -29,9 +29,9 @@ for _, server in pairs(servers) do
 		capabilities = require("win.lsp.handlers").capabilities,
 	}
 
-	if server == "sumneko_lua" then
-		local sumneko_opts = require("win.lsp.settings.sumneko_lua")
-		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+	if server == "lua_ls" then
+		local lua_opts = require("win.lsp.settings.lua_ls")
+		opts = vim.tbl_deep_extend("force", lua_opts, opts)
 	end
 
 	if server == "tsserver" then
