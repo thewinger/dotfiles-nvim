@@ -124,6 +124,7 @@ telescope.setup({
 	extensions = {
 		file_browser = {
 			theme = "ivy",
+			hijack_netrw = true,
 			layout_config = {
 				height = 0.75,
 			},
