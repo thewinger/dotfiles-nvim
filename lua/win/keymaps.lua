@@ -132,6 +132,7 @@ cmd([[au BufWritePre * :%s/\s\+$//e]])
 
 -- Telescope
 keymap("n", "-", ':lua require("win.telescope").project_files()<CR>', opts)
+keymap("n", "<Leader>-", ':lua require("telescope.builtin").resume()<CR>', opts)
 keymap(
 	"n",
 	"<leader>tw",
