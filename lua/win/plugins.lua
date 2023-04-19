@@ -110,6 +110,7 @@ return require("packer").startup(function(use)
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
+	use({ "jose-elias-alvarez/typescript.nvim" })
 	use({ "RRethy/vim-illuminate" })
 	--[[ use({
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -131,9 +132,9 @@ return require("packer").startup(function(use)
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use({ "nvim-treesitter/nvim-treesitter-context" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 	use({ "windwp/nvim-ts-autotag" }) -- Automatically add paring tag
-	use({ "nvim-treesitter/nvim-treesitter-context" })
 	use({ "nvim-treesitter/playground" })
 
 	-- Git

@@ -42,8 +42,9 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>")
 keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Navigate buffers - Removed in favor of harpoon
--- keymap("n", "<S-l>", ":bnext<CR>")
--- keymap("n", "<S-h>", ":bprevious<CR>")
+keymap("n", "<S-l>", ":bnext<CR>")
+keymap("n", "<S-h>", ":bprevious<CR>")
+keymap("n", "<leader>bb", "<c-^><cr>")
 
 -- Keeping the cursor center lined when searching
 keymap("n", "n", "nzzzv")
@@ -53,8 +54,8 @@ keymap("n", "N", "Nzzzv")
 keymap("n", "G", "Gzz")
 
 -- Paste on next/prev line instead of same line
---[[ keymap("n", "<Leader>p", "oq<BS><Esc>p") ]]
---[[ keymap("n", "<Leader>P", "Oq<BS><Esc>p") ]]
+keymap("n", "<Leader>p", "oq<BS><Esc>p")
+keymap("n", "<Leader>P", "Oq<BS><Esc>p")
 
 -- Paste without yanking
 keymap("x", "<leader>p", '"_dP')
@@ -165,8 +166,8 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 keymap("n", "<leader>hh", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
 keymap("n", "<leader>ha", ':lua require("harpoon.mark").add_file()<CR>')
 keymap("n", "<leader>ht", ':lua require("harpoon.mark").toggle_file()<CR>')
-keymap("n", "<S-l>", ':lua require("harpoon.ui").nav_next()<CR>')
-keymap("n", "<S-h>", ':lua require("harpoon.ui").nav_prev()<CR>')
+--keymap("n", "<S-l>", ':lua require("harpoon.ui").nav_next()<CR>')
+--keymap("n", "<S-h>", ':lua require("harpoon.ui").nav_prev()<CR>')
 keymap("n", "<leader>th", ':lua require("telescope").extensions.harpoon.marks{}<CR>')
 
 -- Treesitter

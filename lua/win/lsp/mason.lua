@@ -8,15 +8,17 @@ if not status_ok_1 then
 	return
 end
 
+--[[ "cssls", ]]
+--[[ "cssmodules_ls", ]]
 local servers = {
 	"cssls",
-	"cssmodules_ls",
+	"eslint",
 	"graphql",
 	"html",
 	"jsonls",
+	"yamlls",
 	"lua_ls",
 	"tailwindcss",
-	"tsserver",
 }
 
 local settings = {
@@ -41,14 +43,12 @@ if not lspconfig_status_ok then
 	return
 end
 
-local opts = {}
+local opts = {
+	on_attach = require("win.lsp.handlers").on_attach,
+	capabilities = require("win.lsp.handlers").capabilities,
+}
 
 for _, server in pairs(servers) do
-	opts = {
-		on_attach = require("win.lsp.handlers").on_attach,
-		capabilities = require("win.lsp.handlers").capabilities,
-	}
-
 	server = vim.split(server, "@")[1]
 
 	if server == "lua_ls" then
@@ -56,20 +56,26 @@ for _, server in pairs(servers) do
 		opts = vim.tbl_deep_extend("force", lua_opts, opts)
 	end
 
-	if server == "tsserver" then
-		local tsserver_opts = require("win.lsp.settings.tsserver")
-		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
-	end
+	--[[ if server == "tsserver" then ]]
+	--[[ 	local tsserver_opts = require("win.lsp.settings.tsserver") ]]
+	--[[ 	opts = vim.tbl_deep_extend("force", tsserver_opts, opts) ]]
+	--[[ end ]]
 
-	if server == "cssls" then
-		local cssls_opts = require("win.lsp.settings.cssls")
-		opts = vim.tbl_deep_extend("force", cssls_opts, opts)
+	if server == "eslint" then
+		local eslint_opts = require("win.lsp.settings.eslint")
+		opts = vim.tbl_deep_extend("force", eslint_opts, opts)
 	end
-
-	-- if server == "jsonls" then
-	--   local jsonls_opts = require "win.lsp.settings.jsonls"
-	--   opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-	-- end
 
 	lspconfig[server].setup(opts)
 end
+
+require("typescript").setup({
+	disable_commands = false, -- prevent the plugin from creating Vim commands
+	debug = false, -- enable debug logging for commands
+	go_to_source_definition = {
+		fallback = true, -- fall back to standard LSP definition on failure
+	},
+	server = { -- pass options to lspconfig's setup method
+		opts,
+	},
+})

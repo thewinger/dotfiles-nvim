@@ -3,9 +3,14 @@ if not status_ok then
 	return
 end
 
+local status_ok_context, ts_context = pcall(require, "treesitter-context")
+if not status_ok_context then
+	return
+end
+
 configs.setup({
 	ensure_installed = {
-    "comment",
+		"comment",
 		"css",
 		"graphql",
 		"html",
@@ -54,3 +59,5 @@ configs.setup({
 		},
 	},
 })
+
+ts_context.setup({})
