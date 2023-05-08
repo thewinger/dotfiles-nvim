@@ -66,6 +66,11 @@ for _, server in pairs(servers) do
 		opts = vim.tbl_deep_extend("force", eslint_opts, opts)
 	end
 
+	if server == "yamlls" then
+		local yamlls_opts = require("win.lsp.settings.yamlls")
+		opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
+	end
+
 	lspconfig[server].setup(opts)
 end
 
