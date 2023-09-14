@@ -48,7 +48,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.black,
 		null_ls.builtins.diagnostics.tsc,
-		require("typescript.extensions.null-ls.code-actions"),
+		--[[ require("typescript.extensions.null-ls.code-actions"), ]]
 	},
 	on_attach = on_attach,
 })

@@ -56,10 +56,10 @@ for _, server in pairs(servers) do
 		opts = vim.tbl_deep_extend("force", lua_opts, opts)
 	end
 
-	--[[ if server == "tsserver" then ]]
-	--[[ 	local tsserver_opts = require("win.lsp.settings.tsserver") ]]
-	--[[ 	opts = vim.tbl_deep_extend("force", tsserver_opts, opts) ]]
-	--[[ end ]]
+	if server == "tsserver" then
+		local tsserver_opts = require("win.lsp.settings.tsserver")
+		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+	end
 
 	if server == "eslint" then
 		local eslint_opts = require("win.lsp.settings.eslint")

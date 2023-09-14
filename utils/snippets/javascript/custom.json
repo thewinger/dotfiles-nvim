@@ -1,0 +1,10 @@
+{
+  "Adds simple classname attr": {
+    "prefix": "cn",
+    "body": ["className='${1:class}'"]
+  },
+  "Adds template classname attr": {
+    "prefix": "cnt",
+    "body": ["className={`${1:class}`}"]
+  }
+}
