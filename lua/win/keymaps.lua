@@ -153,6 +153,7 @@ keymap("n", "<leader>tmw", "<cmd>Telescope tmux windows theme=ivy<CR>")
 
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>")
+--[[ keymap("n", "<leader>e", ":Neotree toggle right<CR>") ]]
 
 -- Format Null-ls
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")

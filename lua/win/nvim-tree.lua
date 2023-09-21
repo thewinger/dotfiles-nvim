@@ -3,12 +3,12 @@ if not status_ok then
 	return
 end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
+--[[ local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
 if not config_status_ok then
 	return
-end
+end ]]
 
-local tree_cb = nvim_tree_config.nvim_tree_callback
+--[[ local tree_cb = nvim_tree_config.nvim_tree_callback
 
 local function on_attach(bufnr)
 	local api = require("nvim-tree.api")
@@ -82,10 +82,10 @@ local function on_attach(bufnr)
 	vim.keymap.set("n", "o", api.node.open.edit, opts("Open"))
 	vim.keymap.set("n", "h", api.node.open.horizontal, opts("Open: Horizontal Split"))
 	vim.keymap.set("n", "v", api.node.open.vertical, opts("Open: Vertical Split"))
-end
+end ]]
 
 nvim_tree.setup({
-	on_attach = on_attach,
+	--[[ on_attach = on_attach, ]]
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
