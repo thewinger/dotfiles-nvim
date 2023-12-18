@@ -64,7 +64,7 @@ return require("packer").startup(function(use)
 	use({ "nvim-lualine/lualine.nvim" })
 	use({ "akinsho/toggleterm.nvim" })
 	use({ "abecodes/tabout.nvim", wants = { "nvim-treesitter" }, after = { "nvim-cmp" } })
-	use({ "stevearc/dressing.nvim", requires = "MunifTanjim/nui.nvim" })
+	use({ "stevearc/dressing.nvim" })
 	use({ "nacro90/numb.nvim" })
 	use({ "numToStr/Comment.nvim" })
 	use({ "tpope/vim-fugitive" })
@@ -86,8 +86,7 @@ return require("packer").startup(function(use)
 	use({ "ThePrimeagen/harpoon" })
 
 	-- Styling
-	use({ "lukas-reineke/indent-blankline.nvim" }) -- adds indentation guides to all lines
-
+	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "thewinger/tailscheme.nvim" })
 	use({ "EdenEast/nightfox.nvim" })
 	--[[ use({ "sam4llis/nvim-tundra" }) ]]

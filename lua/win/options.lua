@@ -55,3 +55,4 @@ vim.opt.iskeyword:append("_")
 -- SYNTAX AND COLOR CONFIGURATIONS
 opt.termguicolors = true
 opt.background = "dark"
+vim.g.skip_ts_context_commentstring_module = true

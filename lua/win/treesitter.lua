@@ -3,11 +3,11 @@ if not status_ok then
 	return
 end
 
-local status_ok_context, ts_context = pcall(require, "treesitter-context")
+local status_ok_context, ts_context = pcall(require, "ts_context_commentstring")
 if not status_ok_context then
 	return
 end
-
+---@diagnostic disable: missing-fields
 configs.setup({
 	ensure_installed = {
 		"comment",
@@ -22,7 +22,9 @@ configs.setup({
 		"typescript",
 		"vim",
 	}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+
 	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+	auto_install = true,
 	ignore_install = { "" }, -- List of parsers to ignore installing
 	autopairs = {
 		enable = true,
@@ -59,5 +61,7 @@ configs.setup({
 		},
 	},
 })
-
-ts_context.setup({})
+---@diagnostic enable: missing-fields
+ts_context.setup({
+	enable_autocmd = false,
+})
