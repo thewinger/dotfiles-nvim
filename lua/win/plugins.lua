@@ -83,8 +83,11 @@ return require("packer").startup(function(use)
 			require("nvim-surround").setup({})
 		end,
 	})
-	use({ "ThePrimeagen/harpoon" })
-
+	use({
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 	-- Styling
 	use({ "lukas-reineke/indent-blankline.nvim" })
 	use({ "thewinger/tailscheme.nvim" })

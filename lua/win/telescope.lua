@@ -121,6 +121,9 @@ telescope.setup({
 			},
 		},
 	},
+	lsp_definitions = {
+		file_ignore_patterns = { "%.d.ts" },
+	},
 	extensions = {
 		file_browser = {
 			theme = "ivy",
