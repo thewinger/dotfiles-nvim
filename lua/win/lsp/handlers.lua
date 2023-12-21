@@ -63,8 +63,8 @@ local function lsp_keymaps(bufnr)
 	local map = vim.api.nvim_buf_set_keymap
 
 	map(bufnr, "n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
-	--[[ map(bufnr, "n", "<Leader>gd", ":lua vim.lsp.buf.definition()<CR>", opts)
-	map(bufnr, "n", "gd", ":TypescriptGoToSourceDefinition<CR>", opts) ]]
+	map(bufnr, "n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
+	-- map(bufnr, "n", "gd", ":TypescriptGoToSourceDefinition<CR>", opts)
 	map(bufnr, "n", "gdv", ":vsplit | lua vim.lsp.buf.definition()<CR>", opts)
 	map(bufnr, "n", "gdh", ":split | lua vim.lsp.buf.definition()<CR>", opts)
 	map(bufnr, "n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)

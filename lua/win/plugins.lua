@@ -123,7 +123,7 @@ return require("packer").startup(function(use)
 	use({ "neovim/nvim-lspconfig" }) -- enable LSP
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
-	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
+	use({ "nvimtools/none-ls.nvim" }) -- for formatters and linters
 	use({ "jose-elias-alvarez/typescript.nvim" })
 	use({ "RRethy/vim-illuminate" })
 	--[[ use({
