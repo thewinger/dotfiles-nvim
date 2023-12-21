@@ -124,7 +124,10 @@ return require("packer").startup(function(use)
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "nvimtools/none-ls.nvim" }) -- for formatters and linters
-	use({ "jose-elias-alvarez/typescript.nvim" })
+	use({
+		"pmizio/typescript-tools.nvim",
+		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	})
 	use({ "RRethy/vim-illuminate" })
 	--[[ use({
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",

@@ -63,8 +63,8 @@ local function lsp_keymaps(bufnr)
 	local map = vim.api.nvim_buf_set_keymap
 
 	map(bufnr, "n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
-	map(bufnr, "n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
-	-- map(bufnr, "n", "gd", ":TypescriptGoToSourceDefinition<CR>", opts)
+	map(bufnr, "n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>", opts)
+	map(bufnr, "n", "gd", ":TSToolsGoToSourceDefinition<CR>", opts)
 	map(bufnr, "n", "gdv", ":vsplit | lua vim.lsp.buf.definition()<CR>", opts)
 	map(bufnr, "n", "gdh", ":split | lua vim.lsp.buf.definition()<CR>", opts)
 	map(bufnr, "n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
@@ -89,9 +89,9 @@ M.on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-	if client.name == "tsserver" then
-		client.server_capabilities.documentFormattingProvider = false
-	end
+	-- if client.name == "tsserver" then
+	-- 	client.server_capabilities.documentFormattingProvider = false
+	-- end
 
 	if client.name == "html" then
 		client.server_capabilities.documentFormattingProvider = false
