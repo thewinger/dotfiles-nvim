@@ -164,14 +164,6 @@ keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 -- ToggleTerm
 --[[ vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true }) ]]
 
--- Harpoon
-keymap("n", "<leader>hh", ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
-keymap("n", "<leader>ha", ':lua require("harpoon.mark").add_file()<CR>')
-keymap("n", "<leader>ht", ':lua require("harpoon.mark").toggle_file()<CR>')
---keymap("n", "<S-l>", ':lua require("harpoon.ui").nav_next()<CR>')
---keymap("n", "<S-h>", ':lua require("harpoon.ui").nav_prev()<CR>')
-keymap("n", "<leader>th", ':lua require("telescope").extensions.harpoon.marks{}<CR>')
-
 -- Treesitter
 keymap("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>")
 

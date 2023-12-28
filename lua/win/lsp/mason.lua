@@ -8,6 +8,12 @@ if not status_ok_1 then
 	return
 end
 
+
+local typescript_status_ok, typescript = pcall(require, "typescript-tools")
+if not typescript_status_ok then
+	return
+end
+
 --[[ "cssls", ]]
 --[[ "cssmodules_ls", ]]
 local servers = {
@@ -56,10 +62,10 @@ for _, server in pairs(servers) do
 		opts = vim.tbl_deep_extend("force", lua_opts, opts)
 	end
 
-	if server == "tsserver" then
-		local tsserver_opts = require("win.lsp.settings.tsserver")
-		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
-	end
+	-- if server == "tsserver" then
+	-- 	local tsserver_opts = require("win.lsp.settings.tsserver")
+	-- 	opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+	-- end
 
 	if server == "eslint" then
 		local eslint_opts = require("win.lsp.settings.eslint")
@@ -74,13 +80,5 @@ for _, server in pairs(servers) do
 	lspconfig[server].setup(opts)
 end
 
-require("typescript").setup({
-	disable_commands = false, -- prevent the plugin from creating Vim commands
-	debug = false, -- enable debug logging for commands
-	go_to_source_definition = {
-		fallback = true, -- fall back to standard LSP definition on failure
-	},
-	server = { -- pass options to lspconfig's setup method
-		opts,
-	},
+typescript.setup({
 })

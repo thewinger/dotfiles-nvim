@@ -6,4 +6,3 @@ end
 require("win.lsp.mason")
 require("win.lsp.handlers").setup()
 require("win.lsp.none-ls")
-require("win.lsp.typescript")
