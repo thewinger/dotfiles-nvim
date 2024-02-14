@@ -15,4 +15,7 @@ return {
 			},
 		})
 	end,
+  keys ={
+    {"<leader>e", ":Neotree<cr>"},
+},
 }

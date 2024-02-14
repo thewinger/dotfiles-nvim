@@ -1,14 +1,16 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-	return
-end
+return {
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+-- or                              , branch = '0.1.x',
+      dependencies = { 'nvim-lua/plenary.nvim' },
+  config = function()
+		local telescope = require('telescope')
 
 local actions = require("telescope.actions")
 local fb_actions = telescope.extensions.file_browser.actions
 
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
@@ -175,7 +177,37 @@ end
 telescope.load_extension("media_files")
 telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
-telescope.load_extension("tmux")
 telescope.load_extension("harpoon")
 
 return M
+
+  end,
+    keys ={
+      -- Telescope
+{"-", ':lua require("win.telescope").project_files()<CR>'},
+{"<Leader>-", ':lua require("telescope.builtin").resume()<CR>'},
+{	"<leader>tw", '<cmd>lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>'},
+{"<Leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>'},
+{"<Leader>tg", '<cmd>lua require("telescope.builtin").git_files()<CR>'},
+{"<leader>tb", '<cmd>lua require("telescope.builtin").buffers()<CR>'},
+{"<leader>tht", '<cmd>lua require("telescope.builtin").help_tags()<CR>'},
+{"<leader>td", '<cmd>lua require("telescope.builtin").diagnostics()<CR>'},
+{"<leader>cs", '<cmd>lua require("telescope.builtin").colorscheme()<CR>'},
+-- {"gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>'},
+{"<Leader>tf", '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>'},
+{"<leader>tms", "<cmd>Telescope tmux sessions theme=ivy<CR>"},
+{"<leader>tmw", "<cmd>Telescope tmux windows theme=ivy<CR>"},
+
+    }
+
+    },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+},
+  {
+    "nvim-telescope/telescope-media-files.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+},
+{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
+}

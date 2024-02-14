@@ -53,8 +53,10 @@ keymap("n", "N", "Nzzzv")
 -- Jump to bottom of file and center last line
 keymap("n", "G", "Gzz")
 
+-- Replace currently selected text with default register without yanking it
+keymap("v", "p", '"_dP')
 -- Paste on next/prev line instead of same line
-keymap("n", "<Leader>p", "oq<BS><Esc>p")
+-- keymap("n", "<Leader>p", "oq<BS><Esc>p")
 keymap("n", "<Leader>P", "Oq<BS><Esc>p")
 
 -- Paste without yanking
@@ -89,8 +91,6 @@ keymap("i", "˚", "<ESC>:m .-2<CR>==gi")
 keymap("v", "∆", ":m '>+1<CR>gv=gv")
 keymap("v", "˚", ":m '<-2<CR>gv=gv")
 
--- Replace currently selected text with default register without yanking it
-keymap("v", "p", '"_dP')
 
 -- vv to highlight just the text, without indents of a line
 keymap("", "vv", "^vg_")
@@ -101,13 +101,6 @@ keymap("x", "J", ":move '>+1<CR>gv-gv")
 keymap("x", "K", ":move '<-2<CR>gv-gv")
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv")
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
-
--- Terminal --
--- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Close current buffer without closing window
 keymap("n", "<leader>q", ":bp|bd #<CR>")
@@ -124,52 +117,12 @@ keymap("c", "w!!", "<esc>:lua require'utils'.sudo_write()<CR>", { silent = true 
 -- remove whitespace on save
 cmd([[au BufWritePre * :%s/\s\+$//e]])
 
--- So we don't need to require plugins.lua
--- cmd([[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]])
--- cmd([[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]])
--- cmd([[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]])
--- cmd([[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]])
--- cmd([[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]])
-
--- Telescope
-keymap("n", "-", ':lua require("win.telescope").project_files()<CR>', opts)
-keymap("n", "<Leader>-", ':lua require("telescope.builtin").resume()<CR>', opts)
-keymap(
-	"n",
-	"<leader>tw",
-	'<cmd>lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>',
-	opts
-)
-keymap("n", "<Leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>')
-keymap("n", "<Leader>tg", '<cmd>lua require("telescope.builtin").git_files()<CR>')
-keymap("n", "<leader>tb", '<cmd>lua require("telescope.builtin").buffers()<CR>')
-keymap("n", "<leader>tht", '<cmd>lua require("telescope.builtin").help_tags()<CR>')
-keymap("n", "<leader>td", '<cmd>lua require("telescope.builtin").diagnostics()<CR>')
-keymap("n", "<leader>cs", '<cmd>lua require("telescope.builtin").colorscheme()<CR>')
--- keymap("n", "gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>')
-keymap("n", "<Leader>tf", '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>')
-keymap("n", "<leader>tms", "<cmd>Telescope tmux sessions theme=ivy<CR>")
-keymap("n", "<leader>tmw", "<cmd>Telescope tmux windows theme=ivy<CR>")
-
--- Nvimtree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>")
---[[ keymap("n", "<leader>e", ":Neotree toggle right<CR>") ]]
-
 -- Format Null-ls
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
 --LSP lines
 -- keymap("", "<leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
 
--- ToggleTerm
---[[ vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true }) ]]
-
--- Treesitter
-keymap("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>")
-
--- Leap
-keymap("n", "s", "<Plug>(leap-forward)")
-keymap("n", "S", "<Plug>(leap-backward)")
 
 -- Ufo
 vim.keymap.set("n", "zR", ':lua require("ufo").openAllFolds')

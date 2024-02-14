@@ -1,9 +1,7 @@
-local status_ok, nvim_web_devicons = pcall(require, "nvim-web-devicons")
-if not status_ok then
-  return
-end
-
-nvim_web_devicons.set_icon {
+return {
+  "nvim-tree/nvim-web-devicons",
+  config = function()
+    require("nvim-web-devicons").set_icon {
   sh = {
     icon = "",
     color = "#1DC123",
@@ -46,4 +44,6 @@ nvim_web_devicons.set_icon {
     cterm_color = "59",
     name = "Diff",
   },
+    }
+  end
 }

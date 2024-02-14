@@ -1,7 +1,7 @@
-local status_ok, indent_blankline = pcall(require, "indent_blankline")
-if not status_ok then
-	return
-end
+return {
+"lukas-reineke/indent-blankline.nvim", main = "ibl",
+  config = function()
+
 local highlight = {
 	"Normal",
 	"Whitespace",
@@ -14,3 +14,6 @@ require("ibl").setup({
 	},
 	scope = { enabled = false },
 })
+  end
+}
+

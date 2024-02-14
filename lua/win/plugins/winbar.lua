@@ -1,11 +1,8 @@
-local M = {}
+return {
+  "fgheng/winbar.nvim",
+  config = function()
+    require('winbar').setup({
 
-local status_winbar_ok, winbar = pcall(require, "winbar")
-if not status_winbar_ok then
-  return
-end
-
-winbar.setup({
     enabled = true,
 
     show_file_path = false,
@@ -39,6 +36,6 @@ winbar.setup({
         'toggleterm',
         'qf',
     }
-})
-
-return M
+    })
+  end
+}
