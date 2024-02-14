@@ -164,27 +164,16 @@ telescope.setup({
 	},
 })
 
-local M = {}
-
-M.project_files = function()
-	local opts = { show_untracked = true } -- define here if you want to define something
-	local ok = pcall(require("telescope.builtin").git_files, opts)
-	if not ok then
-		require("telescope.builtin").find_files(opts)
-	end
-end
-
 telescope.load_extension("media_files")
 telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
 telescope.load_extension("harpoon")
 
-return M
 
   end,
     keys ={
       -- Telescope
-{"-", ':lua require("win.telescope").project_files()<CR>'},
+{"-", ':lua require("win.helpers").project_files()<CR>'},
 {"<Leader>-", ':lua require("telescope.builtin").resume()<CR>'},
 {	"<leader>tw", '<cmd>lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>'},
 {"<Leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>'},
