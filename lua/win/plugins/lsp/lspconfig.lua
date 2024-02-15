@@ -4,9 +4,13 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
+    "j-hui/fidget.nvim",
   },
   config = function()
     -- import lspconfig plugin
+   require("fidget").setup({})
+    require("lsp-file-operations").setup()
+
     local lspconfig = require("lspconfig")
 
     -- import cmp-nvim-lsp plugin
