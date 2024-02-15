@@ -21,7 +21,3 @@ return {
 
   }
 }
-
--- REQUIRED
--- REQUIRED
-

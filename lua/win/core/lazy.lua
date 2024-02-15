@@ -20,7 +20,7 @@ lazy.setup({
 	-- importing directories
 	spec = {
 		{ import = "win.plugins" },
---		{ import = "win.plugins.lsp" },
+		{ import = "win.plugins.lsp" },
 	},
 
 	-- ui config

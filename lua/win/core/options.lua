@@ -2,10 +2,15 @@
 -- local cmd = vim.cmd
 local opt = vim.opt
 
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Appearance
 opt.termguicolors = true
 opt.background = "dark"
 vim.g.skip_ts_context_commentstring_module = true
+opt.showtabline = 1 -- Line above window with file path
 opt.pumheight = 10 -- pop up menu height
 opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 opt.conceallevel = 0 -- so that `` is visible in markdown files
@@ -15,7 +20,7 @@ opt.title = true -- Show title in terminal tab
 opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
 
 -- Files and Others
-opt.fileencoding = "utf-8" -- the encoding written to a file
+-- opt.fileencoding = "utf-8" -- the encoding written to a file
 opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("_")
@@ -59,13 +64,11 @@ opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift 
 
 -- Tabs and Indentations
 opt.tabstop = 2 -- insert 2 spaces for a tab
-opt.showtabline = 2
 opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 opt.softtabstop = 2 -- number of tabs when inserting operations
 opt.smartindent = true -- make indenting smarter again
 opt.expandtab = true -- convert tabs to spaces
 
 -- Others
-opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 opt.fillchars.fold = " "
 opt.fillchars.eob = " " -- To stop showing ~ at the end of buffer

@@ -19,7 +19,26 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
+-- show cursor line only in active window
+vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
+  callback = function()
+    local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
+    if ok and cl then
+      vim.wo.cursorline = true
+      vim.api.nvim_win_del_var(0, "auto-cursorline")
+    end
+  end,
+})
+vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
+  callback = function()
+    local cl = vim.wo.cursorline
+    if cl then
+      vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
+      vim.wo.cursorline = false
+    end
+  end,
+})
+
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	callback = function()
@@ -80,6 +99,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 --		vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
 --	end,
 -- })
+
 -- Function to check if a floating dialog exists and if not
 -- then check for diagnostics under the cursor
 function OpenDiagnosticIfNoFloat()
