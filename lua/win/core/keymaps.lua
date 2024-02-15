@@ -1,7 +1,3 @@
-local opts = { noremap = true, silent = true }
-
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.keymap.set
 local cmd = vim.cmd
@@ -91,7 +87,6 @@ keymap("i", "˚", "<ESC>:m .-2<CR>==gi")
 keymap("v", "∆", ":m '>+1<CR>gv=gv")
 keymap("v", "˚", ":m '<-2<CR>gv=gv")
 
-
 -- vv to highlight just the text, without indents of a line
 keymap("", "vv", "^vg_")
 
@@ -117,12 +112,8 @@ keymap("c", "w!!", "<esc>:lua require'utils'.sudo_write()<CR>", { silent = true 
 -- remove whitespace on save
 cmd([[au BufWritePre * :%s/\s\+$//e]])
 
--- Format Null-ls
-keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>")
-
 --LSP lines
 -- keymap("", "<leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
-
 
 -- Ufo
 vim.keymap.set("n", "zR", ':lua require("ufo").openAllFolds')

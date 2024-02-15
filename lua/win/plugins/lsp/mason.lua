@@ -17,23 +17,24 @@ return {
     mason.setup({
       ui = {
         icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",        },
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗",
+        },
       },
     })
 
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-      	"cssls",
-	"eslint",
-	"graphql",
-	"html",
-	"jsonls",
-	"yamlls",
-	"lua_ls",
-	"tailwindcss",
+        "cssls",
+        "eslint",
+        "graphql",
+        "html",
+        "jsonls",
+        "yamlls",
+        "lua_ls",
+        "tailwindcss",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed

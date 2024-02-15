@@ -8,7 +8,7 @@ return {
   },
   config = function()
     -- import lspconfig plugin
-   require("fidget").setup({})
+    require("fidget").setup({})
     require("lsp-file-operations").setup()
 
     local lspconfig = require("lspconfig")

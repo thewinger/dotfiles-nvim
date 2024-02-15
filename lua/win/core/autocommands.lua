@@ -1,22 +1,22 @@
 -- Remove statusline and tabline when in Alpha
 vim.api.nvim_create_autocmd({ "User" }, {
-	pattern = { "AlphaReady" },
-	callback = function()
-		vim.cmd([[
+  pattern = { "AlphaReady" },
+  callback = function()
+    vim.cmd([[
       set laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
     ]])
-	end,
+  end,
 })
 
 -- Use 'q' to quit from common plugins
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
-	callback = function()
-		vim.cmd([[
+  pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
+  callback = function()
+    vim.cmd([[
       nnoremap <silent> <buffer> q :close<CR>
       set nobuflisted
     ]])
-	end,
+  end,
 })
 
 -- show cursor line only in active window
@@ -39,16 +39,15 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
   end,
 })
 
-
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-	callback = function()
-		vim.cmd("set formatoptions-=cro")
-	end,
+  callback = function()
+    vim.cmd("set formatoptions-=cro")
+  end,
 })
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
-	callback = function()
-		vim.cmd([[
+  callback = function()
+    vim.cmd([[
       hi link illuminatedWord LspReferenceText
       hi! Normal ctermbg=NONE guibg=NONE
       hi! Nontext ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
@@ -56,12 +55,12 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
       hi htmlArg cterm=italic gui=italic
       hi CursorLine cterm=none ctermbg=234 ctermfg=none
     ]])
-	end,
+  end,
 })
 
 -- Stay Centered
 vim.api.nvim_exec(
-	[[
+  [[
     function StayCenteredI()
       let line = line(".")
       if line != get(b:, 'last_line', 0)
@@ -84,14 +83,14 @@ vim.api.nvim_exec(
       autocmd CursorMoved * :call StayCentered()
     augroup END
   ]],
-	true
+  true
 )
 
 -- Show line diagnostics automatically in hover window
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-	callback = function()
-		vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
-	end,
+  callback = function()
+    vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
+  end,
 })
 
 -- vim.api.nvim_create_autocmd({ "CursorHold,CursorHoldI" }, {
@@ -103,21 +102,21 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 -- Function to check if a floating dialog exists and if not
 -- then check for diagnostics under the cursor
 function OpenDiagnosticIfNoFloat()
-	for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-		if vim.api.nvim_win_get_config(winid).zindex then
-			return
-		end
-	end
-	-- THIS IS FOR BUILTIN LSP
-	vim.diagnostic.open_float(0, {
-		scope = "cursor",
-		focusable = false,
-		close_events = {
-			"CursorMoved",
-			"CursorMovedI",
-			"BufHidden",
-			"InsertCharPre",
-			"WinLeave",
-		},
-	})
+  for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+    if vim.api.nvim_win_get_config(winid).zindex then
+      return
+    end
+  end
+  -- THIS IS FOR BUILTIN LSP
+  vim.diagnostic.open_float(0, {
+    scope = "cursor",
+    focusable = false,
+    close_events = {
+      "CursorMoved",
+      "CursorMovedI",
+      "BufHidden",
+      "InsertCharPre",
+      "WinLeave",
+    },
+  })
 end
