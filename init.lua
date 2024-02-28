@@ -1,1 +1,1 @@
-require("win.core")
+require("core")
