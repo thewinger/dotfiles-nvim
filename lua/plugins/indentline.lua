@@ -12,7 +12,9 @@ return {
         highlight = highlight,
         remove_blankline_trail = false,
       },
-      scope = { enabled = false },
+      scope = { enabled = true, char = " ", highlight = "NonText", show_start = true },
     })
+    vim.cmd.highlight("clear @ibl.scope.underline.1")
+    vim.cmd.highlight("link @ibl.scope.underline.1 Visual")
   end,
 }
