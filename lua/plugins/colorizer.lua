@@ -1,4 +1,4 @@
-return {
+--[[ return {
   "NvChad/nvim-colorizer.lua",
   event = { "BufReadPost", "BufNewFile" },
 
@@ -21,6 +21,18 @@ return {
         tailwind = "both",
       },
       buftypes = {},
+    })
+  end,
+} ]]
+
+return {
+  "brenoprata10/nvim-highlight-colors",
+  event = { "BufReadPost", "BufNewFile" },
+  config = function()
+    require("nvim-highlight-colors").setup({
+      render = "virtual", -- or 'foreground' or 'virtual'
+      enable_named_colors = true,
+      enable_tailwind = true,
     })
   end,
 }
