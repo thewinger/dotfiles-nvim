@@ -7,6 +7,7 @@ return {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-telescope/telescope-file-browser.nvim",
       "nvim-telescope/telescope-media-files.nvim",
+      "camgraff/telescope-tmux.nvim",
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
@@ -174,6 +175,7 @@ return {
       telescope.load_extension("fzf")
       telescope.load_extension("file_browser")
       telescope.load_extension("harpoon")
+      telescope.load_extension("tmux")
     end,
     keys = {
       { "-", ':lua require("helpers").project_files()<CR>' },
@@ -194,5 +196,18 @@ return {
       { "<leader>tms", "<cmd>Telescope tmux sessions theme=ivy<CR>" },
       { "<leader>tmw", "<cmd>Telescope tmux windows theme=ivy<CR>" },
     },
+  },
+  {
+    "https://github.com/d00h/telescope-any",
+    config = function()
+      local opts = {} -- or user
+      local telescope_any = require("telescope-any").create_telescope_any(opts)
+      -- vim.api.nvim_create_user_command("TelescopeAny", telescope_any, { nargs = 0 })
+      vim.api.nvim_set_keymap("n", "<leader>tt", "", {
+        noremap = true,
+        silent = true,
+        callback = telescope_any,
+      })
+    end,
   },
 }
