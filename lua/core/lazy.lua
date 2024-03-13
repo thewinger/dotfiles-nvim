@@ -20,7 +20,6 @@ lazy.setup({
   -- importing directories
   spec = {
     { import = "plugins" },
-    { import = "plugins.lsp" },
   },
 
   -- ui config
