@@ -30,7 +30,7 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   config = function()
     require("nvim-highlight-colors").setup({
-      render = "virtual", -- or 'foreground' or 'virtual'
+      render = "foreground", -- 'background' or 'foreground' or 'virtual'
       enable_named_colors = true,
       enable_tailwind = true,
     })

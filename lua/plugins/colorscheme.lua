@@ -8,4 +8,10 @@ return {
       vim.cmd.colorscheme("tailscheme")
     end,
   },
+  {
+    "JoshPorterDev/nvim-base16",
+    config = function()
+      -- vim.cmd("colorscheme base16-horizon-dark")
+    end,
+  },
 }
