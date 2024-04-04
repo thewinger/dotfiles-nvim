@@ -22,10 +22,10 @@ keymap("n", ";", ":")
 keymap("n", "q:", "<nop>")
 
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h")
-keymap("n", "<C-j>", "<C-w>j")
-keymap("n", "<C-k>", "<C-w>k")
-keymap("n", "<C-l>", "<C-w>l")
+keymap("n", "<C-h>", ":wincmd h<CR>")
+keymap("n", "<C-j>", ":wincmd j<CR>")
+keymap("n", "<C-k>", ":wincmd k<CR>")
+keymap("n", "<C-l>", ":wincmd l<CR>")
 
 -- Shortcuts for opening explorer in new splits
 keymap("n", "<Leader>v", ":Vex!<CR>")
