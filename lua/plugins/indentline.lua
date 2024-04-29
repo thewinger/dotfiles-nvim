@@ -2,7 +2,7 @@ return {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",
   config = function()
-    local highlight = {
+    --[[ local highlight = {
       "Normal",
       "Whitespace",
     }
@@ -15,6 +15,6 @@ return {
       scope = { enabled = true, char = " ", highlight = "NonText", show_start = true },
     })
     vim.cmd.highlight("clear @ibl.scope.underline.1")
-    vim.cmd.highlight("link @ibl.scope.underline.1 Visual")
+    vim.cmd.highlight("link @ibl.scope.underline.1 Visual") ]]
   end,
 }
