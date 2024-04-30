@@ -1,6 +1,7 @@
 -- lazy.nvim
 return {
   "chrisgrieser/nvim-spider",
+  enabled = false,
   keys = {
     {
       "w",
