@@ -1,6 +1,7 @@
 return {
   {
-    dir = "/Users/win/Projects/tailscheme.nvim",
+    -- dir = "/Users/win/Projects/tailscheme.nvim",
+    "thewinger/tailscheme.nvim",
     dependencies = {
       "rktjmp/lush.nvim",
     },
@@ -11,4 +12,6 @@ return {
       vim.cmd([[colorscheme tailscheme]])
     end,
   },
+  { "EdenEast/nightfox.nvim", name = "nightfox" },
+  { "rose-pine/neovim", name = "rose-pine" },
 }
