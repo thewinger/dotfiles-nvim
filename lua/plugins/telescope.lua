@@ -20,7 +20,12 @@ return {
         defaults = {
           prompt_prefix = " ",
           selection_caret = " ",
-          path_display = { "smart" },
+          path_display = {
+            "filename_first",
+            --         filename_first = {
+            -- reverse_directories = true
+            -- }
+          },
           file_ignore_patterns = { ".git/", "node_modules" },
 
           mappings = {
