@@ -121,3 +121,7 @@ cmd([[au BufWritePre * :%s/\s\+$//e]])
 -- Ufo
 vim.keymap.set("n", "zR", ':lua require("ufo").openAllFolds')
 vim.keymap.set("n", "zM", ':lua require("ufo").closeAllFolds')
+
+keymap("n", "<leader>h", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end)
