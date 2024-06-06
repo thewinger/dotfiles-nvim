@@ -7,7 +7,6 @@ local opt = vim.opt
 -- vim.g.loaded_netrwPlugin = 1
 
 -- Appearance
-opt.termguicolors = true
 opt.background = "dark"
 vim.g.skip_ts_context_commentstring_module = true
 opt.showtabline = 1 -- Line above window with file path
