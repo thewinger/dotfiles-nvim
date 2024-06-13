@@ -39,6 +39,14 @@ local location = {
   padding = 0,
 }
 
+local filename = {
+  "filename",
+  file_status = true,
+  path = 1,
+  shorting_target = 40,
+  symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+}
+
 -- cool function for progress
 local progress = function()
   local current_line = vim.fn.line(".")
@@ -68,15 +76,7 @@ return {
         sections = {
           lualine_a = { mode },
           lualine_b = { branch },
-          lualine_c = {
-            {
-              "filename",
-              file_status = true,
-              path = 1,
-              shorting_target = 40,
-              symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-            },
-          },
+          lualine_c = { filename },
           -- lualine_x = { "encoding", "fileformat", "filetype" },
           lualine_x = { diagnostics, "encoding", filetype },
           lualine_y = { progress },
@@ -85,8 +85,8 @@ return {
         inactive_sections = {
           lualine_a = {},
           lualine_b = {},
-          lualine_c = { "filename" },
-          lualine_x = { "location" },
+          lualine_c = { filename },
+          lualine_x = { location },
           lualine_y = {},
           lualine_z = {},
         },
