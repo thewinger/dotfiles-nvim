@@ -40,6 +40,7 @@
   "oil.nvim": { "branch": "master", "commit": "c82b26eb4ba35c0eb7ec38d88dd400597fb34883" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "rose-pine": { "branch": "main", "commit": "8c4660cfe697621bcc61d37b3651ffed94fe7fed" },
+  "tailscheme": { "branch": "main", "commit": "56b9c867824727e7b15ada1fb8e72767e1021c68" },
   "telescope-any": { "branch": "master", "commit": "0e79dd6131c8a7282899679cd9ffa14e74d2c973" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "a7ab9a957b17199183388c6f357d614fcaa508e5" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9ef21b2e6bb6ebeaf349a0781745549bbb870d27" },
