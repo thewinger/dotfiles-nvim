@@ -9,7 +9,9 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-vim.opt.rtp:prepend(lazypath)
+
+-- As per lazy's install instructions, but insert hotpots path at the front
+vim.opt.runtimepath:prepend({ lazypath })
 
 local installed, lazy = pcall(require, "lazy")
 if not installed then

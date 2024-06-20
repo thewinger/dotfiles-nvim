@@ -6,6 +6,7 @@ local cmd = vim.cmd
 keymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.have_nerd_font = true
 
 -- Modes
 --   normal_mode = "n",
@@ -55,11 +56,11 @@ keymap("n", "gl", "$")
 -- Replace currently selected text with default register without yanking it
 keymap("v", "p", '"_dP')
 -- Paste on next/prev line instead of same line
--- keymap("n", "<Leader>p", "oq<BS><Esc>p")
+keymap("n", "<Leader>p", "oq<BS><Esc>p")
 keymap("n", "<Leader>P", "Oq<BS><Esc>p")
 
 -- Paste without yanking
-keymap("x", "<leader>p", '"_dP')
+-- keymap("x", "<leader>p", '"_dP')
 
 -- Delete without yanking
 keymap("n", "<Leader>d", '"_d')

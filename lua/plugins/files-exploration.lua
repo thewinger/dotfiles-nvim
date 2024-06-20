@@ -1,4 +1,12 @@
 return {
+  {
+    "echasnovski/mini.files",
+    version = "*",
+    config = true,
+    keys = {
+      { "<leader>e", ":lua MiniFiles.open()<CR>", { desc = "Toggle file explorer" } }, -- toggle file explorer
+    },
+  },
   "nvim-tree/nvim-tree.lua",
   version = "*",
   lazy = false,

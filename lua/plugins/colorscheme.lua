@@ -12,10 +12,9 @@ return {
       vim.cmd([[colorscheme tailscheme]])
     end,
   },
-  { "EdenEast/nightfox.nvim", name = "nightfox" },
   { "rose-pine/neovim", name = "rose-pine" },
   {
-    "nyoom-engineering/oxocarbon.nvim",
+    "thewinger/oxocarbon.nvim",
     config = function()
       -- vim.cmd([[colorscheme oxocarbon]])
       -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -26,21 +25,5 @@ return {
     --   event = foo,
     --   config = bar
     --   end,
-  },
-  {
-    "diegoulloao/neofusion.nvim",
-    priority = 1000,
-    config = function()
-      require("neofusion").setup({
-        transparent_mode = true,
-        overrides = {
-          Comment = { fg = "#f5f5f5" },
-        },
-        options = {
-          theme = require("neofusion.lualine"),
-        },
-      })
-      -- vim.cmd([[colorscheme neofusion]])
-    end,
   },
 }
