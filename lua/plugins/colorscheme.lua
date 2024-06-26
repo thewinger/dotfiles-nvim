@@ -9,21 +9,64 @@ return {
     name = "tailscheme",
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme tailscheme]])
+      -- vim.cmd("colorscheme tailscheme")
     end,
   },
-  { "rose-pine/neovim", name = "rose-pine" },
   {
-    "thewinger/oxocarbon.nvim",
+    "EdenEast/nightfox.nvim",
     config = function()
-      -- vim.cmd([[colorscheme oxocarbon]])
-      -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      -- vim.api.nvim_set_hl(0, "String", { fg = "#FFFFFF" })
+      local palettes = {
+        all = {
+          white = "#f8fafc",
+          black = "#1d283a",
+          gray = "#94a3b8",
+          green = "#36d399",
+          magenta = "#a689fa",
+          red = "#fb6f84",
+          yellow = "#fddf49",
+          pink = "#f471b5",
+          blue = "#7ed4fc",
+          cyan = "#67e8f9",
+        },
+      }
+      local specs = {
+        nightfox = {
+          syntax = {
+            keyword = "pink",
+            ["@type.scss"] = "pink",
+            ["@type.css"] = "pink",
+            ["@operator.lua"] = "syntax.operator",
+          },
+        },
+      }
+      local groups = {
+        nightfox = {
+          String = { fg = "palette.white.bright" },
+          Number = { fg = "palette.magenta.bright" },
+          Constant = { fg = "palette.magenta.bright" },
+          Special = { fg = "palette.pink" },
+          IncSearch = { fg = "palette.black", bg = "palette.yellow" },
+          Substitute = { fg = "palette.black", bg = "palette.yellow" },
+          Visual = { fg = "palette.black", bg = "palette.magenta" },
+
+          ["@keyword.return"] = { fg = "palette.white.dim" },
+          ["@function.builtin"] = { fg = "palette.white.dim" },
+        },
+      }
+
+      require("nightfox").setup({
+        palettes = palettes,
+        specs = specs,
+        groups = groups,
+        options = {
+          transparent = true,
+          styles = {
+            comments = "italic",
+          },
+        },
+      })
+
+      vim.cmd("colorscheme nightfox")
     end,
-    -- Add in any other configuration;
-    --   event = foo,
-    --   config = bar
-    --   end,
   },
 }

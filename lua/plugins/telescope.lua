@@ -9,6 +9,14 @@ return {
       "nvim-telescope/telescope-media-files.nvim",
       "camgraff/telescope-tmux.nvim",
       "nvim-tree/nvim-web-devicons",
+      {
+        "danielfalk/smart-open.nvim",
+        branch = "0.2.x",
+        config = true,
+        dependencies = {
+          "kkharji/sqlite.lua",
+        },
+      },
     },
     config = function()
       local telescope = require("telescope")
@@ -118,6 +126,12 @@ return {
               height = 0.75,
             },
           },
+          smart_open = {
+            theme = "ivy",
+            layout_config = {
+              height = 0.75,
+            },
+          },
           buffers = {
             show_all_buffers = true,
             sort_lastused = true,
@@ -159,6 +173,13 @@ return {
               height = 0.75,
             },
           },
+          smart_open = {
+            match_algorithm = "fzf",
+            theme = "ivy",
+            layout_config = {
+              height = 0.75,
+            },
+          },
           media_files = {
             filetypes = { "png", "webp", "jpg", "jpeg" },
             find_cmd = "rg", -- find command (defaults to `fd`)
@@ -181,9 +202,11 @@ return {
       telescope.load_extension("file_browser")
       telescope.load_extension("harpoon")
       telescope.load_extension("tmux")
+      telescope.load_extension("smart_open")
     end,
     keys = {
-      { "-", ':lua require("helpers").project_files()<CR>' },
+      -- { "-", ':lua require("helpers").project_files()<CR>' },
+      { "-", ':lua require("telescope").extensions.smart_open.smart_open()<CR>' },
       { "<leader>-", ':lua require("telescope.builtin").resume()<CR>' },
       {
         "<leader>tw",
@@ -214,5 +237,22 @@ return {
         callback = telescope_any,
       })
     end,
+  },
+  {
+    "danielfalk/smart-open.nvim",
+    branch = "0.2.x",
+    config = function()
+      require("telescope").load_extension("smart_open")
+      -- require('telescope').extensions.smart_open.smart_open {
+      --   cwd_only = true,
+      -- }
+    end,
+    dependencies = {
+      "kkharji/sqlite.lua",
+      -- Only required if using match_algorithm fzf
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      -- Optional.  If installed, native fzy will be used when match_algorithm is fzy
+      { "nvim-telescope/telescope-fzy-native.nvim" },
+    },
   },
 }
