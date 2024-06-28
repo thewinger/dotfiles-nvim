@@ -24,8 +24,14 @@ return {
       local actions = require("telescope.actions")
       local fb_actions = telescope.extensions.file_browser.actions
 
+      local ivy = require("telescope.themes").get_ivy()
+
       telescope.setup({
         defaults = {
+          layout_config = {
+            vertical = { height = 0.75 },
+            -- other layout configuration here
+          },
           prompt_prefix = " ",
           selection_caret = " ",
           path_display = {
@@ -126,12 +132,6 @@ return {
               height = 0.75,
             },
           },
-          smart_open = {
-            theme = "ivy",
-            layout_config = {
-              height = 0.75,
-            },
-          },
           buffers = {
             show_all_buffers = true,
             sort_lastused = true,
@@ -169,16 +169,10 @@ return {
           },
           harpoon = {
             theme = "ivy",
-            layout_config = {
-              height = 0.75,
-            },
           },
           smart_open = {
             match_algorithm = "fzf",
             theme = "ivy",
-            layout_config = {
-              height = 0.75,
-            },
           },
           media_files = {
             filetypes = { "png", "webp", "jpg", "jpeg" },
@@ -206,7 +200,8 @@ return {
     end,
     keys = {
       -- { "-", ':lua require("helpers").project_files()<CR>' },
-      { "-", ':lua require("telescope").extensions.smart_open.smart_open()<CR>' },
+      -- { "-", ':lua require("telescope").extensions.smart_open.smart_open(ivy)<CR>' },
+      { "-", ":Telescope smart_open theme=ivy layout_config={height=0.75}<CR>" },
       { "<leader>-", ':lua require("telescope.builtin").resume()<CR>' },
       {
         "<leader>tw",

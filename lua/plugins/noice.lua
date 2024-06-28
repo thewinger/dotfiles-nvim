@@ -40,23 +40,66 @@ return {
       }, -- you can enable a preset for easier configuration
       presets = {
         bottom_search = false, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
+        command_palette = false, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = false, -- add a border to hover docs and signature help
       },
-      -- cmdline = {
-      --   view = "cmdline",
-      --   format = {
-      --     search_down = {
-      --       view = "cmdline",
-      --     },
-      --     search_up = {
-      --       view = "cmdline",
-      --     },
-      --   },
-      -- },
-      -- Dismiss Noice Message
+      -- Position the command popup at the center of the screen
+      -- See https://github.com/folke/noice.nvim/blob/0cbe3f88d038320bdbda3c4c5c95f43a13c3aa12/lua/noice/types/nui.lua#L6
+      -- See https://github.com/folke/noice.nvim/wiki/Configuration-Recipes
+      ---@type NoiceConfigViews
+      views = {
+        cmdline_popup = {
+          -- backend = "popup",
+          relative = "editor",
+          zindex = 200,
+          position = {
+            row = "40%", -- 40% from top of the screen. This will position it almost at the center.
+            col = "50%",
+          },
+          size = {
+            width = 80,
+            height = "auto",
+          },
+          -- win_options = {
+          --   winhighlight = {
+          --     Normal = "NoiceCmdlinePopup",
+          --     FloatTitle = "NoiceCmdlinePopupTitle",
+          --     FloatBorder = "NoiceCmdlinePopupBorder",
+          --     IncSearch = "",
+          --     CurSearch = "",
+          --     Search = "",
+          --   },
+          --   winbar = "",
+          --   foldenable = false,
+          --   cursorline = false,
+          -- },
+        },
+        popupmenu = {
+          -- relative = "editor", -- "'cursor'"|"'editor'"|"'win'"
+          position = {
+            row = "46.5%", -- Popup will show up below the cmdline automatically
+            col = "50%",
+          },
+          size = {
+            width = 80, -- Making this as wide as the cmdline_popup
+            height = "auto",
+          },
+          border = {
+            -- ---@type _.NuiBorderStyle
+            style = "solid", -- 'double'"|"'none'"|"'rounded'"|"'shadow'"|"'single'"|"'solid'
+            -- ---@type _.NuiBorderPadding
+            -- padding = { 0, 0 },
+          },
+          win_options = {
+            winhighlight = { Normal = "NoiceCmdlinePopup", FloatBorder = "DiagnosticInfo" },
+          },
+        },
+      },
+      cmdline = {
+        view = "cmdline_popup", -- cmdline_popup, cmdline      -- Dismiss Noice Message
+      },
       vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Message" }),
     })
   end,

@@ -9,7 +9,7 @@ return {
     name = "tailscheme",
     priority = 1000,
     config = function()
-      -- vim.cmd("colorscheme tailscheme")
+      vim.cmd("colorscheme tailscheme")
     end,
   },
   {
@@ -51,6 +51,9 @@ return {
 
           ["@keyword.return"] = { fg = "palette.white.dim" },
           ["@function.builtin"] = { fg = "palette.white.dim" },
+          ["@tag.attribute"] = { fg = "palette.white.dim" },
+          ["@tag.delimiter"] = { fg = "syntax.bracket" },
+          ["@tag.tsx"] = { fg = "palette.cyan" },
         },
       }
 
@@ -66,7 +69,7 @@ return {
         },
       })
 
-      vim.cmd("colorscheme nightfox")
+      -- vim.cmd("colorscheme nightfox")
     end,
   },
 }
