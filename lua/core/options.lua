@@ -56,6 +56,7 @@ opt.mouse = "a" -- allow the mouse to be used in neovim
 
 -- Wrapping
 opt.wrap = false -- display lines as not one long line
+opt.breakindent = true
 opt.number = true -- set numbered lines
 opt.relativenumber = true -- set relative numbered lines
 opt.cursorline = true -- highlight the current line
