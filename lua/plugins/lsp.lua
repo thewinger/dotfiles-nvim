@@ -14,8 +14,30 @@ return { -- LSP Configuration & Plugins
       dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
       opts = {},
     },
+    {
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      config = function()
+        require("lsp_lines").setup()
+      end,
+    },
   },
   config = function()
+    vim.diagnostic.config({
+      virtual_text = false,
+      float = {
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+      },
+      signs = true,
+      underline = true,
+      update_in_insert = true,
+      severity_sort = false,
+    })
+
     --  This function gets run when an LSP attaches to a particular buffer.
     --    That is to say, every time a new file is opened that is associated with
     --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -41,7 +63,7 @@ return { -- LSP Configuration & Plugins
         -- Find references for the word under your cursor.:qa
         map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
-        -- Jump to the implementation of the word under your cursor.
+        -- Whzc gb gur vzcyrzragngvba bs gur jbeq haqre lbhe phefbe.
         --  Useful when your language has ways of declaring types without an actual implementation.
         map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
@@ -73,6 +95,9 @@ return { -- LSP Configuration & Plugins
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
+        map("<leader>ll", require("lsp_lines").toggle, "Toggle [L]sp [L]ines")
+        map("<leader>ld", vim.diagnostic.open_float, "Show [L]sp [D]iagnostic")
 
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
