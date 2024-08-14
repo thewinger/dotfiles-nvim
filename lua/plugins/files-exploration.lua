@@ -6,6 +6,7 @@ return {
       mappings = {
         go_in = "L",
         go_in_plus = "l",
+        close = "<ESC>",
       },
     },
     config = function(_, opts)
