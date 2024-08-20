@@ -32,7 +32,7 @@ return {
     require("nvim-highlight-colors").setup({
       render = "background", -- 'background' or 'foreground' or 'virtual'
       enable_named_colors = true,
-      enable_tailwind = true,
+      enable_tailwind = false,
       custom_colors = {
         { label = "blueTW", color = "#3b82f6" },
         { label = "cyanTW", color = "#22d3ee" },

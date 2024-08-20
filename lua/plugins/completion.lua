@@ -37,6 +37,7 @@ return {
     "L3MON4D3/LuaSnip", -- snippet engine
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
     "rafamadriz/friendly-snippets", -- useful snippets
+    "luckasRanarison/tailwind-tools.nvim",
   },
   config = function()
     local lspkind = require("lspkind")
@@ -131,6 +132,11 @@ return {
         { name = "nvim_lsp_signature_help" },
       }),
       -- configure lspkind for vs-code like pictograms in completion menu
+      -- to show tailwind color preview in dropdown
+      -- formatting = {
+      --   format = require("lspkind").cmp_format({
+      --     before = require("tailwind-tools.cmp").lspkind_format
+      --   },
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
