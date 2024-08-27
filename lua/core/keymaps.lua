@@ -16,7 +16,7 @@ vim.g.have_nerd_font = true
 --   term_mode = "t",
 --   command_mode = "c",
 
--- Allow to use ; instead of : to start command
+-- Use semicolon to enter command mode
 keymap("n", ";", ":")
 
 -- Disable command history keymap
@@ -84,14 +84,14 @@ keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
 
 -- Moves line shortcuts (∆ = alt+j, ˚ = alt+k)
-keymap("n", "<A-down>", ":m .+1<CR>==")
-keymap("n", "<A-up>", ":m .-2<CR>==")
-keymap("n", "<A-down>", ":m .+1<CR>==")
-keymap("n", "<A-up>", ":m .-2<CR>==")
-keymap("i", "<A-down", "<ESC>:m .+1<CR>==gi")
-keymap("i", "<A-up>", "<ESC>:m .-2<CR>==gi")
-keymap("v", "<A-down>", ":m '>+1<CR>gv=gv")
-keymap("v", "<A-up>", ":m '<-2<CR>gv=gv")
+keymap("n", "∆", ":m .+1<CR>==")
+keymap("n", "˚", ":m .-2<CR>==")
+keymap("n", "∆", ":m .+1<CR>==")
+keymap("n", "˚", ":m .-2<CR>==")
+keymap("i", "∆", "<ESC>:m .+1<CR>==gi")
+keymap("i", "˚", "<ESC>:m .-2<CR>==gi")
+keymap("v", "∆", ":m '>+1<CR>gv=gv")
+keymap("v", "˚", ":m '<-2<CR>gv=gv")
 
 -- vv to highlight just the text, without indents of a line
 keymap("", "vv", "^vg_")
@@ -100,8 +100,8 @@ keymap("", "vv", "^vg_")
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv")
 keymap("x", "K", ":move '<-2<CR>gv-gv")
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv")
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
+keymap("x", "∆", ":move '>+1<CR>gv-gv")
+keymap("x", "˚", ":move '<-2<CR>gv-gv")
 
 -- Close current buffer without closing window
 keymap("n", "<leader>q", ":bp|bd #<CR>")
