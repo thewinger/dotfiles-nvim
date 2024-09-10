@@ -68,6 +68,7 @@ opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 opt.softtabstop = 2 -- number of tabs when inserting operations
 opt.smartindent = true -- make indenting smarter again
 opt.expandtab = true -- convert tabs to spaces
+vim.g.editorconfig = false
 
 -- Others
 opt.fillchars.fold = " "

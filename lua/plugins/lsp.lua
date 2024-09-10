@@ -24,6 +24,10 @@ return { -- LSP Configuration & Plugins
   config = function()
     vim.diagnostic.config({
       virtual_text = false,
+      -- virtual_text = {
+      --   only_current_line = true,
+      --   source = true,
+      -- },
       float = {
         focusable = false,
         style = "minimal",
@@ -138,7 +142,6 @@ return { -- LSP Configuration & Plugins
     local servers = {
 
       cssls = {},
-      eslint = {},
       graphql = {},
       html = {},
       jsonls = {},
