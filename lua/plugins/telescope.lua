@@ -167,9 +167,9 @@ return {
               },
             },
           },
-          harpoon = {
-            theme = "ivy",
-          },
+          -- harpoon = {
+          --   theme = "ivy",
+          -- },
           smart_open = {
             match_algorithm = "fzf",
             theme = "ivy",
@@ -194,7 +194,7 @@ return {
       telescope.load_extension("media_files")
       telescope.load_extension("fzf")
       telescope.load_extension("file_browser")
-      telescope.load_extension("harpoon")
+      -- telescope.load_extension("harpoon")
       telescope.load_extension("tmux")
       telescope.load_extension("smart_open")
     end,
