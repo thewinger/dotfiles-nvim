@@ -9,7 +9,7 @@ return {
     name = "tailscheme",
     priority = 1000,
     config = function()
-      vim.cmd("colorscheme tailscheme")
+      -- vim.cmd("colorscheme tailscheme")
     end,
   },
   {
@@ -69,7 +69,7 @@ return {
         },
       })
 
-      -- vim.cmd("colorscheme nightfox")
+      vim.cmd("colorscheme nightfox")
     end,
   },
   -- {
