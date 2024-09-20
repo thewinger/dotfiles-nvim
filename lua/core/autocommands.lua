@@ -86,6 +86,12 @@ vim.api.nvim_exec(
   true
 )
 
+-- Autosave
+vim.api.nvim_create_autocmd(
+  { "FocusLost", "ModeChanged", "TextChanged", "BufEnter" },
+  { desc = "autosave", pattern = "*", command = "silent! update" }
+)
+
 -- Autoclose nvim-tree if last window
 vim.api.nvim_create_autocmd("QuitPre", {
   callback = function()
