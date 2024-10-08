@@ -11,14 +11,35 @@ return { -- LSP Configuration & Plugins
     { "j-hui/fidget.nvim", opts = {} },
     {
       "pmizio/typescript-tools.nvim",
+      ft = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+      },
       dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-      opts = {},
-    },
-    {
-      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-      config = function()
-        require("lsp_lines").setup()
-      end,
+      opts = {
+        settings = {
+          -- expose_as_code_action = "all",
+          expose_as_code_action = { "fix_all", "add_missing_imports", "remove_unused" },
+          jsx_close_tag = {
+            enable = true,
+            filetypes = { "javascriptreact", "typescriptreact" },
+          },
+          tsserver_file_preferences = {
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+          },
+        },
+      },
     },
   },
   config = function()
@@ -100,7 +121,6 @@ return { -- LSP Configuration & Plugins
         --  For example, in C this would take you to the header
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-        map("<leader>ll", require("lsp_lines").toggle, "Toggle [L]sp [L]ines")
         map("<leader>ld", vim.diagnostic.open_float, "Show [L]sp [D]iagnostic")
 
         -- The following two autocommands are used to highlight references of the
@@ -147,6 +167,7 @@ return { -- LSP Configuration & Plugins
       jsonls = {},
       yamlls = {},
       tailwindcss = {},
+      clangd = {},
       -- gopls = {},
       -- pyright = {},
       -- rust_analyzer = {},

@@ -66,7 +66,7 @@ return {
         options = {
           globalstatus = true,
           icons_enabled = true,
-          theme = "auto",
+          theme = "tailscheme",
           component_separators = "",
           section_separators = "",
           disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },

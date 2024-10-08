@@ -86,37 +86,6 @@ vim.api.nvim_exec(
   true
 )
 
--- Autosave
-vim.api.nvim_create_autocmd(
-  { "FocusLost", "ModeChanged", "TextChanged", "BufEnter" },
-  { desc = "autosave", pattern = "*", command = "silent! update" }
-)
-
--- Autoclose nvim-tree if last window
-vim.api.nvim_create_autocmd("QuitPre", {
-  callback = function()
-    local tree_wins = {}
-    local floating_wins = {}
-    local wins = vim.api.nvim_list_wins()
-    for _, w in ipairs(wins) do
-      local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-      if bufname:match("NvimTree_") ~= nil then
-        table.insert(tree_wins, w)
-      end
-      if vim.api.nvim_win_get_config(w).relative ~= "" then
-        table.insert(floating_wins, w)
-      end
-    end
-    if 1 == #wins - #floating_wins - #tree_wins then
-      -- Should quit, so we close all invalid windows.
-      for _, w in ipairs(tree_wins) do
-        vim.api.nvim_win_close(w, true)
-      end
-    end
-  end,
-})
-
--- Show line diagnostics automatically in hover window
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
     vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
@@ -130,23 +99,24 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 -- })
 
 -- Function to check if a floating dialog exists and if not
--- then check for diagnostics under the cursor
-function OpenDiagnosticIfNoFloat()
-  for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-    if vim.api.nvim_win_get_config(winid).zindex then
-      return
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
+  pattern = "*",
+  callback = function()
+    for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+      if vim.api.nvim_win_get_config(winid).zindex then
+        return
+      end
     end
-  end
-  -- THIS IS FOR BUILTIN LSP
-  vim.diagnostic.open_float(0, {
-    scope = "cursor",
-    focusable = false,
-    close_events = {
-      "CursorMoved",
-      "CursorMovedI",
-      "BufHidden",
-      "InsertCharPre",
-      "WinLeave",
-    },
-  })
-end
+    vim.diagnostic.open_float({
+      scope = "cursor",
+      focusable = false,
+      close_events = {
+        "CursorMoved",
+        "CursorMovedI",
+        "BufHidden",
+        "InsertCharPre",
+        "WinLeave",
+      },
+    })
+  end,
+}) -- then check for diagnostics under the cursor
