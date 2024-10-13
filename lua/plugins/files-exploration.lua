@@ -2,6 +2,15 @@ return {
   {
     "echasnovski/mini.files",
     version = false,
+    dependencies = {
+      {
+        "echasnovski/mini.icons",
+        version = false,
+        config = function()
+          require("mini.icons").setup()
+        end,
+      },
+    },
     opts = {
       mappings = {
         go_in = "L",
@@ -31,6 +40,8 @@ return {
           end)
 
           MiniFiles.set_target_window(new_target_window)
+          MiniFiles.go_in()
+          MiniFiles.close()
         end
 
         -- Adding `desc` will result into `show_help` entries
@@ -43,8 +54,8 @@ return {
         callback = function(args)
           local buf_id = args.data.buf_id
           -- Tweak keys to your liking
-          map_split(buf_id, "gs", "belowright horizontal")
-          map_split(buf_id, "gv", "belowright vertical")
+          map_split(buf_id, "<C-x>", "belowright horizontal")
+          map_split(buf_id, "<C-v>", "belowright vertical")
         end,
       })
     end,

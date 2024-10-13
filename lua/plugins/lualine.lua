@@ -69,7 +69,7 @@ return {
           theme = "tailscheme",
           component_separators = "",
           section_separators = "",
-          disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+          disabled_filetypes = { "alpha", "oil", "dashboard", "NvimTree", "Outline" },
           always_divide_middle = true,
         },
         sections = {

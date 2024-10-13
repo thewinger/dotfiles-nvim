@@ -12,6 +12,7 @@ return {
       vim.cmd("colorscheme tailscheme")
     end,
   },
+
   -- {
   --   "aliqyan-21/darkvoid.nvim",
   --   lazy = false,
