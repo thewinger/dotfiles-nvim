@@ -120,3 +120,12 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
     })
   end,
 }) -- then check for diagnostics under the cursor
+
+-- Overwrite highlight groups in any colorscheme
+vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+  group = vim.api.nvim_create_augroup("Color", {}),
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "String", { fg = "#F8FAFC" })
+  end,
+})
