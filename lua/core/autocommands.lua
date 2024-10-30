@@ -126,6 +126,26 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
   group = vim.api.nvim_create_augroup("Color", {}),
   pattern = "*",
   callback = function()
-    vim.api.nvim_set_hl(0, "String", { fg = "#F8FAFC" })
+    local foreground = "#F8FAFC"
+    local background = "#1E293B"
+    local dark = "#0F172A"
+    local comment = "#64748b"
+    local blue = "#7DD3FC"
+
+    local hl = vim.api.nvim_set_hl
+
+    hl(0, "String", { fg = foreground })
+    -- hl(0, "Comment", { fg = comment, italic = true })
+    -- hl(0, "Normal", { fg = foreground, bg = background })
+    -- hl(0, "CursorLine", { bg = dark })
+    -- hl(0, "WhiteSpace", { fg = background })
+    -- hl(0, "Visual", { fg = dark, bg = blue })
+
+    -- hl(0, "CursorLine", { fg = 'NONE', bg = c.dark })
+
+    --   bg = "#1E293B",
+    --   dark = "#0F172A",
+    --   white = "#F8FAFC",
+    --   comment = "#64748b",
   end,
 })
