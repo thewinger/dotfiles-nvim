@@ -118,8 +118,12 @@ keymap("c", "w!!", "<esc>:lua require'utils'.sudo_write()<CR>", { silent = true 
 -- remove whitespace on save
 cmd([[au BufWritePre * :%s/\s\+$//e]])
 
---LSP lines
--- keymap("", "<leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
+vim.keymap.set(
+  "n",
+  "<leader>s",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Search And Replace The Word Under The Cursor" }
+)
 
 -- Ufo
 vim.keymap.set("n", "zR", ':lua require("ufo").openAllFolds')

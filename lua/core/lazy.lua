@@ -23,7 +23,7 @@ lazy.setup({
   spec = {
     { import = "plugins" },
   },
-
+  install = { colorscheme = { "tailscheme" } },
   -- ui config
   ui = {
     border = "double",
