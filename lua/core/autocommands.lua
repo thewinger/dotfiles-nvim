@@ -131,21 +131,22 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
     local dark = "#0F172A"
     local comment = "#64748b"
     local blue = "#7DD3FC"
+    local gray_light = "#CBD5E1"
 
     local hl = vim.api.nvim_set_hl
 
     hl(0, "String", { fg = foreground })
-    -- hl(0, "Comment", { fg = comment, italic = true })
-    -- hl(0, "Normal", { fg = foreground, bg = background })
-    -- hl(0, "CursorLine", { bg = dark })
-    -- hl(0, "WhiteSpace", { fg = background })
-    -- hl(0, "Visual", { fg = dark, bg = blue })
+    hl(0, "Normal", { bg = "none" })
+    hl(0, "NormalFloat", { bg = "none" })
 
-    -- hl(0, "CursorLine", { fg = 'NONE', bg = c.dark })
+    hl(0, "SignColumn", { fg = "NONE", bg = "none" })
+    hl(0, "Comment", { fg = comment, italic = true })
+    hl(0, "CursorLine", { bg = dark })
+    hl(0, "WhiteSpace", { fg = dark })
+    hl(0, "Visual", { link = "IncSearch" })
 
-    --   bg = "#1E293B",
-    --   dark = "#0F172A",
-    --   white = "#F8FAFC",
-    --   comment = "#64748b",
+    hl(0, "CursorLine", { fg = "NONE", bg = dark })
+    hl(0, "CursorLineNr", { fg = gray_light, bg = "NONE", bold = true })
+    hl(0, "LineNr", { fg = comment, bg = "NONE" })
   end,
 })

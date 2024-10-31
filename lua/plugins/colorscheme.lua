@@ -74,7 +74,18 @@ return {
 
     -- optionally set the colorscheme within lazy config
     init = function()
-      vim.cmd("colorscheme duskfox")
+      -- vim.cmd("colorscheme duskfox")
     end,
   }, -- lazy
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    -- Add in any other configuration;
+    --   event = foo,
+    --   config = bar
+    --   end,
+    init = function()
+      vim.cmd("colorscheme oxocarbon")
+    end,
+  },
+  {},
 }
