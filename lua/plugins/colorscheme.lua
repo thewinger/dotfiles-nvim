@@ -40,7 +40,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      -- vim.cmd("colorscheme tailscheme")
+      vim.cmd("colorscheme tailscheme")
     end,
   },
   {
@@ -60,32 +60,4 @@ return {
       -- vim.cmd("colorscheme poimandres")
     end,
   },
-  {
-    "EdenEast/nightfox.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("nightfox").setup({
-        -- leave this setup function empty for default config
-        -- or refer to the configuration section
-        -- for configuration options
-      })
-    end,
-
-    -- optionally set the colorscheme within lazy config
-    init = function()
-      -- vim.cmd("colorscheme duskfox")
-    end,
-  }, -- lazy
-  {
-    "nyoom-engineering/oxocarbon.nvim",
-    -- Add in any other configuration;
-    --   event = foo,
-    --   config = bar
-    --   end,
-    init = function()
-      vim.cmd("colorscheme oxocarbon")
-    end,
-  },
-  {},
 }

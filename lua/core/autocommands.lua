@@ -126,6 +126,9 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
   group = vim.api.nvim_create_augroup("Color", {}),
   pattern = "*",
   callback = function()
+    if vim.g.colors_name == "tailscheme" then
+      return
+    end
     local foreground = "#F8FAFC"
     local background = "#1E293B"
     local dark = "#0F172A"

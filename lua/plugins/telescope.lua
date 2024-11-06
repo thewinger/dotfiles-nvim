@@ -120,6 +120,24 @@ return {
               height = 0.75,
             },
           },
+          oldfiles = {
+            theme = "ivy",
+            layout_config = {
+              height = 0.75,
+            },
+          },
+          colorscheme = {
+            theme = "ivy",
+            layout_config = {
+              height = 0.75,
+            },
+          },
+          keymaps = {
+            theme = "ivy",
+            layout_config = {
+              height = 0.75,
+            },
+          },
           grep_string = {
             theme = "ivy",
             layout_config = {
@@ -172,6 +190,9 @@ return {
           -- },
           smart_open = {
             match_algorithm = "fzf",
+            layout_config = {
+              height = 0.75,
+            },
             theme = "ivy",
           },
           media_files = {
@@ -200,9 +221,10 @@ return {
     end,
     keys = {
       -- { "-", ':lua require("helpers").project_files()<CR>' },
-      -- { "-", ':lua require("telescope").extensions.smart_open.smart_open(ivy)<CR>' },
-      { "-", ":Telescope smart_open theme=ivy layout_config={height=0.75}<CR>" },
+      -- { "-", ':lua require("telescope").extensions.smart_open.smart_open({cwd_only=true})<CR>' },
+      { "-", ":Telescope smart_open theme=ivy layout_config={height=0.75} cwd_only=true<CR>" },
       { "<leader>-", ':lua require("telescope.builtin").resume()<CR>' },
+      { "<leader><leader>", ':lua require("telescope.builtin").oldfiles()<CR>' },
       {
         "<leader>tw",
         '<cmd>lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>',
@@ -238,9 +260,9 @@ return {
     branch = "0.2.x",
     config = function()
       require("telescope").load_extension("smart_open")
-      -- require('telescope').extensions.smart_open.smart_open {
+      -- require("telescope").extensions.smart_open.smart_open({
       --   cwd_only = true,
-      -- }
+      -- })
     end,
     dependencies = {
       "kkharji/sqlite.lua",
