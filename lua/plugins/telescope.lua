@@ -231,7 +231,7 @@ return {
       },
       { "<leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>' },
       { "<leader>tg", '<cmd>lua require("telescope.builtin").git_files()<CR>' },
-      { "<leader>tb", '<cmd>lua require("telescope.builtin").buffers()<CR>' },
+      { "<leader>b", '<cmd>lua require("telescope.builtin").buffers()<CR>' },
       { "<leader>tht", '<cmd>lua require("telescope.builtin").help_tags()<CR>' },
       { "<leader>cs", '<cmd>lua require("telescope.builtin").colorscheme()<CR>' },
       { "<leader>km", '<cmd>lua require("telescope.builtin").keymaps()<CR>' },
