@@ -8,6 +8,7 @@ local opt = vim.opt
 
 -- Appearance
 opt.background = "dark"
+opt.termguicolors = true
 vim.g.skip_ts_context_commentstring_module = true
 opt.showtabline = 1 -- Line above window with file path
 opt.pumheight = 10 -- pop up menu height
