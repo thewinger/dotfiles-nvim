@@ -187,7 +187,7 @@ return { -- LSP Configuration & Plugins
         settings = {
           Lua = {
             diagnostics = {
-              globals = { "vim" },
+              globals = { "vim", "vim.g" },
             },
             runtime = { version = "LuaJIT" },
             workspace = {
