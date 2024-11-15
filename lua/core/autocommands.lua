@@ -122,31 +122,26 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 }) -- then check for diagnostics under the cursor
 
 -- Overwrite highlight groups in any colorscheme
--- vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
---   group = vim.api.nvim_create_augroup("Color", {}),
---   pattern = "*",
---   callback = function()
---     local foreground = "#F8FAFC"
---     local background = "#1E293B"
---     local dark = "#0F172A"
---     local comment = "#64748b"
---     local base10 = "#ee5396"
---     local gray_light = "#CBD5E1"
---
---     local hl = vim.api.nvim_set_hl
---
---     hl(0, "String", { fg = foreground })
---     hl(0, "Normal", { bg = "none" })
---     hl(0, "NormalFloat", { bg = "none" })
---
---     hl(0, "SignColumn", { fg = "NONE", bg = "none" })
---     hl(0, "Comment", { fg = comment, italic = true })
---     hl(0, "CursorLine", { bg = dark })
---     hl(0, "WhiteSpace", { fg = dark, bg = base10 })
---     hl(0, "Visual", { link = "IncSearch" })
---     hl(0, "@function", { bold = false })
---     hl(0, "CursorLine", { fg = "NONE", bg = dark })
---     hl(0, "CursorLineNr", { fg = gray_light, bg = "NONE", bold = true })
---     hl(0, "LineNr", { fg = comment, bg = "NONE" })
---   end,
--- })
+vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+  group = vim.api.nvim_create_augroup("Color", {}),
+  pattern = "*",
+  callback = function()
+    local comment = "#71717a"
+
+    local hl = vim.api.nvim_set_hl
+
+    -- hl(0, "String", { fg = foreground })
+    -- hl(0, "Normal", { bg = "none" })
+    -- hl(0, "NormalFloat", { bg = "none" })
+    --
+    -- hl(0, "SignColumn", { fg = "NONE", bg = "none" })
+    hl(0, "Comment", { fg = comment, italic = true })
+    -- hl(0, "CursorLine", { bg = dark })
+    -- hl(0, "WhiteSpace", { fg = dark, bg = base10 })
+    -- hl(0, "Visual", { link = "IncSearch" })
+    -- hl(0, "@function", { bold = false })
+    -- hl(0, "CursorLine", { fg = "NONE", bg = dark })
+    -- hl(0, "CursorLineNr", { fg = gray_light, bg = "NONE", bold = true })
+    -- hl(0, "LineNr", { fg = comment, bg = "NONE" })
+  end,
+})
