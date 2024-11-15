@@ -45,7 +45,7 @@ opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 -- Backspace key
 
 -- Search
-opt.hlsearch = false -- Don't highlight all matches on previous search pattern (In previous config it was false)
+opt.hlsearch = true -- Don't highlight all matches on previous search pattern (In previous config it was false)
 opt.incsearch = true -- show highlight while writing search
 opt.ignorecase = true -- ignore case in search patterns
 opt.smartcase = true -- smart case
