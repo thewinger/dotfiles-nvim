@@ -62,6 +62,9 @@ keymap("n", "<Leader>P", "Oq<BS><Esc>p")
 -- Paste without yanking
 -- keymap("x", "<leader>p", '"_dP')
 
+-- Duplicate a line and comment out the first line
+keymap("n", "yc", "yygccp")
+
 -- Delete without yanking
 keymap("n", "<Leader>d", '"_d')
 keymap("v", "<Leader>d", '"_d')
