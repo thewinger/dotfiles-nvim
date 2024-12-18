@@ -168,6 +168,10 @@ return {
           },
         },
         lsp_definitions = {
+          theme = "ivy",
+          layout_config = {
+            height = 0.75,
+          },
           file_ignore_patterns = { "%.d.ts" },
         },
         extensions = {
