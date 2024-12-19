@@ -249,19 +249,6 @@ return {
     },
   },
   {
-    "https://github.com/d00h/telescope-any",
-    config = function()
-      local opts = {} -- or user
-      local telescope_any = require("telescope-any").create_telescope_any(opts)
-      -- vim.api.nvim_create_user_command("TelescopeAny", telescope_any, { nargs = 0 })
-      vim.api.nvim_set_keymap("n", "<leader>tt", "", {
-        noremap = true,
-        silent = true,
-        callback = telescope_any,
-      })
-    end,
-  },
-  {
     "danielfalk/smart-open.nvim",
     branch = "0.2.x",
     config = function()
