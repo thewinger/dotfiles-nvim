@@ -12,9 +12,13 @@ return {
       {
         "danielfalk/smart-open.nvim",
         branch = "0.2.x",
-        config = true,
+        opts = true,
         dependencies = {
           "kkharji/sqlite.lua",
+          -- Only required if using match_algorithm fzf
+          { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+          -- Optional.  If installed, native fzy will be used when match_algorithm is fzy
+          { "nvim-telescope/telescope-fzy-native.nvim" },
         },
       },
     },
@@ -236,7 +240,6 @@ return {
       { "<leader>ts", '<cmd>lua require("telescope.builtin").live_grep()<CR>' },
       { "<leader>tg", '<cmd>lua require("telescope.builtin").git_files()<CR>' },
       { "<leader>mg", '<cmd>lua require("custom.telescope.multi-ripgrep")<CR>' },
-      { "<leader>/", '<cmd>lua require("telescope.builtin.current_buffer_fuzzy_find")<CR>' },
       { "<leader>b", '<cmd>lua require("telescope.builtin").buffers()<CR>' },
       { "<leader>tht", '<cmd>lua require("telescope.builtin").help_tags()<CR>' },
       { "<leader>cs", '<cmd>lua require("telescope.builtin").colorscheme()<CR>' },
@@ -246,23 +249,6 @@ return {
       { "<Leader>tf", '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>' },
       { "<leader>tms", "<cmd>Telescope tmux sessions theme=ivy<CR>" },
       { "<leader>tmw", "<cmd>Telescope tmux windows theme=ivy<CR>" },
-    },
-  },
-  {
-    "danielfalk/smart-open.nvim",
-    branch = "0.2.x",
-    config = function()
-      require("telescope").load_extension("smart_open")
-      -- require("telescope").extensions.smart_open.smart_open({
-      --   cwd_only = true,
-      -- })
-    end,
-    dependencies = {
-      "kkharji/sqlite.lua",
-      -- Only required if using match_algorithm fzf
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      -- Optional.  If installed, native fzy will be used when match_algorithm is fzy
-      { "nvim-telescope/telescope-fzy-native.nvim" },
     },
   },
 }
