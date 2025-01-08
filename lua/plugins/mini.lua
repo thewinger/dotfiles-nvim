@@ -10,10 +10,10 @@ return {
       require("mini.indentscope").setup()
 
       local MiniFiles = require("mini.files")
-      local minifiles_toggle = function()
+
+      local minifiles_toggle = function(...)
         if not MiniFiles.close() then
-          MiniFiles.open(vim.api.nvim_buf_get_name(0))
-          MiniFiles.reveal_cwd()
+          MiniFiles.open(...)
         end
       end
 
@@ -23,7 +23,7 @@ return {
           local new_target_window
           vim.api.nvim_win_call(MiniFiles.get_explorer_state().target_window, function()
             vim.cmd(direction .. " split")
-            ew_target_window = vim.api.nvim_get_current_win()
+            new_target_window = vim.api.nvim_get_current_win()
           end)
 
           MiniFiles.set_target_window(new_target_window)
@@ -46,7 +46,25 @@ return {
         end,
       })
 
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "MiniFilesWindowOpen",
+        callback = function(args)
+          local win_id = args.data.win_id
+
+          -- Customize window-local settings
+          local config = vim.api.nvim_win_get_config(win_id)
+          config.border = "double"
+          vim.api.nvim_win_set_config(win_id, config)
+        end,
+      })
+
       MiniFiles.setup({
+        config = {
+          mappings = {
+            go_in = 'L',
+            go_in_plus = 'l'
+          },
+        },
 
         vim.keymap.set("n", "<leader>e", minifiles_toggle, { desc = "Explorer" }),
       })

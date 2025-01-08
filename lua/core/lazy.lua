@@ -20,19 +20,9 @@ end
 lazy.setup({
   -- importing directories
   spec = {
-    {
-      -- dir = "/Users/win/Developer/tailcarbon.nvim",
-      "thewinger/tailcarbon.nvim",
-      init = function()
-        vim.cmd.colorscheme("oxocarbon")
-        vim.api.nvim_set_hl(0, "WinBar", { bg = "none" })
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-        vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-      end,
-    },
     { import = "plugins" },
   },
-  install = { colorscheme = { "tailscheme" } },
+  install = { colorscheme = { "tokyonight" } },
   -- ui config
   ui = {
     border = "double",

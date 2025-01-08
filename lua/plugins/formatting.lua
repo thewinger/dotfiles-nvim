@@ -2,32 +2,31 @@ return {
   "stevearc/conform.nvim",
   lazy = true,
   event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+  opts = {
+    formatters_by_ft = {
+      javascript = { "prettierd" },
+      typescript = { "prettierd" },
+      javascriptreact = { "prettierd" },
+      typescriptreact = { "prettierd" },
+      svelte = { "prettierd" },
+      css = { "prettierd" },
+      html = { "prettierd" },
+      json = { "prettierd" },
+      yaml = { "prettierd" },
+      markdown = { "prettierd" },
+      graphql = { "prettierd" },
+      lua = { "stylua" },
+    },
+    format_on_save = function(bufnr)
+      -- Disable with a global or buffer-local variable
+      if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+        return
+      end
+      return { timeout_ms = 500, lsp_fallback = true }
+    end,
+  },
   config = function()
     local conform = require("conform")
-
-    conform.setup({
-      formatters_by_ft = {
-        javascript = { "prettierd" },
-        typescript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        typescriptreact = { "prettierd" },
-        svelte = { "prettierd" },
-        css = { "prettierd" },
-        html = { "prettierd" },
-        json = { "prettierd" },
-        yaml = { "prettierd" },
-        markdown = { "prettierd" },
-        graphql = { "prettierd" },
-        lua = { "stylua" },
-      },
-      format_on_save = function(bufnr)
-        -- Disable with a global or buffer-local variable
-        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-          return
-        end
-        return { timeout_ms = 500, lsp_fallback = true }
-      end,
-    })
 
     vim.keymap.set({ "n", "v" }, "<leader>ft", function()
       conform.format({

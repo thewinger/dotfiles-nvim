@@ -1,7 +1,11 @@
 return {
   {
     "mawkler/modicator.nvim",
-    dependencies = "thewinger/tailcarbon.nvim", -- Add your colorscheme plugin here
+    dependencies = {
+      -- "thewinger/tailcarbon.nvim",
+      "folke/tokyonight.nvim",
+
+    }, -- Add your colorscheme plugin here
     init = function()
       -- These are required for Modicator to work
       vim.o.cursorline = true

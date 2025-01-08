@@ -47,6 +47,14 @@ local filename = {
   symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
 }
 
+local lazy  = {
+  'lazy',
+  require('lazy.status').updates,
+  cond = require('lazy.status').has_updates,
+  color = { fg = '#ff9e64'}
+}
+
+
 -- cool function for progress
 local progress = function()
   local current_line = vim.fn.line(".")
@@ -77,7 +85,7 @@ return {
           lualine_b = { branch },
           lualine_c = { filename },
           -- lualine_x = { "encoding", "fileformat", "filetype" },
-          lualine_x = { diagnostics, "encoding", filetype },
+          lualine_x = { lazy, diagnostics, "encoding", filetype },
           lualine_y = { progress },
           lualine_z = { location },
         },
