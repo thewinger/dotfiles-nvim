@@ -2,6 +2,11 @@ local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
+  diagnostics_color = {
+        -- Same values as the general color option can be used here.
+        error = { fg = '#EF4445'},
+        warn = { fg = '#ff9e64'}
+      },
   symbols = { error = " ", warn = " " },
   colored = true,
   update_in_insert = false,
@@ -68,6 +73,7 @@ end
 return {
   {
     "nvim-lualine/lualine.nvim",
+    -- enabled = false,
     config = function()
       require("lualine").setup({
 

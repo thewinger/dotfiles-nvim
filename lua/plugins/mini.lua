@@ -7,6 +7,7 @@ return {
       require("mini.icons").setup()
       require("mini.ai").setup()
       require("mini.surround").setup()
+      -- require('mini.statusline').setup()
       require("mini.indentscope").setup()
 
       local MiniFiles = require("mini.files")
