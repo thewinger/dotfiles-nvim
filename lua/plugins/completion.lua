@@ -11,21 +11,25 @@ return {
       -- see the "default configuration" section below for full documentation on how to define
       -- your own keymap.
       keymap = {
-        preset = "default",
-        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
-        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-        ["<CR>"] = { "accept", "fallback" },
-        ["<Esc>"] = { "hide", "fallback" },
-        ["<PageUp>"] = { "scroll_documentation_up", "fallback" },
-        ["<PageDown>"] = { "scroll_documentation_down", "fallback" },
+        preset = "super-tab",
+        -- ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+        -- ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        -- ["<CR>"] = { "accept", "fallback" },
+        -- ["<Esc>"] = { "hide", "fallback" },
+        -- ["<PageUp>"] = { "scroll_documentation_up", "fallback" },
+        -- ["<PageDown>"] = { "scroll_documentation_down", "fallback" },
       },
       completion = {
         accept = { auto_brackets = { enabled = true } },
 
         list = {
           selection =  {
-            preselect = true,
-            auto_insert = true
+            -- preselect = true,
+            -- auto_insert = true
+            preselect = function(ctx)
+    return ctx.mode ~= 'cmdline' and not require('blink.cmp').snippet_active({ direction = 1 })
+  end,
+  -- auto_insert = function(ctx) return ctx.mode ~= 'cmdline' end,
           }
         },
         menu = {
