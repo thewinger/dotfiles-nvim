@@ -1,17 +1,5 @@
 return {
   {
-    -- dir = "/Users/win/Projects/tailscheme.nvim",
-    "thewinger/tailscheme.nvim",
-    dependencies = {
-      "rktjmp/lush.nvim",
-    },
-    lazy = false,
-    priority = 1000,
-    -- config = function()
-    --   -- vim.cmd("colorscheme tailscheme")
-    -- end,
-  },
-  {
     -- dir = "/Users/win/Developer/tailcarbon.nvim",
     "thewinger/tailcarbon.nvim",
     init = function()

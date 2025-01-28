@@ -44,7 +44,7 @@ return {
           local buf_id = args.data.buf_id
           -- Tweak keys to your liking
           map_split(buf_id, "<C-x>", "belowright horizontal")
-          map_split(buf_id, "<C-v>", "belowright vertical")
+          map_split(buf_id, "<C-y>", "belowright vertical")
         end,
       })
 
@@ -64,8 +64,10 @@ return {
         config = {
           mappings = {
             go_in = 'L',
-            go_in_plus = 'l'
-          },
+            go_in_plus = 'l',
+            go_out = 'H',
+            go_out_plus = 'h',
+          }
         },
 
         vim.keymap.set("n", "<leader>e", minifiles_toggle, { desc = "Explorer" }),
