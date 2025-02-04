@@ -9,7 +9,13 @@ return {
       require("mini.bracketed").setup()
       require("mini.surround").setup()
       -- require('mini.statusline').setup()
-      require("mini.indentscope").setup()
+      require("mini.indentscope").setup({
+        draw = {
+          delay = 1,
+          animation = require('mini.indentscope').gen_animation.none()
+        },
+        symbol = '│'
+      })
 
       local MiniFiles = require("mini.files")
 
