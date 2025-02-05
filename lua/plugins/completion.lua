@@ -27,8 +27,8 @@ return {
             -- preselect = true,
             -- auto_insert = true
             preselect = function(ctx)
-    return ctx.mode ~= 'cmdline' and not require('blink.cmp').snippet_active({ direction = 1 })
-  end,
+              return ctx.mode ~= 'cmdline' and not require('blink.cmp').snippet_active({ direction = 1 })
+            end,
   -- auto_insert = function(ctx) return ctx.mode ~= 'cmdline' end,
           }
         },
@@ -112,6 +112,7 @@ return {
           and vim.bo.buftype ~= "nofile"
           and vim.bo.buftype ~= "prompt"
           and vim.bo.buftype ~= "TelescopePrompt"
+          and vim.bo.buftype ~= "snacks_picker_input"
           and vim.b.completion ~= false
       end,
     },
