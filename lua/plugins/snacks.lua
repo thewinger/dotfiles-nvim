@@ -1,50 +1,52 @@
 return {
   "folke/snacks.nvim",
   keys = {
+    { "<leader>ps", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+    { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
     -- File picker
-      {
-        "-",
-        function()
-          Snacks.picker.files({
-            finder = "files",
-            format = "file",
-            show_empty = true,
-            supports_live = true,
-            -- In case you want to override the layout for this keymap
-            -- layout = "vscode",
-          })
-        end,
-        desc = "Find Files",
-      },
+    {
+      "-",
+      function()
+        Snacks.picker.files({
+          finder = "files",
+          format = "file",
+          show_empty = true,
+          supports_live = true,
+          -- In case you want to override the layout for this keymap
+          -- layout = "vscode",
+        })
+      end,
+      desc = "Find Files",
+    },
     -- Navigate my buffers
-      {
-        "<leader>pb",
-        function()
-          Snacks.picker.buffers({
-            -- I always want my buffers picker to start in normal mode
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
-            finder = "buffers",
-            format = "buffer",
-            hidden = false,
-            unloaded = true,
-            current = true,
-            sort_lastused = true,
-            win = {
-              input = {
-                keys = {
-                  ["d"] = "bufdelete",
-                },
+    {
+      "<leader>pb",
+      function()
+        Snacks.picker.buffers({
+          -- I always want my buffers picker to start in normal mode
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+          finder = "buffers",
+          format = "buffer",
+          hidden = false,
+          unloaded = true,
+          current = true,
+          sort_lastused = true,
+          win = {
+            input = {
+              keys = {
+                ["d"] = "bufdelete",
               },
-              list = { keys = { ["d"] = "bufdelete" } },
             },
-            -- In case you want to override the layout for this keymap
-            -- layout = "ivy",
-          })
-        end,
-        desc = "Snacks [P]picker [B]buffers",
-      },
+            list = { keys = { ["d"] = "bufdelete" } },
+          },
+          -- In case you want to override the layout for this keymap
+          -- layout = "ivy",
+        })
+      end,
+      desc = "Snacks [P]picker [B]buffers",
+    },
   },
   opts = {
     -- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
