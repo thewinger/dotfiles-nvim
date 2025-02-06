@@ -1,29 +1,35 @@
 return {
   "folke/snacks.nvim",
+  -- module @snacks
   keys = {
-    { "<leader>ps", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-    { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
+    { "<leader>ss", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+    { "<leader>/", function() Snacks.picker.grep_word() end, desc = "Grep" },
+    { "<leader>cs", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+    { "<leader>km", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+    { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+    { "<leader>-", function() Snacks.picker.resume() end, desc = "Resume" },
+    { "-", function() Snacks.picker.files() end, desc = "Find files" },
     -- File picker
-    {
-      "-",
-      function()
-        Snacks.picker.files({
-          finder = "files",
-          format = "file",
-          show_empty = true,
-          supports_live = true,
-          -- In case you want to override the layout for this keymap
-          -- layout = "vscode",
-        })
-      end,
-      desc = "Find Files",
-    },
+    -- {
+    --   "-",
+    --   function()
+    --     Snacks.picker.files({
+    --       finder = "files",
+    --       format = "file",
+    --       show_empty = true,
+    --       supports_live = true,
+    --       -- In case you want to override the layout for this keymap
+    --       -- layout = "vscode",
+    --     })
+    --   end,
+    --   desc = "Find Files",
+    -- },
     -- Navigate my buffers
     {
       "<leader>pb",
       function()
         Snacks.picker.buffers({
-          -- I always want my buffers picker to start in normal mode
+          -- I always want my buffers picker to start in normal mod
           on_show = function()
             vim.cmd.stopinsert()
           end,
