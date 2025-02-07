@@ -1,6 +1,5 @@
 return {
   "folke/snacks.nvim",
----@module "snacks"
   keys = {
     { "<leader>ss", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>/", function() Snacks.picker.grep_word() end, desc = "Grep" },
