@@ -1,23 +1,40 @@
 return {
+  -- {
+  --   "rose-pine/neovim",
+  --   name = "rose-pine",
+  --   config = function()
+  --     -- vim.cmd("colorscheme rose-pine-moon")
+  --   end,
+  -- },
   {
-    -- dir = "/Users/win/Developer/tailcarbon.nvim",
-    "thewinger/tailcarbon.nvim",
-    init = function()
-      vim.cmd.colorscheme("oxocarbon")
-      vim.api.nvim_set_hl(0, "WinBar", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+    "thewinger/Base2Tone-nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function()
+      vim.cmd.colorscheme("base2tone_space_dark")
     end,
   },
   {
-    "folke/tokyonight.nvim",
+    "idr4n/github-monochrome.nvim",
     lazy = false,
     priority = 1000,
-    opts = {
-      transparent = true,
-    },
+    opts = {},
     config = function()
-      -- vim.cmd([[colorscheme tokyonight]])
+      require("github-monochrome").setup({})
+      --   style = "rosepine",
+      --   transparent = true,
+      --   styles = {
+      --     float = "normal",
+      --   },
+      --   on_colors = function(c, s)
+      --     if s == "rosepine" then
+      --       c.bg = "#232136"
+      --       c.bg_float = "#232136"
+      --     end
+      --   end,
+      -- })
+      -- vim.cmd.colorscheme("github-monochrome-rosepine")
     end,
   },
 }

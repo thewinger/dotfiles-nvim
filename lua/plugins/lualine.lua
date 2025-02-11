@@ -3,10 +3,10 @@ local diagnostics = {
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
   diagnostics_color = {
-        -- Same values as the general color option can be used here.
-        error = { fg = '#EF4445'},
-        warn = { fg = '#ff9e64'}
-      },
+    -- Same values as the general color option can be used here.
+    -- error = { fg = '#EF4445'},
+    -- warn = { fg = '#ff9e64'}
+  },
   symbols = { error = " ", warn = " " },
   colored = true,
   update_in_insert = false,
@@ -52,13 +52,12 @@ local filename = {
   symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
 }
 
-local lazy  = {
-  'lazy',
-  require('lazy.status').updates,
-  cond = require('lazy.status').has_updates,
-  color = { fg = '#ff9e64'}
+local lazy = {
+  "lazy",
+  require("lazy.status").updates,
+  cond = require("lazy.status").has_updates,
+  color = { fg = "#ff9e64" },
 }
-
 
 -- cool function for progress
 local progress = function()
@@ -80,7 +79,7 @@ return {
         options = {
           globalstatus = true,
           icons_enabled = true,
-          theme = "oxocarbon",
+          theme = "auto",
           component_separators = "",
           section_separators = "",
           disabled_filetypes = { "alpha", "oil", "dashboard", "NvimTree", "Outline" },

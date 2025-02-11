@@ -1,21 +1,107 @@
 return {
   "folke/snacks.nvim",
   keys = {
-    { "<leader>ss", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-    { "<leader>/", function() Snacks.picker.grep_word() end, desc = "Grep" },
-    { "<leader>cs", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
-    { "<leader>km", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
-    { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
-    { "<leader>-", function() Snacks.picker.resume() end, desc = "Resume" },
+    {
+      "<leader>ss",
+      function()
+        Snacks.picker.smart()
+      end,
+      desc = "Smart Find Files",
+    },
+    {
+      "<leader>/",
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = "Grep",
+    },
+    {
+      "<leader>cs",
+      function()
+        Snacks.picker.colorschemes()
+      end,
+      desc = "Colorschemes",
+    },
+    {
+      "<leader>km",
+      function()
+        Snacks.picker.keymaps()
+      end,
+      desc = "Keymaps",
+    },
+    {
+      "<leader>sw",
+      function()
+        Snacks.picker.grep_word()
+      end,
+      desc = "Visual selection or word",
+      mode = { "n", "x" },
+    },
+    {
+      "<leader>-",
+      function()
+        Snacks.picker.resume()
+      end,
+      desc = "Resume",
+    },
     -- LSP
-    { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-    { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-    { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-    { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-    { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-    { "<leader>sls", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
-    { "<leader>slS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-    { "-", function() Snacks.picker.files() end, desc = "Find files" },
+    {
+      "gd",
+      function()
+        Snacks.picker.lsp_definitions()
+      end,
+      desc = "Goto Definition",
+    },
+    {
+      "gD",
+      function()
+        Snacks.picker.lsp_declarations()
+      end,
+      desc = "Goto Declaration",
+    },
+    {
+      "gr",
+      function()
+        Snacks.picker.lsp_references()
+      end,
+      nowait = true,
+      desc = "References",
+    },
+    {
+      "gI",
+      function()
+        Snacks.picker.lsp_implementations()
+      end,
+      desc = "Goto Implementation",
+    },
+    {
+      "gy",
+      function()
+        Snacks.picker.lsp_type_definitions()
+      end,
+      desc = "Goto T[y]pe Definition",
+    },
+    {
+      "<leader>sls",
+      function()
+        Snacks.picker.lsp_symbols()
+      end,
+      desc = "LSP Symbols",
+    },
+    {
+      "<leader>slS",
+      function()
+        Snacks.picker.lsp_workspace_symbols()
+      end,
+      desc = "LSP Workspace Symbols",
+    },
+    {
+      "-",
+      function()
+        Snacks.picker.files()
+      end,
+      desc = "Find files",
+    },
     -- File picker
     -- {
     --   "-",
@@ -122,6 +208,6 @@ return {
           },
         },
       },
-    }
-  }
+    },
+  },
 }

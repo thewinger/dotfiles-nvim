@@ -62,7 +62,8 @@ opt.breakindent = true
 opt.number = true -- set numbered lines
 opt.relativenumber = true -- set relative numbered lines
 opt.cursorline = true -- highlight the current line
-opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
+opt.signcolumn = "yes:1" -- always show the sign column, otherwise it would shift the text each time
+opt.statuscolumn = '%l%s'
 
 -- Tabs and Indentations
 opt.tabstop = 2 -- insert 2 spaces for a tab
@@ -70,7 +71,7 @@ opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 opt.softtabstop = 2 -- number of tabs when inserting operations
 opt.smartindent = true -- make indenting smarter again
 opt.expandtab = true -- convert tabs to spaces
-vim.g.editorconfig = false
+-- vim.g.editorconfig = false
 
 -- Others
 opt.fillchars.fold = " "
