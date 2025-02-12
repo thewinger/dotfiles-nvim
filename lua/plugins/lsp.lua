@@ -40,6 +40,16 @@ return { -- LSP Configuration & Plugins
         },
       },
     },
+    {
+      "OlegGulevskyy/better-ts-errors.nvim",
+      dependencies = { "MunifTanjim/nui.nvim" },
+      config = {
+        keymaps = {
+          toggle = "<leader>dd", -- default '<leader>dd'
+          go_to_definition = "<leader>dx", -- default '<leader>dx'
+        },
+      },
+    },
   },
   config = function()
     vim.diagnostic.config({
@@ -58,17 +68,16 @@ return { -- LSP Configuration & Plugins
       },
       signs = {
         text = {
-          [vim.diagnostic.severity.ERROR] = '',
-          [vim.diagnostic.severity.WARN] = '',
-          [vim.diagnostic.severity.INFO] = '',
-          [vim.diagnostic.severity.HINT] = '',
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.INFO] = "",
+          [vim.diagnostic.severity.HINT] = "",
         },
         numhl = {
-          [vim.diagnostic.severity.WARN] = 'WarningMsg',
-          [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-          [vim.diagnostic.severity.INFO] = 'DiagnosticInfo',
-          [vim.diagnostic.severity.HINT] = 'DiagnosticHint',
-
+          [vim.diagnostic.severity.WARN] = "WarningMsg",
+          [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+          [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+          [vim.diagnostic.severity.HINT] = "DiagnosticHint",
         },
       },
       underline = true,
