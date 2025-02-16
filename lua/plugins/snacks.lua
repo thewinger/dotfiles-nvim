@@ -48,7 +48,12 @@ return {
     {
       "gd",
       function()
-        Snacks.picker.lsp_definitions()
+        Snacks.picker.lsp_definitions({
+          matcher = {
+            frecency = true,
+            history_bonus = true,
+          },
+        })
       end,
       desc = "Goto Definition",
     },
@@ -205,6 +210,8 @@ return {
             ["K"] = { "preview_scroll_up", mode = { "i", "n" } },
             ["H"] = { "preview_scroll_left", mode = { "i", "n" } },
             ["L"] = { "preview_scroll_right", mode = { "i", "n" } },
+            ["<c-x>"] = { "edit_split", mode = { "i", "n" } },
+            ["<c-y>"] = { "edit_vsplit", mode = { "i", "n" } },
           },
         },
       },

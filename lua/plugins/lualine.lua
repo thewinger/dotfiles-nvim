@@ -79,7 +79,8 @@ return {
         options = {
           globalstatus = true,
           icons_enabled = true,
-          theme = "auto",
+          theme = "base2tone_tailwind_dark",
+          -- theme = "auto",
           component_separators = "",
           section_separators = "",
           disabled_filetypes = { "alpha", "oil", "dashboard", "NvimTree", "Outline" },

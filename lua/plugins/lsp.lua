@@ -105,7 +105,7 @@ return { -- LSP Configuration & Plugins
         -- -- Jump to the definition of the word under your cursor.
         -- --  This is where a variable was first declared, or where a function is defined, etc.
         -- --  To jump back, press <C-t>.
-        -- map("gd", function() Snacks.picker.lsp_definitions() end, "[G]oto [D]efinition")
+        -- map("gd", "<cmd>TSToolsGoToSourceDefinition<cr>", "[G]oto [D]efinition")
         --
         -- -- Find references for the word under your cursor.:qa
         -- map("gr", function() Snacks.picker.lsp_references() end, "[G]oto [R]eferences")

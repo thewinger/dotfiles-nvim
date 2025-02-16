@@ -59,6 +59,10 @@ keymap("n", "<Leader>p", "oq<BS><Esc>p", { desc = "Paste on next line" })
 keymap("n", "<Leader>P", "Oq<BS><Esc>p", { desc = "Paste on previous line" })
 
 keymap("n", "yc", "yygccp", { desc = "Yank, comment and paste line" })
+keymap("n", "Y", "y$", { desc = "Yank to the end" })
+keymap("n", "yy", "_y$", { desc = "Yank line without new line" })
+
+keymap("n", "+", "<C-^>", { desc = "Go to Alternate file" })
 
 keymap("n", "<Leader>d", '"_d', { desc = "Delete in normal mode without yanking" })
 keymap("v", "<Leader>d", '"_d', { desc = "Delete in visual mode without yanking" })

@@ -12,31 +12,34 @@ return {
       -- your own keymap.
       keymap = {
         preset = "enter",
+        ["<C-e>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
       },
       completion = {
         accept = { auto_brackets = { enabled = true } },
 
         list = {
           selection = {
-            preselect = false,
+            -- preselect = true,
             auto_insert = true,
-            -- preselect = function(ctx)
-            --   return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active({ direction = 1 })
-            -- end,
+            preselect = function(ctx)
+              return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active({ direction = 1 })
+            end,
             -- auto_insert = function(ctx) return ctx.mode ~= 'cmdline' end,
           },
         },
         menu = {
           border = "single",
 
-          cmdline_position = function()
-            if vim.g.ui_cmdline_pos ~= nil then
-              local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
-              return { pos[1] - 1, pos[2] }
-            end
-            local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
-            return { vim.o.lines - height, 0 }
-          end,
+          -- cmdline_position = function()
+          --   if vim.g.ui_cmdline_pos ~= nil then
+          --     local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
+          --     return { pos[1] - 1, pos[2] }
+          --   end
+          --   local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
+          --   return { vim.o.lines - height, 0 }
+          -- end,
           draw = {
             components = {
               kind_icon = {

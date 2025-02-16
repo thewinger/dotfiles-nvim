@@ -22,7 +22,7 @@ lazy.setup({
   spec = {
     { import = "plugins" },
   },
-  install = { colorscheme = { "oxocarbon" } },
+  install = { colorscheme = { "base2tone_tailwind_dark" } },
   -- ui config
   ui = {
     border = "double",
