@@ -19,6 +19,7 @@ return {
 
       require("mini.files").setup({
         mappings = {
+          close = "",
           go_in = "L",
           go_in_plus = "l",
           go_out = "H",
@@ -42,8 +43,7 @@ return {
           end)
 
           MiniFiles.set_target_window(new_target_window)
-          MiniFiles.go_in()
-          MiniFiles.close()
+          MiniFiles.go_in({ close_on_file = true })
         end
 
         -- Adding `desc` will result into `show_help` entries
@@ -55,9 +55,16 @@ return {
         pattern = "MiniFilesBufferCreate",
         callback = function(args)
           local buf_id = args.data.buf_id
+          local map_buf = function(lhs, rhs)
+            vim.keymap.set("n", lhs, rhs, { buffer = args.data.buf_id })
+          end
+
           -- Tweak keys to your liking
           map_split(buf_id, "<C-x>", "belowright horizontal")
           map_split(buf_id, "<C-y>", "belowright vertical")
+
+          map_buf("<Esc>", MiniFiles.close)
+          map_buf("q", MiniFiles.close)
         end,
       })
 
