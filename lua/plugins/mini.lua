@@ -80,6 +80,12 @@ return {
       })
 
       vim.keymap.set("n", "<leader>e", minifiles_toggle, { desc = "Explorer" })
+      vim.keymap.set(
+        "n",
+        "<leader>E",
+        ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<cr>",
+        { desc = "Explorer focused in current files folder" }
+      )
     end,
   },
 }
