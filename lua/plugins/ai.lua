@@ -5,8 +5,21 @@ return {
   version = false, -- set this if you want to always pull the latest change
   opts = {
     -- add any opts here
-  },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    -- for example
+    provider = "claude",
+    claude = {
+      endpoint = "https://api.anthropic.com",
+      model = "claude-3-5-sonnet-20241022",
+      temperature = 0,
+      max_tokens = 4096,
+    },
+    file_selector = {
+      --- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string | fun(params: avante.file_selector.IParams|nil): nil
+      provider = "fzf",
+      -- Options override for custom providers
+      provider_opts = {},
+    },
+  }, -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
@@ -15,7 +28,8 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
-    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    "hrsh7th/nvim-cmp",
+    "echasnovski/mini.icons",
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
@@ -35,9 +49,21 @@ return {
     },
     {
       -- Make sure to set this up properly if you have lazy=true
-      'MeanderingProgrammer/render-markdown.nvim',
+      "MeanderingProgrammer/render-markdown.nvim",
+      ---@module 'render-markdown'
+      ---@type render.md.UserConfig
       opts = {
         file_types = { "markdown", "Avante" },
+        log_level = "debug",
+        overrides = {
+          buftype = {
+            nofile = {
+              render_modes = { "n", "c", "i" },
+              debounce = 5,
+            },
+          },
+          filetype = {},
+        },
       },
       ft = { "markdown", "Avante" },
     },

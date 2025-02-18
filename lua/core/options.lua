@@ -19,12 +19,13 @@ opt.showmatch = true -- Show matching parents, brackets, etc.
 opt.title = true -- Show title in terminal tab
 opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
 opt.guicursor = "n-c-sm:block,i-ci-ve:ver25,v-r-cr-o:hor20"
+opt.laststatus = 3 -- something for avante
 
 -- Files and Others
 -- opt.fileencoding = "utf-8" -- the encoding written to a file
 opt.shortmess:append("c")
-vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.opt.iskeyword:append("_")
+opt.whichwrap:append("<,>,[,],h,l")
+opt.iskeyword:append("_")
 
 -- Split Windows
 opt.splitbelow = true -- force all horizontal splits to go below current window
@@ -63,7 +64,7 @@ opt.number = true -- set numbered lines
 opt.relativenumber = true -- set relative numbered lines
 opt.cursorline = true -- highlight the current line
 opt.signcolumn = "yes:1" -- always show the sign column, otherwise it would shift the text each time
-opt.statuscolumn = '%l%s'
+opt.statuscolumn = "%l%s"
 
 -- Tabs and Indentations
 opt.tabstop = 2 -- insert 2 spaces for a tab
