@@ -16,13 +16,14 @@ return {
         ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
       },
+
       completion = {
         accept = { auto_brackets = { enabled = true } },
 
         list = {
           selection = {
             -- preselect = true,
-            auto_insert = true,
+            -- auto_insert = true
             preselect = function(ctx)
               return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active({ direction = 1 })
             end,
@@ -32,14 +33,14 @@ return {
         menu = {
           border = "single",
 
-          -- cmdline_position = function()
-          --   if vim.g.ui_cmdline_pos ~= nil then
-          --     local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
-          --     return { pos[1] - 1, pos[2] }
-          --   end
-          --   local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
-          --   return { vim.o.lines - height, 0 }
-          -- end,
+          cmdline_position = function()
+            if vim.g.ui_cmdline_pos ~= nil then
+              local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
+              return { pos[1] - 1, pos[2] }
+            end
+            local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
+            return { vim.o.lines - height, 0 }
+          end,
           draw = {
             components = {
               kind_icon = {
@@ -71,7 +72,6 @@ return {
         nerd_font_variant = "mono",
       },
       signature = { enabled = true, window = { border = "single" } },
-
       cmdline = {
         enabled = true,
         keymap = nil, -- Inherits from top level `keymap` config when not set
@@ -100,29 +100,29 @@ return {
           },
         },
       },
-
       sources = {
-        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        default = { "lazydev", "lsp", "path", "buffer", "snippets" },
         providers = {
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
-            -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
           },
           lsp = {
-            min_keyword_length = 2, -- Number of characters to trigger porvider
-            score_offset = 0, -- Boost/penalize the score of the items
+            name = "LSP",
+            module = "blink.cmp.sources.lsp",
           },
           path = {
-            min_keyword_length = 0,
+            name = "Path",
+            module = "blink.cmp.sources.path",
           },
           snippets = {
-            min_keyword_length = 2,
+            name = "Snippets",
+            module = "blink.cmp.sources.snippets",
           },
           buffer = {
-            min_keyword_length = 5,
-            max_items = 5,
+            name = "Buffer",
+            module = "blink.cmp.sources.buffer",
           },
         },
       },

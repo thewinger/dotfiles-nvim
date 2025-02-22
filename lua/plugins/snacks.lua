@@ -55,7 +55,7 @@ return {
           },
         })
       end,
-      desc = "Goto Definition",
+      desc = "Go to Definition",
     },
     {
       "gD",
@@ -157,6 +157,20 @@ return {
     picker = {
       -- In case you want to make sure that the score manipulation above works
       -- or if you want to check the score of each file
+      transform = function(item)
+        if not item.file then
+          return item
+        end
+        -- Demote the "TS definition" files:
+        if item.file:match("%.d%.ts$") then
+          item.score_add = (item.score_add or 0) - 30
+        end
+        -- Boost the "neobean" keymaps file:
+        -- if item.file:match("neobean/lua/config/keymaps%.lua") then
+        --   item.score_add = (item.score_add or 0) + 100
+        -- end
+        return item
+      end,
       debug = {
         scores = true, -- show scores in the list
       },
@@ -204,7 +218,7 @@ return {
           keys = {
             -- to close the picker on ESC instead of going to normal mode,
             -- add the following keymap to your config
-            ["<Esc>"] = { "close", mode = { "n", "i" } },
+            -- ["<Esc>"] = { "close", mode = { "n", "i" } },
             -- I'm used to scrolling like this in LazyGit
             ["J"] = { "preview_scroll_down", mode = { "i", "n" } },
             ["K"] = { "preview_scroll_up", mode = { "i", "n" } },
