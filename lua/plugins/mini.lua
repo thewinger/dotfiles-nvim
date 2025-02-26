@@ -3,10 +3,11 @@ return {
     "echasnovski/mini.nvim",
     version = "*",
     config = function()
-      require("mini.cursorword").setup()
-      require("mini.icons").setup()
       require("mini.ai").setup()
       require("mini.bracketed").setup()
+      require("mini.diff").setup()
+      require("mini.cursorword").setup()
+      require("mini.icons").setup()
       require("mini.surround").setup()
       -- require('mini.statusline').setup()
       require("mini.indentscope").setup({

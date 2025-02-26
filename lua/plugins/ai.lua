@@ -3,12 +3,30 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
+    {
+      "MeanderingProgrammer/render-markdown.nvim",
+      ft = { "markdown", "codecompanion" },
+    },
   },
   config = function()
     require("codecompanion").setup({
       strategies = {
         chat = {
           adapter = "anthropic",
+          chat = {
+            slash_commands = {
+              ["file"] = {
+                opts = {
+                  provider = "snacks",
+                },
+              },
+              ["buffer"] = {
+                opts = {
+                  provider = "snacks",
+                },
+              },
+            },
+          },
         },
         inline = {
           adapter = "anthropic",

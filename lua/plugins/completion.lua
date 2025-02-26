@@ -101,12 +101,17 @@ return {
         },
       },
       sources = {
-        default = { "lazydev", "lsp", "path", "buffer", "snippets" },
+        default = { "lazydev", "codecompanion", "lsp", "path", "buffer", "snippets" },
         providers = {
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
             score_offset = 100,
+          },
+          codecompanion = {
+            name = "CodeCompanion",
+            module = "codecompanion.providers.completion.blink",
+            enabled = true,
           },
           lsp = {
             name = "LSP",
@@ -125,6 +130,9 @@ return {
             module = "blink.cmp.sources.buffer",
           },
         },
+        per_filetype = {
+          codecompanion = { "codecompanion", "path", "buffer" },
+        },
       },
 
       enabled = function()
@@ -135,6 +143,9 @@ return {
           and vim.bo.buftype ~= "snacks_picker_input"
           and vim.b.completion ~= false
       end,
+    },
+    opts_extend = {
+      "sources.default",
     },
   },
 }
