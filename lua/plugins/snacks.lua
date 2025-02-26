@@ -163,7 +163,7 @@ return {
         end
         -- Demote the "TS definition" files:
         if item.file:match("%.d%.ts$") then
-          item.score_add = (item.score_add or 0) - 30
+          item.score_add = (item.score_add or 0) - 1000
         end
         -- Boost the "neobean" keymaps file:
         -- if item.file:match("neobean/lua/config/keymaps%.lua") then
