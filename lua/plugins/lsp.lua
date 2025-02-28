@@ -19,26 +19,32 @@ return { -- LSP Configuration & Plugins
         "typescript.tsx",
       },
       dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-      opts = {
-        settings = {
-          -- expose_as_code_action = "all",
-          expose_as_code_action = { "fix_all", "add_missing_imports", "remove_unused" },
-          jsx_close_tag = {
-            enable = true,
-            filetypes = { "javascriptreact", "typescriptreact" },
+      config = function()
+        require("typescript-tools").setup({
+
+          settings = {
+            tsserver_plugings = {
+              "@styled/typescript-styled-plugin",
+            },
+            -- expose_as_code_action = "all",
+            expose_as_code_action = { "fix_all", "add_missing_imports", "remove_unused" },
+            jsx_close_tag = {
+              enable = true,
+              filetypes = { "javascriptreact", "typescriptreact" },
+            },
+            tsserver_file_preferences = {
+              includeInlayParameterNameHints = "none", -- 'none' | 'literals' | 'all'
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = false,
+              includeInlayVariableTypeHints = false,
+              includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+              includeInlayPropertyDeclarationTypeHints = false,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
           },
-          tsserver_file_preferences = {
-            includeInlayParameterNameHints = "all",
-            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayVariableTypeHints = true,
-            includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-            includeInlayPropertyDeclarationTypeHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-            includeInlayEnumMemberValueHints = true,
-          },
-        },
-      },
+        })
+      end,
     },
     {
       "OlegGulevskyy/better-ts-errors.nvim",
