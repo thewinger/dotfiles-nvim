@@ -101,7 +101,7 @@ return {
         },
       },
       sources = {
-        default = { "lazydev", "codecompanion", "lsp", "path", "buffer", "snippets" },
+        default = { "lazydev", "codecompanion", "lsp", "path", "snippets", "buffer" },
         providers = {
           lazydev = {
             name = "LazyDev",
@@ -116,6 +116,14 @@ return {
           lsp = {
             name = "LSP",
             module = "blink.cmp.sources.lsp",
+            fallback = { "buffer" },
+            -- Filter text items from the LSP provider, since we have the buffer provider for that
+            transform_items = function(_, items)
+              return vim.tbl_filter(function(item)
+                return item.kind ~= require("blink.cmp.types").CompletionItemKind.Text
+              end, items)
+            end,
+            opts = { tailwind_color_icon = "██" },
           },
           path = {
             name = "Path",
@@ -128,6 +136,7 @@ return {
           buffer = {
             name = "Buffer",
             module = "blink.cmp.sources.buffer",
+            score_offset = 100,
           },
         },
         per_filetype = {

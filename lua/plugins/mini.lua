@@ -10,6 +10,7 @@ return {
       require("mini.icons").setup()
       require("mini.surround").setup()
       -- require('mini.statusline').setup()
+      require("mini.pairs").setup()
       require("mini.indentscope").setup({
         draw = {
           delay = 1,
