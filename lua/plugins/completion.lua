@@ -116,7 +116,7 @@ return {
           lsp = {
             name = "LSP",
             module = "blink.cmp.sources.lsp",
-            fallback = { "buffer" },
+            fallbacks = { "buffer" },
             -- Filter text items from the LSP provider, since we have the buffer provider for that
             transform_items = function(_, items)
               return vim.tbl_filter(function(item)
