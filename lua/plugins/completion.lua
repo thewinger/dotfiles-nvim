@@ -106,7 +106,6 @@ return {
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
-            score_offset = 100,
           },
           codecompanion = {
             name = "CodeCompanion",
@@ -136,7 +135,6 @@ return {
           buffer = {
             name = "Buffer",
             module = "blink.cmp.sources.buffer",
-            score_offset = 100,
           },
         },
         per_filetype = {
