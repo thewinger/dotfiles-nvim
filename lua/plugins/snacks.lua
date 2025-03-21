@@ -1,158 +1,15 @@
 return {
   "folke/snacks.nvim",
-  keys = {
-    {
-      "<leader>ss",
-      function()
-        Snacks.picker.smart()
-      end,
-      desc = "Smart Find Files",
-    },
-    {
-      "<leader>/",
-      function()
-        Snacks.picker.grep()
-      end,
-      desc = "Grep",
-    },
-    {
-      "<leader>cs",
-      function()
-        Snacks.picker.colorschemes()
-      end,
-      desc = "Colorschemes",
-    },
-    {
-      "<leader>km",
-      function()
-        Snacks.picker.keymaps()
-      end,
-      desc = "Keymaps",
-    },
-    {
-      "<leader>sw",
-      function()
-        Snacks.picker.grep_word()
-      end,
-      desc = "Visual selection or word",
-      mode = { "n", "x" },
-    },
-    {
-      "<leader>-",
-      function()
-        Snacks.picker.resume()
-      end,
-      desc = "Resume",
-    },
-    -- LSP
-    {
-      "gd",
-      function()
-        Snacks.picker.lsp_definitions({
-          matcher = {
-            frecency = true,
-            history_bonus = true,
-          },
-        })
-      end,
-      desc = "Go to Definition",
-    },
-    {
-      "gD",
-      function()
-        Snacks.picker.lsp_declarations()
-      end,
-      desc = "Goto Declaration",
-    },
-    {
-      "gr",
-      function()
-        Snacks.picker.lsp_references()
-      end,
-      nowait = true,
-      desc = "References",
-    },
-    {
-      "gI",
-      function()
-        Snacks.picker.lsp_implementations()
-      end,
-      desc = "Goto Implementation",
-    },
-    {
-      "gy",
-      function()
-        Snacks.picker.lsp_type_definitions()
-      end,
-      desc = "Goto T[y]pe Definition",
-    },
-    {
-      "<leader>sls",
-      function()
-        Snacks.picker.lsp_symbols()
-      end,
-      desc = "LSP Symbols",
-    },
-    {
-      "<leader>slS",
-      function()
-        Snacks.picker.lsp_workspace_symbols()
-      end,
-      desc = "LSP Workspace Symbols",
-    },
-    {
-      "-",
-      function()
-        Snacks.picker.files()
-      end,
-      desc = "Find files",
-    },
-    -- File picker
-    -- {
-    --   "-",
-    --   function()
-    --     Snacks.picker.files({
-    --       finder = "files",
-    --       format = "file",
-    --       show_empty = true,
-    --       supports_live = true,
-    --       -- In case you want to override the layout for this keymap
-    --       -- layout = "vscode",
-    --     })
-    --   end,
-    --   desc = "Find Files",
-    -- },
-    -- Navigate my buffers
-    {
-      "<leader>pb",
-      function()
-        Snacks.picker.buffers({
-          -- I always want my buffers picker to start in normal mod
-          on_show = function()
-            vim.cmd.stopinsert()
-          end,
-          finder = "buffers",
-          format = "buffer",
-          hidden = false,
-          unloaded = true,
-          current = true,
-          sort_lastused = true,
-          win = {
-            input = {
-              keys = {
-                ["d"] = "bufdelete",
-              },
-            },
-            list = { keys = { ["d"] = "bufdelete" } },
-          },
-          -- In case you want to override the layout for this keymap
-          -- layout = "ivy",
-        })
-      end,
-      desc = "Snacks [P]picker [B]buffers",
-    },
-  },
+  ---@type snacks.Config
   opts = {
+    lazygit = {},
+    dashboard = {
+      sections = {
+        { section = "header" },
+        { section = "keys", gap = 1, padding = 1 },
+        { section = "startup" },
+      },
+    },
     -- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
     picker = {
       -- In case you want to make sure that the score manipulation above works
@@ -229,6 +86,156 @@ return {
           },
         },
       },
+    },
+  },
+  keys = {
+    {
+      "<leader>ss",
+      function()
+        Snacks.picker.smart()
+      end,
+      desc = "Smart Find Files",
+    },
+    {
+      "<leader>/",
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = "Grep",
+    },
+    {
+      "<leader>cs",
+      function()
+        Snacks.picker.colorschemes()
+      end,
+      desc = "Colorschemes",
+    },
+    {
+      "<leader>km",
+      function()
+        Snacks.picker.keymaps()
+      end,
+      desc = "Keymaps",
+    },
+    {
+      "<leader>sw",
+      function()
+        Snacks.picker.grep_word()
+      end,
+      desc = "Visual selection or word",
+      mode = { "n", "x" },
+    },
+    {
+      "<leader>-",
+      function()
+        Snacks.picker.resume()
+      end,
+      desc = "Resume",
+    },
+    {
+      "<leader>sj",
+      function()
+        Snacks.picker.jumps()
+      end,
+      desc = "Jumps",
+    },
+    {
+      "<leader>gg",
+      function()
+        Snacks.lazygit()
+      end,
+      desc = "Lazygit",
+    },
+    {
+      "-",
+      function()
+        Snacks.picker.files()
+      end,
+      desc = "Find files",
+    },
+    {
+      "<leader>pb",
+      function()
+        Snacks.picker.buffers({
+          -- I always want my buffers picker to start in normal mod
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+          finder = "buffers",
+          format = "buffer",
+          hidden = false,
+          unloaded = true,
+          current = true,
+          sort_lastused = true,
+          win = {
+            input = {
+              keys = {
+                ["d"] = "bufdelete",
+              },
+            },
+            list = { keys = { ["d"] = "bufdelete" } },
+          },
+          -- In case you want to override the layout for this keymap
+          -- layout = "ivy",
+        })
+      end,
+      desc = "Snacks [P]picker [B]buffers",
+    },
+    -- LSP
+    {
+      "gd",
+      function()
+        Snacks.picker.lsp_definitions({
+          matcher = {
+            frecency = true,
+            history_bonus = true,
+          },
+        })
+      end,
+      desc = "Go to Definition",
+    },
+    {
+      "gD",
+      function()
+        Snacks.picker.lsp_declarations()
+      end,
+      desc = "Goto Declaration",
+    },
+    {
+      "gr",
+      function()
+        Snacks.picker.lsp_references()
+      end,
+      nowait = true,
+      desc = "References",
+    },
+    {
+      "gI",
+      function()
+        Snacks.picker.lsp_implementations()
+      end,
+      desc = "Goto Implementation",
+    },
+    {
+      "gy",
+      function()
+        Snacks.picker.lsp_type_definitions()
+      end,
+      desc = "Goto T[y]pe Definition",
+    },
+    {
+      "<leader>sls",
+      function()
+        Snacks.picker.lsp_symbols()
+      end,
+      desc = "LSP Symbols",
+    },
+    {
+      "<leader>slS",
+      function()
+        Snacks.picker.lsp_workspace_symbols()
+      end,
+      desc = "LSP Workspace Symbols",
     },
   },
 }

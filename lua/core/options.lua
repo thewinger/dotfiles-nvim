@@ -48,6 +48,7 @@ opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 -- Search
 opt.hlsearch = true -- Don't highlight all matches on previous search pattern (In previous config it was false)
 opt.incsearch = true -- show highlight while writing search
+opt.inccommand = "split" -- Shows the match while typing
 opt.ignorecase = true -- ignore case in search patterns
 opt.smartcase = true -- smart case
 
@@ -81,6 +82,27 @@ opt.fillchars.eob = " " -- To stop showing ~ at the end of buffer
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
--- Enable spell check
--- vim.opt.spell = true
--- vim.opt.spelllang = { "en_us" }
+-- Triger `autoread` when files changes on disk
+-- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+-- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  command = "if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif",
+})
+
+-- Notification after file change
+-- https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+vim.api.nvim_create_autocmd({ "FileChangedShellPost" }, {
+  pattern = "*",
+  command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None",
+})
+
+-- This is global settings for diagnostics
+vim.o.updatetime = 250
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})

@@ -17,11 +17,8 @@ local trigger_text = ";"
 return {
   "saghen/blink.cmp",
   enabled = true,
-  -- In case there are breaking changes and you want to go back to the last
-  -- working release
-  -- https://github.com/Saghen/blink.cmp/releases
-  -- version = "v0.9.3",
-  dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
+  version = "*",
+  dependencies = { "Kaiser-Yang/blink-cmp-avante", { "L3MON4D3/LuaSnip", version = "v2.*" } },
 
   opts = function(_, opts)
     -- I noticed that telescope was extremeley slow and taking too long to open,
@@ -42,21 +39,45 @@ return {
     -- Merge custom sources with the existing ones from lazyvim
     -- NOTE: by default lazyvim already includes the lazydev source, so not adding it here again
     opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lazydev", "avante", "lsp", "path", "snippets", "buffer" },
+
       providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
+        avante = {
+          module = "blink-cmp-avante",
+          name = "Avante",
+          enabled = true,
+          opts = {
+            -- options for blink-cmp-avante
+            avante = {
+              command = {
+                get_kind_name = function(_)
+                  return "AvanteCmd"
+                end,
+              },
+              mention = {
+                get_kind_name = function(_)
+                  return "AvanteMention"
+                end,
+              },
+            },
+            kind_icons = {
+              AvanteCmd = "",
+              AvanteMention = "@",
+            },
+          },
+        },
         lsp = {
           name = "lsp",
           enabled = true,
           module = "blink.cmp.sources.lsp",
           min_keyword_length = 2,
-          -- When linking markdown notes, I would get snippets and text in the
-          -- suggestions, I want those to show only if there are no LSP
-          -- suggestions
-          --
-          -- Enabled fallbacks as this seems to be working now
-          -- Disabling fallbacks as my snippets wouldn't show up when editing
-          -- lua files
-          -- fallbacks = { "snippets", "buffer" },
+          fallbacks = { "snippets", "buffer" },
           score_offset = 90, -- the higher the number, the higher the priority
         },
         path = {
@@ -143,6 +164,21 @@ return {
       --   },
       menu = {
         border = "single",
+        draw = {
+          components = {
+            kind_icon = {
+              ellipsis = false,
+              text = function(ctx)
+                local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+                return kind_icon
+              end,
+              highlight = function(ctx)
+                local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                return hl
+              end,
+            },
+          },
+        },
       },
       documentation = {
         auto_show = true,
@@ -152,51 +188,39 @@ return {
       },
       -- Displays a preview of the selected item on the current line
       ghost_text = {
-        enabled = true,
+        enabled = false,
       },
     }
 
-    -- opts.fuzzy = {
-    --   -- Disabling this matches the behavior of fzf
-    --   use_typo_resistance = false,
-    --   -- Frecency tracks the most recently/frequently used items and boosts the score of the item
-    --   use_frecency = true,
-    --   -- Proximity bonus boosts the score of items matching nearby words
-    --   use_proximity = false,
-    -- }
+    opts.fuzzy = {
+      --   -- Disabling this matches the behavior of fzf
+      --   use_typo_resistance = false,
+      --   -- Frecency tracks the most recently/frequently used items and boosts the score of the item
+      use_frecency = true,
+      --   -- Proximity bonus boosts the score of items matching nearby words
+      -- use_proximity = false,
+      implementation = "prefer_rust_with_warning",
+    }
 
     opts.snippets = {
       preset = "luasnip", -- Choose LuaSnip as the snippet engine
     }
 
-    -- -- To specify the options for snippets
-    -- opts.sources.providers.snippets.opts = {
-    --   use_show_condition = true, -- Enable filtering of snippets dynamically
-    --   show_autosnippets = true, -- Display autosnippets in the completion menu
-    -- }
-
-    -- The default preset used by lazyvim accepts completions with enter
-    -- I don't like using enter because if on markdown and typing
-    -- something, but you want to go to the line below, if you press enter,
-    -- the completion will be accepted
-    -- https://cmp.saghen.dev/configuration/keymap.html#default
     opts.keymap = {
-      preset = "default",
-      ["<Tab>"] = { "snippet_forward", "fallback" },
-      ["<S-Tab>"] = { "snippet_backward", "fallback" },
-
-      ["<Up>"] = { "select_prev", "fallback" },
-      ["<Down>"] = { "select_next", "fallback" },
-      ["<C-p>"] = { "select_prev", "fallback" },
-      ["<C-n>"] = { "select_next", "fallback" },
-
-      ["<S-k>"] = { "scroll_documentation_up", "fallback" },
-      ["<S-j>"] = { "scroll_documentation_down", "fallback" },
-
-      ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-      ["<C-e>"] = { "hide", "fallback" },
+      preset = "enter",
     }
 
     return opts
+  end,
+  config = function(_, opts)
+    -- require("blink.compat").setup()
+    require("luasnip").setup({
+      enable_autosnippets = true,
+    })
+
+    require("luasnip.loaders.from_lua").lazy_load()
+    require("luasnip.loaders.from_lua").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets/lua" } })
+
+    require("blink.cmp").setup(opts)
   end,
 }

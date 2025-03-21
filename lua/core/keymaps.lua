@@ -2,6 +2,22 @@
 local keymap = vim.keymap.set
 local cmd = vim.cmd
 
+-- Here is a utility function that closes any floating windows when you press escape
+local function close_floating()
+  for _, win in pairs(vim.api.nvim_list_wins()) do
+    if vim.api.nvim_win_get_config(win).relative == "win" then
+      vim.api.nvim_win_close(win, false)
+    end
+  end
+end
+
+keymap("n", "<esc>", function()
+  close_floating()
+  vim.cmd(":noh")
+end, { silent = true, desc = "Remove Search Highlighting, Dismiss Popups" })
+
+keymap("i", "<A-BS>", "<C-W>", { desc = "Option+BS deletes whole word" })
+
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", { desc = "Disable space key default behavior" })
 vim.g.mapleader = " " -- Set space as the leader key
@@ -120,8 +136,7 @@ keymap(
 )
 
 -- Ufo
-keymap("n", "zR", ':lua require("ufo").openAllFolds', { desc = "Open all folds" })
-keymap("n", "zM", ':lua require("ufo").closeAllFolds', { desc = "Close all folds" })
+keymap("v", "<leader>o", "zA", { desc = "Toggle Fold" })
 
 keymap("n", "<leader>h", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
