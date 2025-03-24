@@ -62,7 +62,7 @@ return {
           model = "claude-3-5-sonnet-20241022",
           temperature = 0,
           max_tokens = 4096,
-          disable_tools = true,
+          -- disable_tools = true,
         },
         behaviour = {
           enable_claude_text_editor_tool_mode = true,
@@ -97,7 +97,7 @@ return {
     config = function()
       require("mcphub").setup({
         -- Required options
-        port = 3000, -- Port for MCP Hub server
+        port = 3050, -- Port for MCP Hub server
         config = vim.fn.expand("~/.config/nvim/mcpservers.json"), -- Absolute path to config file
 
         -- Optional options

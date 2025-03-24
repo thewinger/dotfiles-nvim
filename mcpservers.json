@@ -10,6 +10,20 @@
       "env": {
         "FIGMA_API_KEY": "${FIGMA_API_KEY}"
       }
+    },
+    "github.com/modelcontextprotocol/servers/tree/main/src/git": {
+      "command": "uvx",
+      "args": ["mcp-server-git"]
+    },
+    "github.com/modelcontextprotocol/servers/tree/main/src/filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/win/.mcphub/servers",
+        "/Users/win/Developer"
+      ]
     }
   }
 }
+
