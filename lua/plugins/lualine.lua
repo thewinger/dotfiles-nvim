@@ -69,6 +69,19 @@ local progress = function()
   return chars[index]
 end
 
+local mcphub = {
+  "mcphub",
+  function()
+    local hub = require("mcphub").get_hub_instance()
+    if hub == nil then
+      return "MCP: N/A"
+    end
+    local active_servers = #hub:get_servers()
+    return "MCP: " .. active_servers
+  end,
+  icon = "🔌",
+}
+
 return {
   {
     "nvim-lualine/lualine.nvim",
@@ -91,7 +104,7 @@ return {
           lualine_b = { branch },
           lualine_c = { filename },
           -- lualine_x = { "encoding", "fileformat", "filetype" },
-          lualine_x = { lazy, diagnostics, "encoding", filetype },
+          lualine_x = { mcphub, lazy, diagnostics, "encoding", filetype },
           lualine_y = { progress },
           lualine_z = { location },
         },
