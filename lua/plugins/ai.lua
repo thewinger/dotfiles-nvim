@@ -14,7 +14,7 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "hrsh7th/nvim-cmp",
+      "saghen/blink.cmp",
       "echasnovski/mini.icons",
       {
         -- support for image pasting
@@ -40,16 +40,16 @@ return {
         ---@type render.md.UserConfig
         opts = {
           file_types = { "markdown", "Avante" },
-          log_level = "debug",
-          overrides = {
-            buftype = {
-              nofile = {
-                render_modes = { "n", "c", "i" },
-                debounce = 5,
-              },
-            },
-            filetype = {},
-          },
+          -- log_level = "debug",
+          -- overrides = {
+          --   buftype = {
+          --     nofile = {
+          --       render_modes = { "n", "c", "i" },
+          --       debounce = 5,
+          --     },
+          --   },
+          -- filetype = {},
+          -- },
         },
         ft = { "markdown", "Avante" },
       },
@@ -57,12 +57,15 @@ return {
     config = function()
       require("avante").setup({
         provider = "claude",
+        auto_suggestions_provider = "claude-haiku",
         claude = {
           endpoint = "https://api.anthropic.com",
-          model = "claude-3-5-sonnet-20241022",
+          model = "claude-3-7-sonnet-20250219",
+          -- model = "claude-3-5-sonnet-20241022",
           temperature = 0,
+          timeout = 30000,
           max_tokens = 4096,
-          -- disable_tools = true,
+          disable_tools = true,
         },
         behaviour = {
           enable_claude_text_editor_tool_mode = true,
@@ -71,7 +74,7 @@ return {
           -- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string | fun(params: avante.file_selector.IParams|nil): nil
           provider = "snacks",
           -- Options override for custom providers
-          provider_opts = {},
+          -- provider_opts = {},
         },
         -- The system_prompt type supports both a string and a function that returns a string. Using a function here allows dynamically updating the prompt with mcphub
         system_prompt = function()
