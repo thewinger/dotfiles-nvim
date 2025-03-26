@@ -39,7 +39,7 @@ return {
     -- Merge custom sources with the existing ones from lazyvim
     -- NOTE: by default lazyvim already includes the lazydev source, so not adding it here again
     opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
-      default = { "lazydev", "avante", "lsp", "path", "snippets", "buffer" },
+      default = { "lazydev", "avante", "buffer", "lsp", "path", "snippets" },
 
       providers = {
         lazydev = {
@@ -73,12 +73,12 @@ return {
           },
         },
         lsp = {
-          name = "lsp",
+          name = "LSP",
           enabled = true,
           module = "blink.cmp.sources.lsp",
           min_keyword_length = 2,
-          fallbacks = { "snippets", "buffer" },
-          score_offset = 90, -- the higher the number, the higher the priority
+          fallbacks = {},
+          score_offset = 75, -- the higher the number, the higher the priority
         },
         path = {
           name = "Path",
@@ -103,8 +103,7 @@ return {
           enabled = true,
           max_items = 3,
           module = "blink.cmp.sources.buffer",
-          min_keyword_length = 4,
-          score_offset = 15, -- the higher the number, the higher the priority
+          score_offset = 90, -- the higher the number, the higher the priority
         },
         snippets = {
           name = "snippets",
@@ -166,6 +165,7 @@ return {
         auto_show = true,
         border = "single",
         draw = {
+          columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "kind" }, { "source_name" } },
           components = {
             kind_icon = {
               ellipsis = false,
@@ -176,6 +176,42 @@ return {
               highlight = function(ctx)
                 local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
                 return hl
+              end,
+            },
+            kind = {
+              text = function(ctx)
+                return ctx.source_name == "cmdline" and "" or ctx.kind
+              end,
+            },
+            source_name = {
+              text = function(ctx)
+                return ctx.source_name == "cmdline" and "" or ctx.source_name
+              end,
+            },
+
+            label = {
+              width = { fill = true, max = 60 },
+              text = function(ctx)
+                return ctx.label .. ctx.label_detail
+              end,
+              highlight = function(ctx)
+                -- label and label details
+                local highlights = {
+                  { 0, #ctx.label, group = ctx.deprecated and "BlinkCmpLabelDeprecated" or "BlinkCmpLabel" },
+                }
+                if ctx.label_detail then
+                  table.insert(
+                    highlights,
+                    { #ctx.label, #ctx.label + #ctx.label_detail, group = "BlinkCmpLabelDetail" }
+                  )
+                end
+
+                -- characters matched on the label by the fuzzy matcher
+                for _, idx in ipairs(ctx.label_matched_indices) do
+                  table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
+                end
+
+                return highlights
               end,
             },
           },

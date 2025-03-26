@@ -10,6 +10,9 @@ return {
         { section = "startup" },
       },
     },
+    terminal = {
+      win = { style = "terminal" },
+    },
     -- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
     picker = {
       -- In case you want to make sure that the score manipulation above works
@@ -234,6 +237,14 @@ return {
       "<leader>slS",
       function()
         Snacks.picker.lsp_workspace_symbols()
+      end,
+      desc = "LSP Workspace Symbols",
+    },
+
+    {
+      "<leader>tt",
+      function()
+        Snacks.terminal.toggle()
       end,
       desc = "LSP Workspace Symbols",
     },

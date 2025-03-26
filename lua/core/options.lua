@@ -39,6 +39,7 @@ opt.updatetime = 100 -- faster completion (4000ms default)
 opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds)
 opt.swapfile = false -- creates a swapfile
 opt.undofile = true -- enable persistent undo
+opt.autoread = true
 
 -- clipboard
 opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard

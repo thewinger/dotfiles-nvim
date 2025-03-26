@@ -66,7 +66,7 @@ return {
           temperature = 0,
           timeout = 30000,
           max_tokens = 4096,
-          disable_tools = true,
+          -- disable_tools = true,
         },
         behaviour = {
           enable_claude_text_editor_tool_mode = true,
@@ -114,7 +114,7 @@ return {
         log = {
           level = vim.log.levels.DEBUG, -- More verbose logging
           to_file = true, -- Enable file logging
-          file_path = "~/mcphub.log", -- Custom log path
+          file_path = "/Users/win/logs/mcphub.log", -- Custom log path
           prefix = "MCPHub", -- Log prefix
         },
       })
