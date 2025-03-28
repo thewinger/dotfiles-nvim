@@ -165,7 +165,18 @@ return {
         auto_show = true,
         border = "single",
         draw = {
-          columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "kind" }, { "source_name" } },
+          -- columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "kind" }, { "source_name" } },
+          columns = function(ctx)
+            if ctx.mode == "cmdline" then
+              return { { "label", "label_description", gap = 1 } }
+            else
+              return { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "kind" }, { "source_name" } }
+            end
+          end,
+
+          -- draw.components.label.width.max = function(ctx)
+          --     return ctx.mode == "cmdline" and 20 or 60
+          -- end,
           components = {
             kind_icon = {
               ellipsis = false,

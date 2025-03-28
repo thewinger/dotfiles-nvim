@@ -131,7 +131,11 @@ return {
     {
       "<leader>-",
       function()
-        Snacks.picker.resume()
+        Snacks.picker.resume({
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+        })
       end,
       desc = "Resume",
     },
