@@ -1,6 +1,6 @@
 return {
   {
-    dir = "~/Developer/Base2Tone-nvim",
+    "thewinger/Base2Tone-nvim",
     lazy = false,
     priority = 1000,
     opts = {},
@@ -13,6 +13,8 @@ return {
     config = function()
       vim.cmd.colorscheme("phobos-anomaly")
     end,
+    lazy = false,
     priority = 1000,
   },
+  { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
 }
