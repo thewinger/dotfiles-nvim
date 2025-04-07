@@ -1,6 +1,7 @@
 {
   "Base2Tone-nvim": { "branch": "main", "commit": "253ec7f161d3291a21366f962542e866903ec626" },
   "LuaSnip": { "branch": "master", "commit": "03c8e67eb7293c404845b3982db895d59c0d1538" },
+  "aider.nvim": { "branch": "main", "commit": "a34a03635a130f16a56e6a50b211bb72cc1aff96" },
   "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
   "avante.nvim": { "branch": "main", "commit": "89a86f0fc197ec9ffb3663a499432f8df4e4b1e5" },
   "better-ts-errors.nvim": { "branch": "main", "commit": "d57a7794b271e1a0010d0328e5d3f18e20f1face" },
