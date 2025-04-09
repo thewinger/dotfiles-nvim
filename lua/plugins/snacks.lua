@@ -197,6 +197,7 @@ return {
             frecency = true,
             history_bonus = true,
           },
+          auto_confirm = true,
         })
       end,
       desc = "Go to Definition",
