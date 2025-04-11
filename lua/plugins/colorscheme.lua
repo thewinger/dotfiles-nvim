@@ -5,7 +5,8 @@ return {
     priority = 1000,
     opts = {},
     config = function()
-      vim.cmd.colorscheme("base2tone_tailwind_dark")
+      -- vim.cmd.colorscheme("base2tone_tailwind_dark")
+      vim.cmd.colorscheme("default")
     end,
   },
   {
