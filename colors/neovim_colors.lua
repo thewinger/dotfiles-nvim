@@ -46,12 +46,12 @@ local colors = require("mini.colors")
 -- Initially value for level 2 was taken from #14790 (as lightness of #1e1e1e).
 -- Levels 1 and 2 are adjusted according to request in #26369.
 -- Others are the result of experiments to have passable contrast ratios.
-local l = { 5, 10, 20, 35 }
+local l = { 6, 13, 20, 35 }
 
 -- REFERENCE CHROMA VALUES
 -- Chosen experimentally. Darker colors usually need higher chroma to appear
 -- visibly different (combined with proper gamut clipping)
-local c = { grey = 1, light = 10, dark = 15 }
+local c = { grey = 1, light = 40, dark = 15 }
 
 -- REFERENCE HUE VALUES
 -- - Grey is used for UI background and foreground. It is not exactly an
@@ -66,13 +66,13 @@ local c = { grey = 1, light = 10, dark = 15 }
 -- - Cyan hue is taken roughly the same as in reference #00E6E6
 -- - Yellow, blue, and magenta are chosen to be visibly different from others.
 local h = {
-  grey = 270,
+  grey = 230,
   red = 25,
   yellow = 90,
   green = 150,
   cyan = 195,
-  blue = 240,
-  magenta = 330,
+  blue = 230,
+  magenta = 0,
 }
 
 -- WHETHER TO OPEN A BUFFER WITH DATA
@@ -339,19 +339,19 @@ local enable_colorscheme = function()
   -- General UI
   hi('ColorColumn',          { fg=nil,       bg=bg.grey4 })
   hi('Conceal',              { fg=bg.grey4,  bg=nil })
-  hi('CurSearch',            { fg=bg.grey1,  bg=fg.yellow })
+  hi('CurSearch',            { fg=fg.grey1,  bg=bg.magenta })
   hi('Cursor',               { fg=nil,       bg=nil })
   hi('CursorColumn',         { fg=nil,       bg=bg.grey3 })
   hi('CursorIM',             { link='Cursor' })
-  hi('CursorLine',           { fg=nil,       bg=bg.grey3 })
+  hi('CursorLine',           { fg=nil,       bg=bg.grey1 })
   hi('CursorLineFold',       { link='FoldColumn' })
   hi('CursorLineNr',         { fg=nil,       bg=nil,      bold=true })
   hi('CursorLineSign',       { link='SignColumn' })
   hi('DiffAdd',              { fg=fg.grey1,  bg=bg.green })
   hi('DiffChange',           { fg=fg.grey1,  bg=bg.grey4 })
   hi('DiffDelete',           { fg=fg.red,    bg=nil,      bold=true })
-  hi('DiffText',             { fg=fg.grey1,  bg=bg.cyan })
-  hi('Directory',            { fg=fg.cyan,   bg=nil })
+  hi('DiffText',             { fg=fg.grey1,  bg=bg.magenta })
+  hi('Directory',            { fg=fg.magenta,   bg=nil })
   hi('EndOfBuffer',          { link='NonText' })
   hi('ErrorMsg',             { fg=fg.red,    bg=nil })
   hi('FloatBorder',          { link='NormalFloat' })
@@ -368,7 +368,7 @@ local enable_colorscheme = function()
   hi('LineNrBelow',          { link='LineNr' })
   hi('MatchParen',           { fg=nil,       bg=bg.grey4, bold=true })
   hi('ModeMsg',              { fg=fg.green,  bg=nil })
-  hi('MoreMsg',              { fg=fg.cyan,   bg=nil })
+  hi('MoreMsg',              { fg=fg.magenta,   bg=nil })
   hi('MsgArea',              { fg=nil,       bg=nil })
   hi('MsgSeparator',         { link='StatusLine' })
   hi('NonText',              { fg=bg.grey4,  bg=nil })
@@ -383,19 +383,19 @@ local enable_colorscheme = function()
   hi('PMenuSbar',            { link='PMenu' })
   hi('PMenuSel',             { fg=bg.grey3,  bg=fg.grey2, blend=0 })
   hi('PMenuThumb',           { fg=nil,       bg=bg.grey4 })
-  hi('Question',             { fg=fg.cyan,   bg=nil })
-  hi('QuickFixLine',         { fg=fg.cyan,   bg=nil })
+  hi('Question',             { fg=fg.magenta,   bg=nil })
+  hi('QuickFixLine',         { fg=fg.magenta,   bg=nil })
   hi('RedrawDebugNormal',    { fg=nil,       bg=nil,      reverse=true })
-  hi('RedrawDebugClear',     { fg=nil,       bg=bg.cyan })
+  hi('RedrawDebugClear',     { fg=nil,       bg=bg.magenta })
   hi('RedrawDebugComposed',  { fg=nil,       bg=bg.green })
   hi('RedrawDebugRecompose', { fg=nil,       bg=bg.red })
-  hi('Search',               { fg=fg.grey1,  bg=bg.yellow})
+  hi('Search',               { fg=fg.grey1,  bg=bg.magenta})
   hi('SignColumn',           { fg=bg.grey4,  bg=nil })
   hi('SpecialKey',           { fg=bg.grey4,  bg=nil })
   hi('SpellBad',             { fg=nil,       bg=nil,      sp=fg.red,    undercurl=true })
   hi('SpellCap',             { fg=nil,       bg=nil,      sp=fg.yellow, undercurl=true })
   hi('SpellLocal',           { fg=nil,       bg=nil,      sp=fg.green,  undercurl=true })
-  hi('SpellRare',            { fg=nil,       bg=nil,      sp=fg.cyan,   undercurl=true })
+  hi('SpellRare',            { fg=nil,       bg=nil,      sp=fg.magenta,   undercurl=true })
   hi('StatusLine',           { fg=fg.grey3,  bg=bg.grey1 })
   hi('StatusLineNC',         { fg=fg.grey4,  bg=bg.grey1 })
   hi('Substitute',           { link='Search' })
@@ -406,7 +406,8 @@ local enable_colorscheme = function()
   hi('TermCursorNC',         { fg=nil,       bg=nil })
   hi('Title',                { fg=nil,       bg=nil,      bold=true })
   hi('VertSplit',            { link='WinSeparator' })
-  hi('Visual',               { fg=nil,       bg=bg.grey4 })
+  hi('Visual',               { fg=fg.grey1,  bg=fg.magenta })
+  hi('VisualNonText',        { fg=fg.grey2, bg=fg.magenta })
   hi('VisualNOS',            { link='Visual' })
   hi('WarningMsg',           { fg=fg.yellow, bg=nil })
   hi('Whitespace',           { link='NonText' })
@@ -419,20 +420,20 @@ local enable_colorscheme = function()
   hi('Comment', { fg=fg.grey4, bg=nil })
 
   hi('Constant',  { fg=nil, bg=nil })
-  hi('String',    { fg=fg.green, bg=nil })
+  hi('String',    { fg=fg.grey2, bg=nil })
   hi('Character', { link='Constant' })
   hi('Number',    { link='Constant' })
   hi('Boolean',   { link='Constant' })
   hi('Float',     { link='Number' })
 
   hi('Identifier', { fg=fg.blue, bg=nil }) -- frequent but important to get "main" branded color
-  hi('Function',   { fg=fg.cyan, bg=nil }) -- not so frequent but important to get "main" branded color
+  hi('Function',   { fg=fg.magenta, bg=nil }) -- not so frequent but important to get "main" branded color
 
   hi('Statement',   { fg=nil, bg=nil, bold=true }) -- bold choice (get it?) for accessibility
   hi('Conditional', { link='Statement' })
   hi('Repeat',      { link='Statement' })
   hi('Label',       { link='Statement' })
-  hi('Operator',    { fg=nil, bg=nil }) -- seems too much to be bold for mostly singl-character words
+  hi('Operator',    { fg=fg.grey3, bg=nil }) -- seems too much to be bold for mostly singl-character words
   hi('Keyword',     { link='Statement' })
   hi('Exception',   { link='Statement' })
 
@@ -447,10 +448,10 @@ local enable_colorscheme = function()
   hi('Structure',    { link='Type' })
   hi('Typedef',      { link='Type' })
 
-  hi('Special',        { fg=fg.cyan, bg=nil }) -- not so frequent but important to get "main" branded color
+  hi('Special',        { fg=fg.grey4, bg=nil }) -- not so frequent but important to get "main" branded color
   hi('Tag',            { link='Special' })
   hi('SpecialChar',    { link='Special' })
-  hi('Delimiter',      { fg=nil,     bg=nil })
+  hi('Delimiter',      { fg=fg.grey3,     bg=nil })
   hi('SpecialComment', { link='Special' })
   hi('Debug',          { link='Special' })
 
@@ -468,19 +469,19 @@ local enable_colorscheme = function()
   -- Built-in diagnostic
   hi('DiagnosticError', { fg=fg.red,    bg=nil })
   hi('DiagnosticWarn',  { fg=fg.yellow, bg=nil })
-  hi('DiagnosticInfo',  { fg=fg.cyan,   bg=nil })
+  hi('DiagnosticInfo',  { fg=fg.magenta,   bg=nil })
   hi('DiagnosticHint',  { fg=fg.blue,   bg=nil })
   hi('DiagnosticOk',    { fg=fg.green,  bg=nil })
 
   hi('DiagnosticUnderlineError', { fg=nil, bg=nil, sp=fg.red,    underline=true })
   hi('DiagnosticUnderlineWarn',  { fg=nil, bg=nil, sp=fg.yellow, underline=true })
-  hi('DiagnosticUnderlineInfo',  { fg=nil, bg=nil, sp=fg.cyan,   underline=true })
+  hi('DiagnosticUnderlineInfo',  { fg=nil, bg=nil, sp=fg.magenta,   underline=true })
   hi('DiagnosticUnderlineHint',  { fg=nil, bg=nil, sp=fg.blue,   underline=true })
   hi('DiagnosticUnderlineOk',    { fg=nil, bg=nil, sp=fg.green,  underline=true })
 
   hi('DiagnosticFloatingError', { fg=fg.red,    bg=bg.grey1 })
   hi('DiagnosticFloatingWarn',  { fg=fg.yellow, bg=bg.grey1 })
-  hi('DiagnosticFloatingInfo',  { fg=fg.cyan,   bg=bg.grey1 })
+  hi('DiagnosticFloatingInfo',  { fg=fg.magenta,   bg=bg.grey1 })
   hi('DiagnosticFloatingHint',  { fg=fg.blue,   bg=bg.grey1 })
   hi('DiagnosticFloatingOk',    { fg=fg.green,  bg=bg.grey1 })
 
@@ -580,7 +581,7 @@ local enable_colorscheme = function()
   vim.g.terminal_color_3  = fg.yellow
   vim.g.terminal_color_4  = fg.blue
   vim.g.terminal_color_5  = fg.magenta
-  vim.g.terminal_color_6  = fg.cyan
+  vim.g.terminal_color_6  = fg.magenta
   vim.g.terminal_color_7  = fg.grey2
   vim.g.terminal_color_8  = bg.grey2
   vim.g.terminal_color_9  = fg.red
@@ -588,7 +589,7 @@ local enable_colorscheme = function()
   vim.g.terminal_color_11 = fg.yellow
   vim.g.terminal_color_12 = fg.blue
   vim.g.terminal_color_13 = fg.magenta
-  vim.g.terminal_color_14 = fg.cyan
+  vim.g.terminal_color_14 = fg.magenta
   vim.g.terminal_color_15 = fg.grey2
   --stylua: ignore end
 end

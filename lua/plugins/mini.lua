@@ -10,6 +10,9 @@ return {
       require("mini.icons").setup()
       require("mini.surround").setup()
       -- require('mini.statusline').setup()
+      require("mini.colors").setup({
+        mappings = {},
+      })
       require("mini.pairs").setup()
       require("mini.indentscope").setup({
         draw = {
