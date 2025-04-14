@@ -148,7 +148,7 @@ hi('StorageClass', { link='Type' })
 hi('Structure',    { link='Type' })
 hi('Typedef',      { link='Type' })
 
-hi('Special',        { fg=fg.grey3, bg=nil })
+hi('Special',        { fg=fg.cyan, bg=nil })
 hi('Tag',            { link='Special' })
 hi('SpecialChar',    { link='Special' })
 hi('Delimiter',      { fg=fg.grey4,      bg=nil })
@@ -273,6 +273,9 @@ hi('@lsp.type.struct',        { link='Structure' })
 hi('@lsp.type.type',          { link='Type' })
 hi('@lsp.type.typeParameter', { link='TypeDef' })
 hi('@lsp.type.variable',      { link='@variable' }) -- links to tree-sitter group to reduce overload
+hi('@tag.delimiter.tsx',      { link='Delimiter'})
+hi('@constant.builtin.tsx',      { link='Constant'})
+hi('@type.builtin.tsx',      { link='Constant'})
 
 vim.g.terminal_color_0  = bg.grey2
 vim.g.terminal_color_1  = fg.red
