@@ -11,7 +11,10 @@ return {
       require("mini.surround").setup()
       -- require('mini.statusline').setup()
       require("mini.colors").setup({
-        mappings = {},
+        mappings = {
+          Apply = "<leader>mca",
+          Write = "<leader>mcw",
+        },
       })
       require("mini.pairs").setup()
       require("mini.indentscope").setup({
