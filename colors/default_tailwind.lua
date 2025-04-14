@@ -246,7 +246,7 @@ hi('@operator',    { link='Operator' })
 hi('@keyword',     { link='Keyword' })
 hi('@exception',   { link='Exception' })
 
-hi('@variable',        { fg=nil, bg=nil }) -- using default foreground reduces visual overload
+hi('@variable',        { fg=fg.grey3, bg=nil }) -- using default foreground reduces visual overload
 hi('@type',            { link='Type' })
 hi('@type.definition', { link='Typedef' })
 hi('@storageclass',    { link='StorageClass' })
