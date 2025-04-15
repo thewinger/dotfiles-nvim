@@ -273,9 +273,16 @@ hi('@lsp.type.struct',        { link='Structure' })
 hi('@lsp.type.type',          { link='Type' })
 hi('@lsp.type.typeParameter', { link='TypeDef' })
 hi('@lsp.type.variable',      { link='@variable' }) -- links to tree-sitter group to reduce overload
+
+-- - TSX
 hi('@tag.delimiter.tsx',      { link='Delimiter'})
-hi('@constant.builtin.tsx',      { link='Constant'})
-hi('@type.builtin.tsx',      { link='Constant'})
+hi('@constant.builtin.tsx',   { link='Constant'})
+hi('@type.builtin.tsx',       { link='Constant'})
+
+-- - HTML
+hi('@tag.delimiter.html',     { link='Delimiter'})
+hi('@tag.html',               { link='Function'})
+hi('@tag.attribute.html',     { link='Identifier'})
 
 vim.g.terminal_color_0  = bg.grey2
 vim.g.terminal_color_1  = fg.red
