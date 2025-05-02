@@ -2,11 +2,6 @@ local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
-  diagnostics_color = {
-    -- Same values as the general color option can be used here.
-    -- error = { fg = '#EF4445'},
-    -- warn = { fg = '#ff9e64'}
-  },
   symbols = { error = " ", warn = " " },
   colored = true,
   update_in_insert = false,
@@ -31,6 +26,11 @@ local filetype = {
   "filetype",
   icons_enabled = false,
   icon = nil,
+}
+
+local diagnostics = {
+  "diagnostics",
+  sources = { "nvim_workspace_diagnostic" },
 }
 
 local branch = {
@@ -102,7 +102,14 @@ return {
           lualine_a = { mode },
           lualine_b = { branch },
           lualine_c = { filename },
-          lualine_x = { mcphub, lazy, "overseer", diagnostics, "encoding", filetype },
+          lualine_x = {
+            -- mcphub,
+            lazy,
+            "overseer",
+            diagnostics,
+            "encoding",
+            filetype,
+          },
           lualine_y = { progress },
           lualine_z = { location },
         },

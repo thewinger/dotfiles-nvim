@@ -15,7 +15,7 @@ return {
   },
   -- This will provide type hinting with LuaLS
   ---@module "conform"
-  ---@type conform.setupOpts
+  --@type conform.setupOpts
   opts = {
     formatters_by_ft = {
       javascript = { "prettierd", "prettier", stop_after_first = true },

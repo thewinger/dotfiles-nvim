@@ -59,32 +59,39 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 })
 
 -- Stay Centered
-vim.api.nvim_exec(
-  [[
-    function StayCenteredI()
-      let line = line(".")
-      if line != get(b:, 'last_line', 0)
-        let col = getcurpos()[4]
-        normal! zz
-        call cursor(line, col)
-        let b:last_line = line
-      endif
-    endfunction
-    function StayCentered()
-      let line = line(".")
-      if line != get(b:, 'last_line', 0)
-        normal! zz
-        let b:last_line = line
-      endif
-    endfunction
-    augroup StayCentered
-      autocmd!
-      autocmd CursorMovedI * :call StayCenteredI()
-      autocmd CursorMoved * :call StayCentered()
-    augroup END
-  ]],
-  true
-)
+-- Stay Centered functions
+local function stay_centered_insert()
+  local line = vim.fn.line(".")
+  local last_line = vim.b.last_line or 0
+
+  if line ~= last_line then
+    local col = vim.fn.getcurpos()[4]
+    vim.cmd("normal! zz")
+    vim.fn.cursor(line, col)
+    vim.b.last_line = line
+  end
+end
+
+local function stay_centered()
+  local line = vim.fn.line(".")
+  local last_line = vim.b.last_line or 0
+
+  if line ~= last_line then
+    vim.cmd("normal! zz")
+    vim.b.last_line = line
+  end
+end
+
+-- Stay Centered autocommands
+local stay_centered_group = vim.api.nvim_create_augroup("StayCentered", { clear = true })
+vim.api.nvim_create_autocmd("CursorMovedI", {
+  group = stay_centered_group,
+  callback = stay_centered_insert,
+})
+vim.api.nvim_create_autocmd("CursorMoved", {
+  group = stay_centered_group,
+  callback = stay_centered,
+})
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()

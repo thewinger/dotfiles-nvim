@@ -38,7 +38,7 @@ return {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
         ---@module 'render-markdown'
-        ---@type render.md.UserConfig
+        -- @type render.md.UserConfig
         opts = {
           file_types = { "markdown", "Avante" },
           -- log_level = "debug",
@@ -88,6 +88,18 @@ return {
             require("mcphub.extensions.avante").mcp_tool(),
           }
         end,
+        disabled_tools = {
+          "list_files",
+          "search_files",
+          "read_file",
+          "create_file",
+          "rename_file",
+          "delete_file",
+          "create_dir",
+          "rename_dir",
+          "delete_dir",
+          "bash",
+        },
       })
     end,
   },
@@ -116,6 +128,12 @@ return {
           to_file = true, -- Enable file logging
           file_path = "/Users/win/logs/mcphub.log", -- Custom log path
           prefix = "MCPHub", -- Log prefix
+        },
+        auto_approve = true,
+        extensions = {
+          avante = {
+            make_slash_commands = true, -- make /slash commands from MCP server prompts
+          },
         },
       })
     end,
