@@ -140,18 +140,37 @@ vim.api.nvim_create_autocmd(
   { --  Use LspAttach autocommand to only map the following keys after the language server attaches to the current buffer
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
+      local client = vim.lsp.get_client_by_id(ev.data.client_id)
+      if client:supports_method("textDocument/completion") then
+        vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+      end
       vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc" -- Enable completion triggered by <c-x><c-o>
 
       -- Buffer local mappings.
       -- See `:help vim.lsp.*` for documentation on any of the below functions
       local opts = { buffer = ev.buf }
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-      vim.keymap.set("n", "<leader><space>", vim.lsp.buf.hover, opts)
+      vim.keymap.set("n", "K", function()
+        vim.lsp.buf.hover({
+          border = "rounded",
+        })
+      end, opts)
       vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
       vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
       vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+
+      local hover = vim.lsp.buf.hover
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.lsp.buf.hover = function()
+        return hover({
+          border = "single",
+          -- max_width = 100,
+          max_width = math.floor(vim.o.columns * 0.7),
+          max_height = math.floor(vim.o.lines * 0.7),
+        })
+      end
 
       vim.keymap.set("n", "<leader>f", function()
         vim.lsp.buf.format({ async = true })

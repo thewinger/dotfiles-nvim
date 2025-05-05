@@ -77,6 +77,7 @@ opt.expandtab = true -- convert tabs to spaces
 -- vim.g.editorconfig = false
 
 -- Others
+vim.o.winborder = "rounded"
 opt.fillchars.fold = " "
 opt.fillchars.eob = " " -- To stop showing ~ at the end of buffer
 -- Undercurl
