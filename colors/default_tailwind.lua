@@ -39,7 +39,7 @@ local fg = is_dark and palette_light or palette_dark
 --stylua: ignore start
 local hi = function(name, data) vim.api.nvim_set_hl(0, name, data) end
 
-hi('ColorColumn',          { fg=nil,       bg=bg.grey4 })
+hi('ColorColumn',          { fg=nil,       bg=bg.grey1 })
 hi('Conceal',              { fg=bg.grey4,  bg=nil })
 hi('CurSearch',            { link='Search' })
 hi('Cursor',               { fg=nil,       bg=nil })

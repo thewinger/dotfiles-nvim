@@ -37,9 +37,14 @@ return {
       {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
         ---@module 'render-markdown'
         -- @type render.md.UserConfig
         opts = {
+          completions = {
+            lsp = { enabled = true },
+            blink = { enabled = true },
+          },
           file_types = { "markdown", "Avante" },
           -- log_level = "debug",
           -- overrides = {

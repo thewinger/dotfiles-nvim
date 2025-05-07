@@ -23,16 +23,21 @@ return {
           settings = {
             Lua = {
               diagnostics = {
-                globals = { "vim", "Sancks", "MiniFiles", "Flash" },
+                globals = { "vim", "Snacks", "MiniFiles", "Flash" },
               },
             },
           },
         },
-        ts_ls = {
+        vtsls = {
           on_attach = function(client, bufnr)
             require("workspace-diagnostics")
           end,
         },
+        -- ts_ls = {
+        --   on_attach = function(client, bufnr)
+        --     require("workspace-diagnostics")
+        --   end,
+        -- },
         eslint = {},
         tailwindcss = {},
       },
