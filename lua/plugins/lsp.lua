@@ -79,7 +79,7 @@ return {
       require("mason").setup()
 
       require("mason-lspconfig").setup({
-        ensure_installed = { "eslint", "ts_ls" },
+        ensure_installed = { "eslint", "ts_ls", "vtsls" },
       })
 
       local lspconfig = require("lspconfig")
