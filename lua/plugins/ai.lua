@@ -144,42 +144,25 @@ return {
     end,
   },
   {
-    "GeorgesAlkhouri/nvim-aider",
-    cmd = "Aider",
-    -- Example key mappings for common actions:
-    keys = {
-      { "<leader>a/", "<cmd>Aider toggle<cr>", desc = "Toggle Aider" },
-      { "<leader>as", "<cmd>Aider send<cr>", desc = "Send to Aider", mode = { "n", "v" } },
-      { "<leader>ac", "<cmd>Aider command<cr>", desc = "Aider Commands" },
-      { "<leader>ab", "<cmd>Aider buffer<cr>", desc = "Send Buffer" },
-      { "<leader>a+", "<cmd>Aider add<cr>", desc = "Add File" },
-      { "<leader>a-", "<cmd>Aider drop<cr>", desc = "Drop File" },
-      { "<leader>ar", "<cmd>Aider add readonly<cr>", desc = "Add Read-Only" },
-      -- Example nvim-tree.lua integration if needed
-      { "<leader>a+", "<cmd>AiderTreeAddFile<cr>", desc = "Add File from Tree to Aider", ft = "NvimTree" },
-      { "<leader>a-", "<cmd>AiderTreeDropFile<cr>", desc = "Drop File from Tree from Aider", ft = "NvimTree" },
-    },
+    "greggh/claude-code.nvim",
     dependencies = {
-      "folke/snacks.nvim",
-      --- The below dependencies are optional
-      -- "catppuccin/nvim",
-      -- "nvim-tree/nvim-tree.lua",
-      --- Neo-tree integration
-      --   {
-      --     "nvim-neo-tree/neo-tree.nvim",
-      --     opts = function(_, opts)
-      --       -- Example mapping configuration (already set by default)
-      --       -- opts.window = {
-      --       --   mappings = {
-      --       --     ["+"] = { "nvim_aider_add", desc = "add to aider" },
-      --       --     ["-"] = { "nvim_aider_drop", desc = "drop from aider" }
-      --       --   }
-      --       -- }
-      --       require("nvim_aider.neo_tree").setup(opts)
-      --     end,
-      --   },
-      -- },
-      config = true,
+      "nvim-lua/plenary.nvim", -- Required for git operations
     },
+    config = function()
+      require("claude-code").setup({
+        keymaps = {
+          toggle = {
+            normal = "<leader>cc", -- Normal mode keymap for toggling Claude Code, false to disable
+            terminal = "<leader>cc", -- Terminal mode keymap for toggling Claude Code, false to disable
+            variants = {
+              continue = "<leader>cC", -- Normal mode keymap for Claude Code with continue flag
+              verbose = "<leader>cV", -- Normal mode keymap for Claude Code with verbose flag
+            },
+          },
+          window_navigation = true, -- Enable window navigation keymaps (<C-h/j/k/l>)
+          scrolling = true, -- Enable scrolling keymaps (<C-f/b>) for page up/down
+        },
+      })
+    end,
   },
 }

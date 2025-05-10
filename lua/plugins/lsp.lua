@@ -4,7 +4,7 @@ return {
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
-      "artemave/workspace-diagnostics.nvim",
+      -- "artemave/workspace-diagnostics.nvim",
       { "j-hui/fidget.nvim", opts = {} },
       {
         "OlegGulevskyy/better-ts-errors.nvim",
@@ -29,9 +29,9 @@ return {
           },
         },
         vtsls = {
-          on_attach = function(client, bufnr)
-            require("workspace-diagnostics")
-          end,
+          -- on_attach = function(client, bufnr)
+          --   require("workspace-diagnostics")
+          -- end,
         },
         -- ts_ls = {
         --   on_attach = function(client, bufnr)
@@ -82,11 +82,11 @@ return {
         ensure_installed = { "eslint", "ts_ls", "vtsls" },
       })
 
-      local lspconfig = require("lspconfig")
+      -- local lspconfig = require("lspconfig")
 
       for server, config in pairs(opts.servers) do
-        -- vim.lsp.config(server, config)
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
+        -- lspconfig[server].setup(config)
         vim.lsp.enable(server)
       end
     end,
