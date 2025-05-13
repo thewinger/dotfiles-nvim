@@ -28,16 +28,11 @@ return {
             },
           },
         },
-        vtsls = {
-          -- on_attach = function(client, bufnr)
-          --   require("workspace-diagnostics")
-          -- end,
+        ts_ls = {
+          on_attach = function(client, bufnr)
+            require("workspace-diagnostics")
+          end,
         },
-        -- ts_ls = {
-        --   on_attach = function(client, bufnr)
-        --     require("workspace-diagnostics")
-        --   end,
-        -- },
         eslint = {},
         tailwindcss = {},
       },
@@ -79,14 +74,14 @@ return {
       require("mason").setup()
 
       require("mason-lspconfig").setup({
-        ensure_installed = { "eslint", "ts_ls", "vtsls" },
+        -- ensure_installed = { "eslint", "ts_ls", "vtsls" },
       })
 
-      -- local lspconfig = require("lspconfig")
+      local lspconfig = require("lspconfig")
 
       for server, config in pairs(opts.servers) do
-        vim.lsp.config(server, config)
-        -- lspconfig[server].setup(config)
+        -- vim.lsp.config(server, config)
+        lspconfig[server].setup(config)
         vim.lsp.enable(server)
       end
     end,
