@@ -4,7 +4,7 @@ return {
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
-      -- "artemave/workspace-diagnostics.nvim",
+      "artemave/workspace-diagnostics.nvim",
       { "j-hui/fidget.nvim", opts = {} },
       {
         "OlegGulevskyy/better-ts-errors.nvim",
