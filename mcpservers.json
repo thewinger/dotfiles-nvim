@@ -29,7 +29,10 @@
         "@modelcontextprotocol/server-filesystem",
         "/Users/win/Developer"
       ]
+    },
+    "github.com/upstash/context7-mcp": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
     }
   }
 }
-

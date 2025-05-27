@@ -62,7 +62,8 @@ return {
     },
     config = function()
       require("avante").setup({
-        provider = "claude",
+        provider = "ollama",
+        mode = "agentic",
         auto_suggestions_provider = "claude-haiku",
         claude = {
           endpoint = "https://api.anthropic.com",
@@ -73,8 +74,19 @@ return {
           max_tokens = 4096,
           -- disable_tools = true,
         },
+        ollama = {
+          endpoint = "http://192.168.1.70:11434",
+          -- model = "devstral:latest",
+          model = "gemma3:27b",
+          timeout = 30000,
+          options = {
+            temperature = 0,
+            num_ctx = 32768,
+          },
+        },
         behaviour = {
           enable_claude_text_editor_tool_mode = true,
+          enable_cursor_planning_mode = true, -- enable cursor planning mode!
         },
         file_selector = {
           -- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string | fun(params: avante.file_selector.IParams|nil): nil
