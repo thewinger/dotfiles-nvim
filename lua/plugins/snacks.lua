@@ -252,5 +252,12 @@ return {
       end,
       desc = "LSP Workspace Symbols",
     },
+    {
+      "<leader>sm",
+      function()
+        Snacks.picker.marks()
+      end,
+      desc = "Marks",
+    },
   },
 }

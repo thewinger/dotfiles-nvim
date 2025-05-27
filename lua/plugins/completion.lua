@@ -7,27 +7,7 @@ return {
   version = "1.*",
   opts = {
     keymap = {
-      preset = "enter",
-      ["<Tab>"] = {
-        function(cmp)
-          if cmp.is_menu_visible() then
-            return require("blink.cmp").select_next()
-          elseif cmp.snippet_active() then
-            return cmp.snippet_forward()
-          end
-        end,
-        "fallback",
-      },
-      ["<S-Tab>"] = {
-        function(cmp)
-          if cmp.is_menu_visible() then
-            return require("blink.cmp").select_prev()
-          elseif cmp.snippet_active() then
-            return cmp.snippet_backward()
-          end
-        end,
-        "fallback",
-      },
+      preset = "super-tab",
     },
     appearance = {
       nerd_font_variant = "mono",
@@ -39,7 +19,9 @@ return {
       },
       list = {
         selection = {
-          preselect = false,
+          preselect = function(ctx)
+            return not require("blink.cmp").snippet_active({ direction = 1 })
+          end,
           auto_insert = false,
         },
       },
@@ -131,12 +113,12 @@ return {
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
       providers = {
-        lazydev = {
-          name = "LazyDev",
-          module = "lazydev.integrations.blink",
-          -- make lazydev completions top priority (see `:h blink.cmp`)
-          score_offset = 100,
-        },
+        -- lazydev = {
+        --   name = "LazyDev",
+        --   module = "lazydev.integrations.blink",
+        --   -- make lazydev completions top priority (see `:h blink.cmp`)
+        --   score_offset = 100,
+        -- },
         avante = {
           module = "blink-cmp-avante",
           name = "Avante",
