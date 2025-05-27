@@ -62,7 +62,7 @@ return {
     },
     config = function()
       require("avante").setup({
-        provider = "ollama",
+        provider = "context7",
         mode = "agentic",
         auto_suggestions_provider = "claude-haiku",
         claude = {
@@ -74,9 +74,8 @@ return {
           max_tokens = 4096,
           -- disable_tools = true,
         },
-        ollama = {
+        context7 = {
           endpoint = "http://192.168.1.70:11434",
-          -- model = "devstral:latest",
           model = "gemma3:27b",
           timeout = 30000,
           options = {
