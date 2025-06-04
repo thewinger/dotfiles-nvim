@@ -3,6 +3,7 @@ return {
     "williamboman/mason.nvim",
     dependencies = {
       "neovim/nvim-lspconfig",
+      "b0o/SchemaStore.nvim",
       "artemave/workspace-diagnostics.nvim",
       { "j-hui/fidget.nvim", opts = {} },
       {
@@ -16,27 +17,7 @@ return {
         },
       },
     },
-    opts = {
-      servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { "vim", "Snacks", "MiniFiles", "Flash" },
-              },
-            },
-          },
-        },
-        ts_ls = {
-          on_attach = function(client, bufnr)
-            require("workspace-diagnostics")
-          end,
-        },
-        eslint = {},
-        tailwindcss = {},
-      },
-    },
-    config = function(_, opts)
+    config = function()
       vim.diagnostic.config({
         virtual_text = false,
         -- virtual_text = {
@@ -45,11 +26,15 @@ return {
         -- },
         float = {
           focusable = false,
-          style = "minimal",
+          -- style = "minimal",
           border = "rounded",
           source = "if_many",
-          header = "",
-          prefix = "",
+          -- Show severity icons as prefixes.
+          -- prefix = function(diag)
+          --   local level = vim.diagnostic.severity[diag.severity]
+          --   local prefix = string.format(" %s ", signs[text])
+          --   return prefix, "Diagnostic" .. level:gsub("^%l", string.upper)
+          -- end,
         },
         signs = {
           text = {
@@ -67,17 +52,33 @@ return {
         },
         underline = true,
         update_in_insert = true,
-        severity_sort = false,
+        severity_sort = true,
       })
 
       require("mason").setup()
 
-      local lspconfig = require("lspconfig")
+      ----------------------------------
+      -- Server configuration
+      ----------------------------------
+      -- Get server names from after/lsp
+      local servers = {}
+      local lsp_servers_path = vim.fn.stdpath("config") .. "/after/lsp"
 
-      for server, config in pairs(opts.servers) do
-        -- vim.lsp.config(server, config)
-        lspconfig[server].setup(config)
+      for file in vim.fs.dir(lsp_servers_path) do
+        local name = file:match("(.+)%.lua$")
+        if name then
+          servers[name] = true
+        end
+      end
+      ----------------------------------
+      -- Add servers automaticlly
+      ----------------------------------
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+
+      for server, opts in pairs(servers) do
         vim.lsp.enable(server)
+        vim.lsp.config(server, capabilities)
       end
     end,
   },
