@@ -1,101 +1,103 @@
----@diagnostic disable: missing-fields
 return {
-  {
-    "saghen/blink.cmp",
-    dependencies = "rafamadriz/friendly-snippets",
-    version = "*",
-    opts = {
-      keymap = { preset = "super-tab" },
+  "saghen/blink.cmp",
+  dependencies = { "rafamadriz/friendly-snippets" },
+  version = "*",
+  event = { "InsertEnter", "CmdlineEnter" },
 
-      completion = {
-        keyword = {
-          range = "full",
-        },
-        list = {
-          selection = {
-            preselect = function(ctx)
-              return not require("blink.cmp").snippet_active({ direction = 1 })
-            end,
-            auto_insert = false,
-          },
-        },
-        menu = {
-          min_width = 20,
-          border = "single",
-          draw = {
-            -- columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "kind" }, { "source_name" } },
-            columns = function(ctx)
-              if ctx.mode == "cmdline" then
-                return { { "label", "label_description", gap = 1 } }
-              else
-                return { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "kind" }, { "source_name" } }
-              end
-            end,
-
-            -- draw.components.label.width.max = function(ctx)
-            --     return ctx.mode == "cmdline" and 20 or 60
-            -- end,
-            components = {
-              kind_icon = {
-                ellipsis = false,
-                text = function(ctx)
-                  local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
-                  return kind_icon
-                end,
-                highlight = function(ctx)
-                  local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
-                  return hl
-                end,
-              },
-              kind = {
-                text = function(ctx)
-                  return ctx.source_name == "cmdline" and "" or ctx.kind
-                end,
-              },
-              source_name = {
-                text = function(ctx)
-                  return ctx.source_name == "cmdline" and "" or ctx.source_name
-                end,
-              },
-
-              label = {
-                width = { fill = true, max = 60 },
-                text = function(ctx)
-                  return ctx.label .. ctx.label_detail
-                end,
-                highlight = function(ctx)
-                  -- label and label details
-                  local highlights = {
-                    { 0, #ctx.label, group = ctx.deprecated and "BlinkCmpLabelDeprecated" or "BlinkCmpLabel" },
-                  }
-                  if ctx.label_detail then
-                    table.insert(
-                      highlights,
-                      { #ctx.label, #ctx.label + #ctx.label_detail, group = "BlinkCmpLabelDetail" }
-                    )
-                  end
-
-                  -- characters matched on the label by the fuzzy matcher
-                  for _, idx in ipairs(ctx.label_matched_indices) do
-                    table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
-                  end
-
-                  return highlights
-                end,
-              },
-            },
-          },
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
+  opts = {
+    appearance = {
+      use_nvim_cmp_as_default = false,
+      nerd_font_variant = "normal",
+    },
+    completion = {
+      accept = { auto_brackets = { enabled = true } },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 250,
+        update_delay_ms = 50,
+        treesitter_highlighting = true,
+        window = { border = "rounded" },
+      },
+      list = {
+        selection = {
+          preselect = false,
+          auto_insert = false,
         },
       },
-
-      appearance = {
-        use_nvim_cmp_as_default = true,
-        nerd_font_variant = "mono",
+      menu = {
+        border = "rounded",
+        draw = {
+          columns = {
+            { "label", "label_description", gap = 1 },
+            { "kind_icon", "kind" },
+          },
+          treesitter = { "lsp" },
+        },
       },
-      sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
+      ghost_text = {
+        enabled = true,
       },
     },
-    opts_extend = { "sources.default" },
+
+    -- My super-TAB configuration
+    keymap = {
+      ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<C-e>"] = { "hide", "fallback" },
+      ["<CR>"] = { "accept", "fallback" },
+      ["<Tab>"] = {
+        function(cmp)
+          return cmp.select_next()
+        end,
+        "snippet_forward",
+        "fallback",
+      },
+      ["<S-Tab>"] = {
+        function(cmp)
+          return cmp.select_prev()
+        end,
+        "snippet_backward",
+        "fallback",
+      },
+      ["<Up>"] = { "select_prev", "fallback" },
+      ["<Down>"] = { "select_next", "fallback" },
+      ["<C-p>"] = { "select_prev", "fallback" },
+      ["<C-n>"] = { "select_next", "fallback" },
+      ["<C-up>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-down>"] = { "scroll_documentation_down", "fallback" },
+    },
+
+    -- Experimental signature help support
+    signature = {
+      enabled = true,
+      window = { border = "rounded" },
+    },
+
+    sources = {
+      default = { "lsp", "path", "snippets", "buffer" },
+      providers = {
+        -- lazydev = {
+        --   name = "LazyDev",
+        --   module = "lazydev.integrations.blink",
+        --   -- Make lazydev completions top priority (see `:h blink.cmp`)
+        --   score_offset = 100,
+        -- },
+        lsp = {
+          min_keyword_length = 2, -- Number of characters to trigger provider
+          score_offset = 0, -- Boost/penalize the score of the items
+        },
+        path = {
+          min_keyword_length = 0,
+        },
+        snippets = {
+          min_keyword_length = 2,
+        },
+        buffer = {
+          min_keyword_length = 4,
+          max_items = 5,
+        },
+      },
+    },
   },
 }

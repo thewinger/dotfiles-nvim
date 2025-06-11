@@ -2,7 +2,6 @@ return {
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
-    lazy = false,
     version = false, -- set this if you want to always pull the latest change
 
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -62,23 +61,27 @@ return {
     },
     config = function()
       require("avante").setup({
-        provider = "ollama",
-        claude = {
-          endpoint = "https://api.anthropic.com",
-          -- model = "claude-3-7-sonnet-20250219",
-          model = "claude-3-5-sonnet-20241022",
-          temperature = 0,
-          timeout = 30000,
-          max_tokens = 4096,
-          -- disable_tools = true,
-        },
-        ollama = {
-          endpoint = "http://192.168.1.70:11434",
-          model = "devstral:latest",
-          -- model = "gemma3:27b",
-          options = {
-            temperature = 0,
-            num_ctx = 32768,
+        provider = "claude",
+        providers = {
+          claude = {
+            endpoint = "https://api.anthropic.com",
+            -- model = "claude-3-7-sonnet-20250219",
+            -- model = "claude-3-5-sonnet-20241022",
+            extra_request_body = {
+              temperature = 0,
+              timeout = 30000,
+              max_tokens = 4096,
+              -- disable_tools = true,
+            },
+          },
+          ollama = {
+            endpoint = "http://192.168.1.70:11434",
+            model = "devstral:latest",
+            -- model = "gemma3:27b",
+            extra_request_body = {
+              temperature = 0,
+              num_ctx = 32768,
+            },
           },
         },
         behaviour = {
