@@ -284,6 +284,10 @@ hi('@tag.delimiter.html',     { link='Delimiter'})
 hi('@tag.html',               { link='Function'})
 hi('@tag.attribute.html',     { link='Identifier'})
 
+
+-- Blink.cmp
+hi('BlinkCmpGhostText', { link='Comment'})
+
 vim.g.terminal_color_0  = bg.grey2
 vim.g.terminal_color_1  = fg.red
 vim.g.terminal_color_2  = fg.green
