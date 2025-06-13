@@ -140,11 +140,11 @@ vim.api.nvim_create_autocmd(
   { --  Use LspAttach autocommand to only map the following keys after the language server attaches to the current buffer
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
-      local client = vim.lsp.get_client_by_id(ev.data.client_id)
-      if client:supports_method("textDocument/completion") then
-        vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-      end
-      vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc" -- Enable completion triggered by <c-x><c-o>
+      -- local client = vim.lsp.get_client_by_id(ev.data.client_id)
+      -- if client:supports_method("textDocument/completion") then
+      --   vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = false })
+      -- end
+      -- vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc" -- Enable completion triggered by <c-x><c-o>
 
       -- Buffer local mappings.
       -- See `:help vim.lsp.*` for documentation on any of the below functions
