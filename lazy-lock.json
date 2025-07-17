@@ -44,5 +44,6 @@
   "vim-fugitive": { "branch": "master", "commit": "4a745ea72fa93bb15dd077109afbb3d1809383f2" },
   "vim-tmux-navigator": { "branch": "master", "commit": "412c474e97468e7934b9c217064025ea7a69e05e" },
   "visual-whitespace.nvim": { "branch": "main", "commit": "11b654e7e053e52e375297f472c8824a74b1b965" },
-  "workspace-diagnostics.nvim": { "branch": "main", "commit": "60f9175b2501ae3f8b1aba9719c0df8827610c8e" }
+  "workspace-diagnostics.nvim": { "branch": "main", "commit": "60f9175b2501ae3f8b1aba9719c0df8827610c8e" },
+  "ymir.nvim": { "branch": "main", "commit": "542c52912e9fbf5efa0e775db28452a8cf519614" }
 }
