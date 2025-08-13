@@ -9,12 +9,4 @@ return {
       vim.cmd.colorscheme("default_tailwind")
     end,
   },
-  -- {
-  --   "thewinger/phobos-anomaly.nvim",
-  --   config = function()
-  --     -- vim.cmd.colorscheme("phobos-anomaly")
-  --   end,
-  --   lazy = false,
-  --   priority = 1000,
-  -- },
 }
