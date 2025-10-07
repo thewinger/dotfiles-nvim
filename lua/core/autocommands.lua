@@ -128,6 +128,13 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
   end,
 }) -- then check for diagnostics under the cursor
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "csv",
+  desc = "Enable CSV View on .csv files",
+  callback = function()
+    require("csvview").enable()
+  end,
+})
 -- Overwrite highlight groups in any colorscheme
 -- vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
 --   group = vim.api.nvim_create_augroup("Color", {}),
