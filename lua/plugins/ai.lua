@@ -119,41 +119,41 @@ return {
       })
     end,
   },
-  {
-    "ravitemer/mcphub.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
-    },
-    -- cmd = "MCPHub", -- lazily start the hub when `MCPHub` is called
-    build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
-    config = function()
-      require("mcphub").setup({
-        -- Required options
-        port = 3050, -- Port for MCP Hub server
-        config = vim.fn.expand("/Users/win/.config/nvim/mcpservers.json"), -- Absolute path to config file
-
-        -- Optional options
-        on_ready = function(hub)
-          -- Called when hub is ready
-        end,
-        on_error = function(err)
-          -- Called on errors
-        end,
-        log = {
-          level = vim.log.levels.DEBUG, -- More verbose logging
-          to_file = true, -- Enable file logging
-          file_path = "/Users/win/logs/mcphub.log", -- Custom log path
-          prefix = "MCPHub", -- Log prefix
-        },
-        auto_approve = true,
-        extensions = {
-          avante = {
-            make_slash_commands = true, -- make /slash commands from MCP server prompts
-          },
-        },
-      })
-    end,
-  },
+  -- {
+  --   "ravitemer/mcphub.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+  --   },
+  --   -- cmd = "MCPHub", -- lazily start the hub when `MCPHub` is called
+  --   build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+  --   config = function()
+  --     require("mcphub").setup({
+  --       -- Required options
+  --       port = 3050, -- Port for MCP Hub server
+  --       config = vim.fn.expand("/Users/win/.config/nvim/mcpservers.json"), -- Absolute path to config file
+  --
+  --       -- Optional options
+  --       on_ready = function(hub)
+  --         -- Called when hub is ready
+  --       end,
+  --       on_error = function(err)
+  --         -- Called on errors
+  --       end,
+  --       log = {
+  --         level = vim.log.levels.DEBUG, -- More verbose logging
+  --         to_file = true, -- Enable file logging
+  --         file_path = "/Users/win/logs/mcphub.log", -- Custom log path
+  --         prefix = "MCPHub", -- Log prefix
+  --       },
+  --       auto_approve = true,
+  --       extensions = {
+  --         avante = {
+  --           make_slash_commands = true, -- make /slash commands from MCP server prompts
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
   {
     "greggh/claude-code.nvim",
     dependencies = {

@@ -17,7 +17,7 @@ return {
           Write = "<leader>mcw",
         },
       })
-      require("mini.pairs").setup()
+      -- require("mini.pairs").setup()
       require("mini.indentscope").setup({
         draw = {
           delay = 1,
