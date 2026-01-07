@@ -10,12 +10,6 @@ return {
     end,
   },
   {
-    "dapovich/anysphere.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function() end,
-  },
-  {
     "mistweaverco/vhs-era-theme.nvim",
     config = function()
       vim.cmd("colorscheme vhs-era-theme")
